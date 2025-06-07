@@ -7,6 +7,7 @@
     "test": "npm run test:html && npm run test:css && npm run test:accessibility && npm run test:performance",
     "test:html": "html-validate index.html",
     "test:css": "stylelint styles.css",
+    "test:yaml": "node validate-yaml.js",
     "test:accessibility": "pa11y http://localhost:3000 --standard WCAG2AA --threshold 0",
     "test:accessibility:ci": "pa11y-ci --sitemap false --standard WCAG2AA --threshold 0 index.html",
     "test:axe": "axe --dir . --rules wcag2a,wcag2aa,wcag21aa --tags wcag2a,wcag2aa,wcag21aa",
@@ -14,7 +15,7 @@
     "test:lighthouse": "lhci autorun",
     "test:lighthouse:ci": "lhci autorun --upload.target=temporary-public-storage",
     "test:security": "npm audit --audit-level=moderate",
-    "validate": "html-validate index.html && stylelint styles.css",
+    "validate": "html-validate index.html && stylelint styles.css && npm run test:yaml",
     "serve": "live-server --port=3000",
     "serve:production": "python3 -m http.server 8080",
     "build": "echo 'No build process needed for static site'",
@@ -43,8 +44,7 @@
   "bugs": {
     "url": "https://github.com/Bigessfour/TOW/issues"
   },
-  "homepage": "https://github.com/Bigessfour/TOW#readme",
-  "devDependencies": {
+  "homepage": "https://github.com/Bigessfour/TOW#readme",  "devDependencies": {
     "html-validate": "^8.0.0",
     "stylelint": "^15.0.0",
     "stylelint-config-standard": "^34.0.0",
@@ -53,7 +53,11 @@
     "lighthouse": "^11.0.0",
     "@lhci/cli": "^0.12.0",
     "live-server": "^1.2.2",
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "axe-core": "^4.8.0",
+    "@axe-core/cli": "^4.8.0",
+    "css-validator": "^0.11.0",
+    "js-yaml": "^4.1.0"
   },
   "engines": {
     "node": ">=16.0.0",
