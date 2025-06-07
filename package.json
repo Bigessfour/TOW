@@ -2,19 +2,27 @@
   "name": "town-of-wiley-website",
   "version": "1.0.0",
   "description": "Official website for the Town of Wiley - ADA compliant municipal government website",
-  "main": "index.html",
-  "scripts": {
+  "main": "index.html",  "scripts": {
     "start": "live-server --port=3000 --entry-file=index.html",
-    "test": "npm run test:html && npm run test:css && npm run test:accessibility",
+    "test": "npm run test:html && npm run test:css && npm run test:accessibility && npm run test:performance",
     "test:html": "html-validate index.html",
     "test:css": "stylelint styles.css",
-    "test:accessibility": "pa11y http://localhost:3000",
+    "test:accessibility": "pa11y http://localhost:3000 --standard WCAG2AA --threshold 0",
+    "test:accessibility:ci": "pa11y-ci --sitemap false --standard WCAG2AA --threshold 0 index.html",
+    "test:axe": "axe --dir . --rules wcag2a,wcag2aa,wcag21aa --tags wcag2a,wcag2aa,wcag21aa",
+    "test:performance": "lighthouse http://localhost:3000 --only-categories=performance --output=json",
     "test:lighthouse": "lhci autorun",
+    "test:lighthouse:ci": "lhci autorun --upload.target=temporary-public-storage",
+    "test:security": "npm audit --audit-level=moderate",
     "validate": "html-validate index.html && stylelint styles.css",
     "serve": "live-server --port=3000",
+    "serve:production": "python3 -m http.server 8080",
     "build": "echo 'No build process needed for static site'",
     "deploy": "gh-pages -d .",
-    "accessibility-audit": "pa11y-ci --sitemap false --standard WCAG2AA index.html"
+    "accessibility-audit": "pa11y-ci --sitemap false --standard WCAG2AA --threshold 0 index.html",
+    "security-audit": "npm audit && echo 'Manual security review recommended - see SECURITY_AUDIT.md'",
+    "performance-audit": "lighthouse http://localhost:3000 --view",
+    "full-audit": "npm run test && npm run security-audit && npm run performance-audit"
   },
   "repository": {
     "type": "git",

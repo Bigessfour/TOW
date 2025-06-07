@@ -110,15 +110,221 @@ The website is fully responsive across all device sizes:
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Web server (for full functionality)
-- No additional software required
+- **Node.js** (v18 or higher) - For development tools and validation
+- **Git** - For version control and deployment
+- **Modern web browser** (Chrome, Firefox, Safari, Edge)
+- **Web server** (Apache, Nginx, or Node.js for development)
 
-### Installation
-1. Clone or download the project files
-2. Place files on a web server
-3. Navigate to `index.html` in your browser
-4. All features are ready to use
+### Development Setup
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/Bigessfour/TOW.git
+cd TOW
+```
+
+#### 2. Install Development Dependencies
+```bash
+npm install
+```
+
+#### 3. Run Quality Checks
+```bash
+# HTML validation
+npm run test:html
+
+# CSS validation
+npm run test:css
+
+# Accessibility testing
+npm run test:accessibility
+
+# Complete test suite
+npm test
+```
+
+#### 4. Local Development Server
+```bash
+# Start development server
+npm run serve
+
+# Server will be available at http://localhost:3000
+```
+
+### Production Deployment
+
+#### Option 1: GitHub Pages (Recommended)
+1. Fork this repository to your GitHub account
+2. Go to repository Settings → Pages
+3. Select "Deploy from a branch" → "main" branch
+4. Your site will be live at `https://yourusername.github.io/TOW`
+
+#### Option 2: Traditional Web Server
+1. Upload all files to your web server's document root
+2. Ensure proper file permissions (644 for files, 755 for directories)
+3. Configure SSL certificate for HTTPS
+4. Set up proper MIME types for all file extensions
+
+#### Option 3: Cloud Hosting (AWS S3, Netlify, Vercel)
+```bash
+# For Netlify
+npm run build  # If using build process
+netlify deploy --prod
+
+# For Vercel
+vercel --prod
+
+# For AWS S3
+aws s3 sync . s3://your-bucket-name --exclude "node_modules/*" --exclude ".git/*"
+```
+
+### Server Configuration
+
+#### Apache (.htaccess)
+```apache
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Set cache headers
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+```
+
+#### Nginx
+```nginx
+server {
+    listen 443 ssl http2;
+    server_name townofwiley.gov www.townofwiley.gov;
+    
+    root /var/www/townofwiley;
+    index index.html;
+    
+    # SSL configuration
+    ssl_certificate /path/to/certificate.crt;
+    ssl_certificate_key /path/to/private.key;
+    
+    # Security headers
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+    
+    # Compression
+    gzip on;
+    gzip_types text/html text/css application/javascript application/json;
+    
+    # Cache static assets
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+```
+
+### Environment-Specific Configuration
+
+#### For Other Municipalities
+To adapt this website for your municipality:
+
+1. **Content Updates**:
+   - Edit `index.html` to replace "Town of Wiley" with your municipality name
+   - Update contact information, addresses, and phone numbers
+   - Modify service offerings to match your municipality's services
+
+2. **Styling Customization**:
+   - Edit `styles.css` to change colors, fonts, and branding
+   - Replace logo and images in appropriate directories
+   - Adjust responsive breakpoints if needed
+
+3. **Configuration Variables**:
+   ```javascript
+   // In script.js, update these values:
+   const CONFIG = {
+       municipalityName: "Your Town Name",
+       contactEmail: "info@yourtown.gov",
+       emergencyNumber: "911",
+       nonEmergencyNumber: "(555) 123-4567",
+       timeZone: "America/Denver"
+   };
+   ```
+
+4. **Domain and SSL**:
+   - Point your domain to the hosting service
+   - Configure SSL certificate through your hosting provider
+   - Update any hardcoded URLs in the configuration
+
+### Troubleshooting
+
+#### Common Issues
+
+**Issue**: Forms not submitting
+- **Solution**: Ensure web server supports the HTTP methods used
+- **Check**: Server logs for any 405 Method Not Allowed errors
+
+**Issue**: CSS/JS not loading
+- **Solution**: Verify file paths and MIME type configuration
+- **Check**: Browser developer tools Network tab for 404 errors
+
+**Issue**: Accessibility tests failing
+- **Solution**: Run `npm run test:accessibility` and fix reported issues
+- **Check**: Ensure all images have alt text and forms have proper labels
+
+#### Performance Optimization
+
+1. **Image Optimization**:
+   ```bash
+   # Install imagemin for optimization
+   npm install -g imagemin-cli imagemin-webp
+   
+   # Optimize images
+   imagemin images/*.jpg --out-dir=images/optimized --plugin=imagemin-webp
+   ```
+
+2. **CSS/JS Minification** (if not using a build process):
+   ```bash
+   # Install minification tools
+   npm install -g clean-css-cli uglify-js
+   
+   # Minify CSS
+   cleancss -o styles.min.css styles.css
+   
+   # Minify JavaScript
+   uglifyjs script.js -o script.min.js
+   ```
+
+3. **Performance Monitoring**:
+   ```bash
+   # Run Lighthouse audit
+   npm run lighthouse
+   
+   # Check Core Web Vitals
+   npm run performance
+   ```
+
+### Security Checklist
+
+Before going live, ensure:
+- [ ] SSL certificate is properly configured
+- [ ] All forms have CSRF protection (if using server-side processing)
+- [ ] File upload restrictions are in place
+- [ ] Security headers are configured
+- [ ] Regular security audits are scheduled
+- [ ] Backup procedures are established
+- [ ] Access logs are monitored
 
 ## 📞 Contact Information
 

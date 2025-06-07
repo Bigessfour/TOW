@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🚨 Emergency Services
+    url: tel:911
+    about: For life-threatening emergencies, call 911 immediately
+  - name: 📞 Town Hall
+    url: tel:555-123-4567
+    about: General inquiries and non-emergency assistance
+  - name: 📧 Website Feedback
+    url: mailto:webmaster@townofwiley.gov
+    about: Direct feedback to our web team
+  - name: ♿ Accessibility Coordinator
+    url: mailto:accessibility@townofwiley.gov
+    about: Report accessibility issues or request accommodations
