@@ -1,0 +1,205 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "csp-xss",
+    "level": "error",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Ensure CSP is effective against XSS attacks",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.8,
+    "values": [
+      0.8,
+      0.8,
+      0.8
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "dom-size",
+    "level": "warn",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Avoid an excessive DOM size",
+    "auditDocumentationLink": "https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "duplicate-id-aria",
+    "level": "error",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "ARIA IDs are not unique",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/duplicate-id-aria"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "errors-in-console",
+    "level": "error",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Browser errors were logged to the console",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.68,
+    "values": [
+      0.68,
+      0.68,
+      0.68
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "first-contentful-paint",
+    "level": "warn",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "First Contentful Paint",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.87,
+    "values": [
+      0.87,
+      0.87,
+      0.87
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "first-meaningful-paint",
+    "level": "warn",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "First Meaningful Paint",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/first-meaningful-paint/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 2,
+    "values": [
+      2,
+      2,
+      2
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "render-blocking-resources",
+    "level": "warn",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Eliminate render-blocking resources",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "service-worker",
+    "level": "error",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Does not register a service worker that controls page and `start_url`",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/service-worker/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.87,
+    "values": [
+      0.87,
+      0.86,
+      0.87
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "speed-index",
+    "level": "warn",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Speed Index",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/speed-index/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "splash-screen",
+    "level": "error",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Is not configured for a custom splash screen",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/splash-screen/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 1,
+    "values": [
+      1,
+      1,
+      1
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unminified-javascript",
+    "level": "error",
+    "url": "http://localhost:55093/index.html",
+    "auditTitle": "Minify JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/"
+  },
+  {
+    "name": "minScore",
+    "expected": 1,
+    "actual": 0.93,
+    "values": [
+      0.93,
+      0.93,
+      0.93
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "accessibility",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:55093/index.html"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "name": "town-of-wiley-website",
+  "version": "1.0.0",
+  "description": "Official website for the Town of Wiley - ADA compliant municipal government website",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --entry-file=index.html",
+    "test": "npm run test:html && npm run test:css && npm run test:accessibility",
+    "test:html": "html-validate index.html",
+    "test:css": "stylelint styles.css",
+    "test:accessibility": "pa11y http://localhost:3000",
+    "test:lighthouse": "lhci autorun",
+    "validate": "html-validate index.html && stylelint styles.css",
+    "serve": "live-server --port=3000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "gh-pages -d .",
+    "accessibility-audit": "pa11y-ci --sitemap false --standard WCAG2AA index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bigessfour/TOW.git"
+  },
+  "keywords": [
+    "government",
+    "municipal",
+    "website",
+    "accessibility",
+    "ada-compliant",
+    "wcag",
+    "responsive",
+    "static-site"
+  ],
+  "author": "Town of Wiley Government",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bigessfour/TOW/issues"
+  },
+  "homepage": "https://github.com/Bigessfour/TOW#readme",
+  "devDependencies": {
+    "html-validate": "^8.0.0",
+    "stylelint": "^15.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "pa11y": "^6.2.3",
+    "pa11y-ci": "^3.0.1",
+    "lighthouse": "^11.0.0",
+    "@lhci/cli": "^0.12.0",
+    "live-server": "^1.2.2",
+    "gh-pages": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

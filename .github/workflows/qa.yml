@@ -1,0 +1,116 @@
+name: Website Quality Assurance
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  accessibility-test:
+    runs-on: ubuntu-latest
+    name: Accessibility Testing
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm install -g pa11y-ci html-validate lighthouse-ci
+        
+    - name: HTML Validation
+      run: |
+        npx html-validate index.html
+        
+    - name: Accessibility Testing with pa11y
+      run: |
+        npx pa11y-ci --sitemap false --standard WCAG2AA index.html
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scanning
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        
+  html-css-validation:
+    runs-on: ubuntu-latest
+    name: HTML/CSS Validation
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install validation tools
+      run: |
+        npm install -g html-validate css-validator
+        
+    - name: Validate HTML
+      run: |
+        npx html-validate index.html
+        
+    - name: Validate CSS
+      run: |
+        npx css-validator styles.css
+
+  deploy-preview:
+    runs-on: ubuntu-latest
+    name: Deploy Preview
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to GitHub Pages (Preview)
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        destination_dir: preview/${{ github.event.number }}
+        
+    - name: Comment PR with preview link
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '🚀 Preview deployed! View at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/${{ github.event.number }}/'
+          })
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+    if: github.ref == 'refs/heads/main'
+    needs: [accessibility-test, html-css-validation]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        cname: townofwiley.gov  # Replace with actual domain if available

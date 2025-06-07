@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'&amp; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com&amp; font-src 'self' https://fonts.gstatic.com&amp; script-src 'self' 'unsafe-inline'&amp; connect-src 'self'&amp; img-src 'self' data:&amp;">
+    <meta name="description" content="Official website of the Town of Wiley - Your rural community government providing accessible services, programs, and activities to all residents">
+    <meta name="keywords" content="Town of Wiley, government, services, utilities, permits, meetings, accessibility">
+    <meta name="author" content="Town of Wiley Government">
+    <meta name="theme-color" content="#2c5aa0">
+    <title>Town of Wiley - Official Website | Accessible Government Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&amp;400&amp;600&amp;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to Content Link for Screen Readers -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+      <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">                <div class="logo">
+                    <h1>Town of Wiley</h1>
+                    <p class="tagline">Community • Service • Progress</p>
+                </div>
+                <div class="header-search">
+                    <form class="search-form" role="search" aria-label="Site search">
+                        <label for="site-search" class="sr-only">Search website</label>
+                        <input type="search" id="site-search" name="search" placeholder="Search services, documents..." aria-describedby="search-help">
+                        <button type="submit" aria-label="Submit search">
+                            <span aria-hidden="true">🔍</span>
+                        </button>
+                        <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
+                    </form>                </div>
+                <nav class="nav" aria-label="Main navigation">
+                    <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                        <span class="sr-only">Menu</span>                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </button>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="#home" aria-current="page">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#government">Government</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#calendar">Calendar</a></li>
+                        <li><a href="#documents">Documents</a></li>
+                        <li><a href="#payment-portal">Pay Online</a></li>
+                        <li><a href="#business-directory">Business</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Emergency Alerts Banner -->
+    <div id="emergency-alerts" class="emergency-alerts" role="alert" aria-live="assertive" style="display: none">
+        <div class="container">
+            <div class="alert-content">
+                <span class="alert-icon" aria-hidden="true">⚠️</span>
+                <div class="alert-message">
+                    <h2>Emergency Alert</h2>
+                    <p id="alert-text">No current emergency alerts.</p>                </div>
+                <button type="button" class="alert-close" aria-label="Close emergency alert" id="alert-close-btn">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mass Notification Signup -->
+    <div id="notification-signup" class="notification-signup">
+        <div class="container">
+            <div class="notification-content">
+                <h2>Stay Informed - Emergency Notifications</h2>
+                <p>Sign up for emergency alerts and important town notifications via text, email, or phone.</p>
+                <div class="notification-form">
+                    <form class="alert-signup-form" aria-label="Emergency notification signup">
+                        <div class="form-group">
+                            <label for="alert-phone">Phone Number:</label>
+                            <input type="tel" id="alert-phone" name="phone" placeholder="(555)&nbsp;;123&#8209;4567" aria-describedby="phone-help">
+                            <small id="phone-help">For text and voice alerts</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="alert-email">Email Address:</label>
+                            <input type="email" id="alert-email" name="email" placeholder="your@email.com" aria-describedby="email-help">
+                            <small id="email-help">For detailed notifications</small>
+                        </div>
+                        <div class="form-group">                            <fieldset>
+                                <legend>Alert Types:</legend>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="alert-emergency" value="emergency" checked>
+                                    Emergency Alerts (weather, safety)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="alert-service" value="service">
+                                    Service Disruptions (water, roads)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="alert-meetings" value="meetings">
+                                    Meeting Notifications
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="alert-events" value="events">
+                                    Community Events
+                                </label>
+                            </fieldset>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up for Alerts</button>
+                    </form>
+                </div>
+                <div class="alert-info">
+                    <p><strong>Current Alert Level:</strong> <span class="alert-level-normal">Normal</span></p>
+                    <p><strong>Last Updated:</strong> <span id="alert-timestamp">No recent alerts</span></p>
+                </div>
+            </div>
+        </div>
+    </div>    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 id="hero-heading">Welcome to the Town of Wiley</h2>
+                    <p>A vibrant rural community dedicated to serving our residents with excellence and transparency.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">Town Services</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>        <!-- Quick Links -->
+        <section class="quick-links" aria-labelledby="quick-links-heading">
+            <div class="container">
+                <h2 id="quick-links-heading">Quick Access</h2>
+                <div class="quick-links-grid">
+                    <div class="quick-link-card">
+                        <h3>Pay Utilities</h3>
+                        <p>Online utility bill payment and account management</p>                        <a href="#services" class="btn btn-outline" aria-describedby="utilities-desc">
+                            <span class="sr-only" id="utilities-desc">Navigate to utilities section for</span>
+                            Access Portal
+                        </a>
+                    </div>
+                    <div class="quick-link-card">
+                        <h3>Town Meetings</h3>
+                        <p>View schedules and agendas for town council meetings</p>
+                        <a href="#government" class="btn btn-outline" aria-describedby="meetings-desc">
+                            <span class="sr-only" id="meetings-desc">Navigate to government section for</span>
+                            View Schedule
+                        </a>
+                    </div>
+                    <div class="quick-link-card">
+                        <h3>Report an Issue</h3>
+                        <p>Submit requests for town services or report problems</p>
+                        <a href="#contact" class="btn btn-outline" aria-describedby="report-desc">
+                            <span class="sr-only" id="report-desc">Navigate to contact section to</span>
+                            Submit Request
+                        </a>
+                    </div>
+                    <div class="quick-link-card">
+                        <h3>Permits &amp; Licenses</h3>
+                        <p>Apply for building permits and business licenses</p>
+                        <a href="#services" class="btn btn-outline" aria-describedby="permits-desc">
+                            <span class="sr-only" id="permits-desc">Navigate to services section to</span>
+                            Apply Online
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services" aria-labelledby="services-heading">
+            <div class="container">
+                <h2 id="services-heading">Town Services</h2>
+                <div class="services-grid">                    <div class="service-card">
+                        <h3>Utilities</h3>
+                        <ul>
+                            <li>Water &amp; Sewer Services</li>
+                            <li>Trash &amp; Recycling</li>
+                            <li>Street Maintenance</li>
+                            <li>Snow Removal</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>Public Safety</h3>
+                        <ul>
+                            <li>Police Department</li>
+                            <li>Fire Department</li>
+                            <li>Emergency Management</li>
+                            <li>Animal Control</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>Planning &amp; Development</h3>
+                        <ul>
+                            <li>Building Permits</li>
+                            <li>Zoning Information</li>
+                            <li>Business Licenses</li>
+                            <li>Code Enforcement</li>
+                        </ul>
+                    </div>                    <div class="service-card">
+                        <h3>Recreation</h3>
+                        <ul>
+                            <li>Parks &amp; Facilities</li>
+                            <li>Community Events</li>
+                            <li>Youth Programs</li>
+                            <li>Senior Services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Government Section -->
+        <section id="government" class="government" aria-labelledby="government-heading">
+            <div class="container">
+                <h2 id="government-heading">Town Government</h2>
+                <div class="government-content">
+                    <div class="officials">
+                        <h3>Town Officials</h3>                        <div class="official-card">
+                            <h4>Mayor John Smith</h4>
+                            <p><strong>Email:</strong> <a href="mailto:mayor@townofwiley.gov">mayor@townofwiley.gov</a></p>
+                            <p><strong>Phone:</strong> <a href="tel:+15551234567">(555)&nbsp;&amp;123&#8209;4567</a></p>
+                        </div>
+                        <div class="official-card">
+                            <h4>Town Administrator</h4>
+                            <p><strong>Email:</strong> <a href="mailto:admin@townofwiley.gov">admin@townofwiley.gov</a></p>
+                            <p><strong>Phone:</strong> <a href="tel:+15551234568">(555)&nbsp;&amp;123&#8209;4568</a></p>
+                        </div>
+                        <div class="official-card">
+                            <h4>Town Council</h4>
+                            <p><strong>Email:</strong> <a href="mailto:council@townofwiley.gov">council@townofwiley.gov</a></p>
+                            <p><strong>Meeting Schedule:</strong> 2nd Tuesday monthly at 7:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="meetings">
+                        <h3>Upcoming Meetings</h3>
+                        <div class="meeting-card">
+                            <h4>Town Council Meeting</h4>
+                            <p><strong>Date:</strong> <time datetime="2025-06-10">June 10, 2025</time></p>
+                            <p><strong>Time:</strong> <time datetime="19:00">7:00 PM</time></p>
+                            <p><strong>Location:</strong> Town Hall Council Chambers</p>
+                            <a href="#contact" class="btn btn-outline" aria-describedby="agenda-note">View Agenda</a>
+                            <p class="sr-only" id="agenda-note">Contact town hall for meeting agenda details</p>
+                        </div>
+                        <div class="meeting-card">
+                            <h4>Planning Commission</h4>
+                            <p><strong>Date:</strong> <time datetime="2025-06-17">June 17, 2025</time></p>
+                            <p><strong>Time:</strong> <time datetime="18:30">6:30 PM</time></p>
+                            <p><strong>Location:</strong> Town Hall Conference Room</p>
+                            <a href="#contact" class="btn btn-outline" aria-describedby="planning-agenda-note">View Agenda</a>
+                            <p class="sr-only" id="planning-agenda-note">Contact town hall for planning commission agenda details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- News Section -->
+        <section id="news" class="news" aria-labelledby="news-heading">
+            <div class="container">
+                <h2 id="news-heading">Town News &amp; Announcements</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <h3>Summer Festival Planning Underway</h3>
+                        <p class="news-date"><time datetime="2025-06-05">June 5, 2025</time></p>
+                        <p>The annual Wiley Summer Festival is scheduled for July 15th in City Park. Volunteer opportunities and vendor applications are now available.</p>
+                        <a href="#contact" class="read-more" aria-describedby="festival-info">Read More</a>
+                        <span class="sr-only" id="festival-info">Contact town hall for complete festival information</span>
+                    </article>
+                    <article class="news-card">
+                        <h3>Street Maintenance Schedule</h3>
+                        <p class="news-date"><time datetime="2025-06-01">June 1, 2025</time></p>
+                        <p>The town will begin annual street resurfacing on Main Street beginning June 12th. Expect temporary traffic delays.</p>
+                        <a href="#contact" class="read-more" aria-describedby="maintenance-info">Read More</a>
+                        <span class="sr-only" id="maintenance-info">Contact public works for detailed maintenance schedule</span>
+                    </article>
+                    <article class="news-card">
+                        <h3>New Recycling Program Launch</h3>
+                        <p class="news-date"><time datetime="2025-05-28">May 28, 2025</time></p>
+                        <p>Enhanced recycling services begin July 1st. New bins will be distributed the week of June 20th to all residents.</p>
+                        <a href="#contact" class="read-more" aria-describedby="recycling-info">Read More</a>
+                        <span class="sr-only" id="recycling-info">Contact utilities department for recycling program details</span>
+                    </article>                </div>
+                <div class="news-actions">
+                    <a href="#newsletter-signup" class="btn btn-secondary">Subscribe to Newsletter</a>
+                    <a href="#documents" class="btn btn-outline">View All News</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Calendar Section -->
+        <section id="calendar" class="calendar" aria-labelledby="calendar-heading">
+            <div class="container">
+                <h2 id="calendar-heading">Community Calendar</h2>
+                <div class="calendar-container">                    <div class="calendar-header">
+                        <button type="button" class="calendar-nav" id="prev-month" aria-label="Previous month">&lt;</button>
+                        <h3 id="calendar-month-year">June 2025</h3>
+                        <button type="button" class="calendar-nav" id="next-month" aria-label="Next month">&gt;</button>
+                    </div>
+                    <div class="calendar-grid" role="grid" aria-label="Calendar">
+                        <div role="row">
+                            <div class="calendar-day-header" role="columnheader">Sun</div>
+                            <div class="calendar-day-header" role="columnheader">Mon</div>
+                            <div class="calendar-day-header" role="columnheader">Tue</div>
+                            <div class="calendar-day-header" role="columnheader">Wed</div>
+                            <div class="calendar-day-header" role="columnheader">Thu</div>
+                            <div class="calendar-day-header" role="columnheader">Fri</div>
+                            <div class="calendar-day-header" role="columnheader">Sat</div>
+                        </div>
+                        <!-- Calendar days will be generated by JavaScript -->
+                    </div>
+                    <div class="upcoming-events">
+                        <h4>Upcoming Events</h4>
+                        <ul class="events-list">
+                            <li class="event-item">
+                                <time datetime="2025-06-10">June 10</time>
+                                <span class="event-title">Town Council Meeting</span>
+                                <span class="event-time">7:00 PM - Town Hall</span>
+                            </li>
+                            <li class="event-item">
+                                <time datetime="2025-06-15">June 15</time>
+                                <span class="event-title">Summer Festival</span>
+                                <span class="event-time">10:00 AM - 6:00 PM - City Park</span>
+                            </li>
+                            <li class="event-item">
+                                <time datetime="2025-06-20">June 20</time>
+                                <span class="event-title">Library Book Sale</span>
+                                <span class="event-time">9:00 AM - 3:00 PM - Library</span>
+                            </li>
+                        </ul>
+                        <a href="#calendar-subscribe" class="btn btn-outline">Subscribe to Calendar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Document Repository Section -->
+        <section id="documents" class="documents" aria-labelledby="documents-heading">
+            <div class="container">
+                <h2 id="documents-heading">Document Repository</h2>
+                <div class="document-search">
+                    <form class="document-search-form" role="search" aria-label="Document search">
+                        <label for="doc-search">Search documents:</label>
+                        <input type="search" id="doc-search" placeholder="Meeting minutes, budgets, ordinances..." aria-describedby="doc-search-help">
+                        <button type="submit">Search Documents</button>
+                        <div id="doc-search-help" class="sr-only">Search through town documents including meeting minutes, budgets, and ordinances</div>
+                    </form>
+                </div>
+                <div class="document-categories">
+                    <div class="doc-category">
+                        <h3>Meeting Documents</h3>
+                        <ul class="document-list">
+                            <li>
+                                <a href="#" download aria-describedby="doc-1-desc">Council Meeting Minutes - June 2025</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">245 KB</span>
+                                    <span class="file-date">Updated: June 5, 2025</span>
+                                </span>
+                                <span class="sr-only" id="doc-1-desc">Download PDF of June 2025 town council meeting minutes</span>
+                            </li>
+                            <li>
+                                <a href="#" download aria-describedby="doc-2-desc">Planning Commission Agenda - June 12, 2025</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">180 KB</span>
+                                    <span class="file-date">Updated: June 7, 2025</span>
+                                </span>
+                                <span class="sr-only" id="doc-2-desc">Download PDF of planning commission agenda for June 12, 2025</span>
+                            </li>
+                            <li>
+                                <a href="#" download aria-describedby="doc-3-desc">School Board Meeting Notes - May 2025</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">320 KB</span>
+                                    <span class="file-date">Updated: May 28, 2025</span>
+                                </span>
+                                <span class="sr-only" id="doc-3-desc">Download PDF of May 2025 school board meeting notes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="doc-category">
+                        <h3>Budget &amp; Finance</h3>
+                        <ul class="document-list">
+                            <li>
+                                <a href="#" download>2025 Municipal Budget</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.2 MB</span>
+                                    <span class="file-date">Updated: January 1, 2025</span>
+                                </span>
+                            </li>
+                            <li>
+                                <a href="#" download>Financial Report Q1 2025</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">890 KB</span>
+                                    <span class="file-date">Updated: April 15, 2025</span>
+                                </span>
+                            </li>
+                            <li>
+                                <a href="#" download>Capital Improvements Plan</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">2.1 MB</span>
+                                    <span class="file-date">Updated: March 10, 2025</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="doc-category">
+                        <h3>Ordinances &amp; Codes</h3>
+                        <ul class="document-list">
+                            <li>
+                                <a href="#" download>Municipal Code Book</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">5.3 MB</span>
+                                    <span class="file-date">Updated: February 20, 2025</span>
+                                </span>
+                            </li>
+                            <li>
+                                <a href="#" download>Zoning Ordinances</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.8 MB</span>
+                                    <span class="file-date">Updated: April 5, 2025</span>
+                                </span>
+                            </li>
+                            <li>
+                                <a href="#" download>Building Codes &amp; Standards</a>
+                                <span class="file-info">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">3.2 MB</span>
+                                    <span class="file-date">Updated: January 15, 2025</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading">Frequently Asked Questions</h2>                <div class="faq-container">
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                            How do I pay my utility bill online?
+                        </button>
+                        <div class="faq-answer" id="faq-1" hidden>
+                            <p>You can pay your utility bill online through our secure payment portal. Visit the "Pay Bills" section under Quick Links, create an account, and follow the instructions. You'll need your account number and ZIP code.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                            When are town council meetings held?
+                        </button>
+                        <div class="faq-answer" id="faq-2" hidden>
+                            <p>Town council meetings are held the second Tuesday of each month at 7:00 PM in the Town Hall council chambers. Public comment is welcome during the designated time on the agenda.</p>
+                        </div>                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                            How do I apply for a building permit?
+                        </button>
+                        <div class="faq-answer" id="faq-3" hidden>
+                            <p>Building permit applications can be submitted online through our digital forms system or in person at Town Hall. Required documents include site plans, construction drawings, and proof of insurance.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                            What are the trash and recycling pickup days?
+                        </button>
+                        <div class="faq-answer" id="faq-4" hidden>
+                            <p>Trash pickup is every Tuesday, and recycling pickup is every other Friday. Place bins at the curb by 7:00 AM. Check our community calendar for holiday schedule changes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-5">
+                            How can I report a pothole or street issue?
+                        </button>
+                        <div class="faq-answer" id="faq-5" hidden>
+                            <p>Report street issues through our online service request form under Quick Links, call Public Works at (555)&nbsp;&amp;123&#8209;4571, or use the feedback form on this website. Include the location and description of the problem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Directory Section -->
+        <section id="business-directory" class="business-directory" aria-labelledby="business-heading">
+            <div class="container">
+                <h2 id="business-heading">Local Business Directory</h2>
+                <p class="section-description">Support our local economy - discover businesses and services in the Town of Wiley.</p>
+
+                <div class="business-search">
+                    <form class="business-search-form" role="search" aria-label="Business directory search">
+                        <label for="business-search" class="sr-only">Search businesses</label>
+                        <input type="search" id="business-search" name="business-search" placeholder="Search by business name or category...">
+                        <select id="business-category" name="category" aria-label="Filter by business category">
+                            <option value="">All Categories</option>
+                            <option value="restaurant">Restaurants</option>
+                            <option value="retail">Retail</option>
+                            <option value="services">Services</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="automotive">Automotive</option>
+                            <option value="professional">Professional Services</option>
+                        </select>
+                        <button type="submit" aria-label="Search businesses">Search</button>
+                    </form>
+                </div>                <ul class="business-grid">
+                    <li class="business-card">
+                        <h3>Wiley Family Restaurant</h3>
+                        <p class="business-category">Restaurant</p>
+                        <p class="business-description">Family-owned diner serving home-style cooking since 1952.</p>
+                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234568">(555)&nbsp;;123&#8209;4568</a></p>
+                            <p><strong>Address:</strong> 456 Main Street</p>
+                            <p><strong>Hours:</strong> Mon-Sat 6AM-9PM, Sun 7AM-8PM</p>
+                        </div>                    </li>
+
+                    <li class="business-card">
+                        <h3>Wiley Hardware Store</h3>
+                        <p class="business-category">Retail</p>
+                        <p class="business-description">Your local source for tools, hardware, and home improvement supplies.</p>
+                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234569">(555)&nbsp;;123&#8209;4569</a></p>
+                            <p><strong>Address:</strong> 789 Industrial Drive</p>
+                            <p><strong>Hours:</strong> Mon-Fri 7AM-6PM, Sat 8AM-5PM</p>
+                        </div>
+                    </li>
+
+                    <li class="business-card">
+                        <h3>Countryside Veterinary Clinic</h3>
+                        <p class="business-category">Healthcare</p>
+                        <p class="business-description">Complete veterinary care for your pets and livestock.</p>
+                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234570">(555)&nbsp;;123&#8209;4570</a></p>
+                            <p><strong>Address:</strong> 321 Rural Route 1</p>
+                            <p><strong>Hours:</strong> Mon-Fri 8AM-6PM, Sat 9AM-2PM</p>                        </div>
+                    </li>
+
+                    <li class="business-card">
+                        <h3>Wiley Auto Repair</h3>
+                        <p class="business-category">Automotive</p>
+                        <p class="business-description">Honest, reliable auto repair and maintenance services.</p>
+                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234571">(555)&nbsp;;123&#8209;4571</a></p>
+                            <p><strong>Address:</strong> 654 Commerce Street</p>
+                            <p><strong>Hours:</strong> Mon-Fri 7AM-6PM</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="business-directory-footer">
+                    <p><strong>Want to be listed?</strong> <a href="#contact" aria-describedby="business-listing-help">Contact us</a> to add your business to our directory.</p>
+                    <p id="business-listing-help" class="sr-only">Business listings are free for Town of Wiley businesses</p>
+                    <a href="#" class="btn btn-outline" download="WileyBusinessDirectory.pdf">Download Complete Directory (PDF)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading">Contact Information</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <h3>Town Hall</h3>
+                            <address>
+                                <strong>Address:</strong><br>
+                                123 Main Street<br>
+                                Wiley, State 12345
+                            </address>
+                            <p><strong>Phone:</strong> <a href="tel:+15551234567">(555)&nbsp;;123&#8209;4567</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:info@townofwiley.gov">info@townofwiley.gov</a></p>
+                            <p><strong>Hours:</strong><br>
+                            Monday - Friday: 8:00 AM - 5:00 PM<br>
+                            Saturday: 9:00 AM - 12:00 PM</p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>Emergency Services</h3>
+                            <p><strong>Emergency:</strong> <a href="tel:911">911</a></p>
+                            <p><strong>Police (Non-Emergency):</strong> <a href="tel:+15551234569">(555)&nbsp;;123&#8209;4569</a></p>
+                            <p><strong>Fire Department:</strong> <a href="tel:+15551234570">(555)&nbsp;;123&#8209;4570</a></p>
+                            <p><strong>Public Works:</strong> <a href="tel:+15551234571">(555)&nbsp;;123&#8209;4571</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form class="form" id="contactForm" novalidate>                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false">
+                                <div id="name-error" class="error-message" aria-live="polite"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required aria-describedby="email-error" aria-invalid="false">
+                                <div id="email-error" class="error-message" aria-live="polite"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject <span class="required">*</span></label>
+                                <select id="subject" name="subject" required aria-describedby="subject-error" aria-invalid="false">
+                                    <option value="">Select a topic</option>
+                                    <option value="utilities">Utilities</option>
+                                    <option value="permits">Permits &amp; Licenses</option>
+                                    <option value="public-works">Public Works</option>
+                                    <option value="complaint">Complaint/Issue</option>
+                                    <option value="general">General Inquiry</option>
+                                </select>
+                                <div id="subject-error" class="error-message" aria-live="polite"></div>
+                            </div>                            <div class="form-group">
+                                <label for="message">Message <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-describedby="message-error message-help" aria-invalid="false"></textarea>
+                                <div id="message-help" class="help-text">Please provide details about your inquiry or request</div>
+                                <div id="message-error" class="error-message" aria-live="polite"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Online Payment Portal Section -->
+        <section id="payment-portal" class="payment-portal" aria-labelledby="payment-heading">
+            <div class="container">
+                <h2 id="payment-heading">Online Payment Portal</h2>
+                <p class="payment-intro">Pay your bills securely online 24/7. All transactions are encrypted and secure.</p>
+
+                <div class="payment-options">
+                    <div class="payment-card">
+                        <h3>Utility Bills</h3>
+                        <div class="payment-form">
+                            <form id="utility-payment-form" aria-labelledby="utility-payment-heading">
+                                <h4 id="utility-payment-heading" class="sr-only">Utility Bill Payment Form</h4>
+                                <div class="form-group">
+                                    <label for="utility-account">Account Number:</label>
+                                    <input type="text" id="utility-account" name="account" required aria-describedby="utility-account-help">
+                                    <div id="utility-account-help" class="form-help">Found on your utility bill</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="utility-amount">Payment Amount:</label>
+                                    <input type="number" id="utility-amount" name="amount" step="0.01" min="0" required aria-describedby="utility-amount-help">
+                                    <div id="utility-amount-help" class="form-help">Enter amount in dollars</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Pay Utility Bill</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="payment-card">
+                        <h3>Property Taxes</h3>
+                        <div class="payment-form">
+                            <form id="tax-payment-form" aria-labelledby="tax-payment-heading">
+                                <h4 id="tax-payment-heading" class="sr-only">Property Tax Payment Form</h4>
+                                <div class="form-group">
+                                    <label for="tax-parcel">Parcel Number:</label>
+                                    <input type="text" id="tax-parcel" name="parcel" required aria-describedby="tax-parcel-help">
+                                    <div id="tax-parcel-help" class="form-help">Found on your tax statement</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tax-year">Tax Year:</label>
+                                    <select id="tax-year" name="tax-year" required>
+                                        <option value="">Select Year</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Pay Property Tax</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="payment-card">
+                        <h3>Permits &amp; Fees</h3>
+                        <div class="payment-form">
+                            <form id="permit-payment-form" aria-labelledby="permit-payment-heading">
+                                <h4 id="permit-payment-heading" class="sr-only">Permit and Fee Payment Form</h4>
+                                <div class="form-group">
+                                    <label for="permit-type">Permit Type:</label>
+                                    <select id="permit-type" name="permit-type" required>
+                                        <option value="">Select Permit Type</option>
+                                        <option value="building">Building Permit</option>
+                                        <option value="business">Business License</option>
+                                        <option value="zoning">Zoning Permit</option>
+                                        <option value="special">Special Event Permit</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="permit-number">Reference Number:</label>
+                                    <input type="text" id="permit-number" name="permit-number" aria-describedby="permit-number-help">
+                                    <div id="permit-number-help" class="form-help">If you have an existing application</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Pay Permit Fee</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-security">
+                    <div class="security-badges">
+                        <span class="security-badge">🔒 SSL Encrypted</span>
+                        <span class="security-badge">💳 PCI Compliant</span>
+                        <span class="security-badge">🛡️ Secure Processing</span>
+                    </div>
+                    <p><small>We accept Visa, MasterCard, Discover, and American Express. A convenience fee may apply for credit card transactions.</small></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Forms Section -->
+        <section id="digital-forms" class="digital-forms" aria-labelledby="forms-heading">
+            <div class="container">
+                <h2 id="forms-heading">Digital Forms &amp; Applications</h2>
+                <p class="forms-intro">Submit applications and requests online. Save time and get faster processing.</p>
+
+                <div class="forms-grid">
+                    <div class="form-category">
+                        <h3>Building &amp; Zoning</h3>
+                        <ul class="forms-list">                            <li>
+                                <a href="#contact" class="form-link">Building Permit Application</a>
+                                <span class="form-meta">Contact office • 3-5 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Zoning Variance Request</a>
+                                <span class="form-meta">Contact office • 10-14 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Demolition Permit</a>
+                                <span class="form-meta">Online submission • 5-7 day processing</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-category">
+                        <h3>Business Services</h3>
+                        <ul class="forms-list">                            <li>
+                                <a href="#contact" class="form-link">Business License Application</a>
+                                <span class="form-meta">Contact office • 7-10 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Special Event Permit</a>
+                                <span class="form-meta">Contact office • 14-21 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Vendor Registration</a>
+                                <span class="form-meta">Online submission • 5-7 day processing</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-category">
+                        <h3>Public Records</h3>
+                        <ul class="forms-list">                            <li>
+                                <a href="#contact" class="form-link">Public Records Request</a>
+                                <span class="form-meta">Contact office • 3-5 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Birth Certificate Request</a>
+                                <span class="form-meta">Contact office • 2-3 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Marriage License Application</a>
+                                <span class="form-meta">In-person required • Schedule appointment</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-category">
+                        <h3>Utilities &amp; Services</h3>
+                        <ul class="forms-list">                            <li>
+                                <a href="#contact" class="form-link">Utility Service Connection</a>
+                                <span class="form-meta">Contact office • 7-10 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Public Works Service Request</a>
+                                <span class="form-meta">Contact office • 1-3 day processing</span>
+                            </li>
+                            <li>
+                                <a href="#contact" class="form-link">Additional Trash Pickup</a>
+                                <span class="form-meta">Contact office • Next business day</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="forms-help">
+                    <h3>Need Help?</h3>
+                    <p>If you need assistance with any form or application:</p>
+                    <ul>
+                        <li>Call Town Hall: <a href="tel:+15551234567">(555)&nbsp;;123&#8209;4567</a></li>
+                        <li>Visit in person: Monday - Friday, 8:00 AM - 5:00 PM</li>
+                        <li>Email: <a href="mailto:forms@townofwiley.gov">forms@townofwiley.gov</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup Section -->
+        <section id="newsletter-signup" class="newsletter" aria-labelledby="newsletter-heading">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2 id="newsletter-heading">Stay Connected with Wiley</h2>
+                    <p>Get the latest news, meeting notices, and community updates delivered to your inbox.</p>
+
+                    <form id="newsletter-form" class="newsletter-form" aria-labelledby="newsletter-heading">
+                        <div class="newsletter-fields">
+                            <div class="form-group">
+                                <label for="newsletter-email" class="sr-only">Email Address</label>
+                                <input type="email" id="newsletter-email" name="email" placeholder="Enter your email address" required aria-describedby="newsletter-email-help">
+                                <div id="newsletter-email-help" class="sr-only">We will never share your email address</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <div class="newsletter-options">
+                            <fieldset>
+                                <legend class="sr-only">Notification Preferences</legend>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="notifications[]" value="meetings" checked>
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Meeting Notices
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="notifications[]" value="news" checked>
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Town News
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="notifications[]" value="alerts">
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Emergency Alerts
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="notifications[]" value="events">
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Community Events
+                                </label>
+                            </fieldset>
+                        </div>
+                        <p class="newsletter-privacy"><small>Your privacy is important to us. <a href="#privacy-policy">View our privacy policy</a>.</small></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media &amp; Community Engagement Section -->
+        <section id="social-engagement" class="social-engagement" aria-labelledby="social-heading">
+            <div class="container">
+                <h2 id="social-heading">Connect &amp; Engage</h2>
+                <div class="engagement-grid">
+                    <div class="social-media">
+                        <h3>Follow Us on Social Media</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook" aria-label="Follow Town of Wiley on Facebook">
+                                <span class="social-icon" aria-hidden="true">📘</span>
+                                <span class="social-text">Facebook</span>
+                                <span class="social-followers">1,247 followers</span>
+                            </a>
+                            <a href="#" class="social-link twitter" aria-label="Follow Town of Wiley on Twitter">
+                                <span class="social-icon" aria-hidden="true">🐦</span>
+                                <span class="social-text">Twitter</span>
+                                <span class="social-followers">834 followers</span>
+                            </a>
+                            <a href="#" class="social-link instagram" aria-label="Follow Town of Wiley on Instagram">
+                                <span class="social-icon" aria-hidden="true">📷</span>
+                                <span class="social-text">Instagram</span>
+                                <span class="social-followers">692 followers</span>
+                            </a>
+                            <a href="#" class="social-link youtube" aria-label="Subscribe to Town of Wiley YouTube channel">
+                                <span class="social-icon" aria-hidden="true">📺</span>
+                                <span class="social-text">YouTube</span>
+                                <span class="social-followers">312 subscribers</span>
+                            </a>
+                        </div>
+                        <div class="social-feed">
+                            <h4>Latest Posts</h4>
+                            <div class="feed-item">
+                                <p><strong>Facebook</strong> • 2 hours ago</p>
+                                <p>Registration is now open for the Annual Summer Festival! 🎉 Food vendors, live music, and family activities. July 15th at City Park.</p>
+                            </div>
+                            <div class="feed-item">
+                                <p><strong>Twitter</strong> • 1 day ago</p>
+                                <p>Reminder: Town Council meeting tomorrow at 7 PM. Public comment period included. #WileyTownCouncil</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-feedback">
+                        <h3>Community Feedback</h3>
+                        <form id="feedback-form" class="feedback-form" aria-labelledby="feedback-heading">
+                            <h4 id="feedback-heading" class="sr-only">Community Feedback Form</h4>
+                            <div class="form-group">
+                                <label for="feedback-category">Category:</label>
+                                <select id="feedback-category" name="category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="compliment">Compliment</option>
+                                    <option value="question">Question</option>
+                                    <option value="service-request">Service Request</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-subject">Subject:</label>
+                                <input type="text" id="feedback-subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-message">Your Message:</label>
+                                <textarea id="feedback-message" name="message" rows="4" required aria-describedby="feedback-message-help"></textarea>
+                                <div id="feedback-message-help" class="form-help">Please provide as much detail as possible</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-contact">Contact Information (optional):</label>
+                                <input type="text" id="feedback-contact" name="contact" placeholder="Phone or email for follow-up">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        </form>
+                    </div>
+
+                    <div class="polls-surveys">
+                        <h3>Community Polls &amp; Surveys</h3>
+                        <div class="poll-item">
+                            <h4>What should be our next community improvement priority?</h4>
+                            <form class="poll-form" id="community-poll">
+                                <fieldset>
+                                    <legend class="sr-only">Community Improvement Priority Poll</legend>
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="park-improvements">
+                                        <span class="radio-mark" aria-hidden="true"></span>
+                                        Park improvements and new playground equipment
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="street-repair">
+                                        <span class="radio-mark" aria-hidden="true"></span>
+                                        Additional street repairs and resurfacing
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="downtown-revitalization">
+                                        <span class="radio-mark" aria-hidden="true"></span>
+                                        Downtown revitalization project
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="community-center">
+                                        <span class="radio-mark" aria-hidden="true"></span>
+                                        New community center and meeting space
+                                    </label>
+                                </fieldset>
+                                <button type="submit" class="btn btn-secondary">Vote</button>
+                            </form>
+                            <div class="poll-results">
+                                <p><small>Current results: 156 votes cast • Poll closes June 30, 2025</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibility Features Section -->
+        <section id="accessibility-features" class="accessibility-features" aria-labelledby="accessibility-features-heading">
+            <div class="container">
+                <h2 id="accessibility-features-heading">Accessibility Options</h2>                <div class="accessibility-controls">
+                    <div class="control-group">
+                        <h3>Text Size</h3>
+                        <div class="text-size-controls">
+                            <button type="button" class="accessibility-btn" id="decrease-text" aria-label="Decrease text size">A-</button>
+                            <button type="button" class="accessibility-btn" id="normal-text" aria-label="Normal text size">A</button>
+                            <button type="button" class="accessibility-btn" id="increase-text" aria-label="Increase text size">A+</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Contrast</h3>
+                        <div class="contrast-controls">
+                            <button type="button" class="accessibility-btn" id="normal-contrast" aria-pressed="true">Normal</button>
+                            <button type="button" class="accessibility-btn" id="high-contrast" aria-pressed="false">High Contrast</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Language</h3>                        <div class="language-controls">
+                            <button type="button" class="accessibility-btn lang-btn active" data-lang="en" aria-pressed="true">English</button>
+                            <button type="button" class="accessibility-btn lang-btn" data-lang="es" aria-pressed="false">Español</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Accessibility Tools</h3>
+                        <div class="accessibility-tools">
+                            <button type="button" class="accessibility-btn" id="screen-reader-mode" aria-pressed="false">Screen Reader Mode</button>
+                            <button type="button" class="accessibility-btn" id="keyboard-navigation" aria-pressed="false">Keyboard Navigation Help</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accessibility-info">
+                    <h3>Accessibility Resources</h3>
+                    <ul>
+                        <li><a href="#accessibility-statement">Website Accessibility Statement</a></li>
+                        <li><a href="tel:+15551234567">Accessibility&nbsp;Support:&nbsp;(555)&nbsp;123&#8209;4567</a></li>
+                        <li><a href="mailto:accessibility@townofwiley.gov">Email: accessibility@townofwiley.gov</a></li>
+                        <li><a href="#feedback">Report Accessibility Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Section -->
+        <section id="privacy-policy" class="privacy-policy" aria-labelledby="privacy-heading">
+            <div class="container">
+                <h2 id="privacy-heading">Privacy Policy &amp; Security</h2>
+                <div class="privacy-content">
+                    <div class="privacy-overview">
+                        <h3>Information Collection &amp; Use</h3>
+                        <p>The Town of Wiley is committed to protecting your privacy and personal information. This privacy policy explains how we collect, use, and protect information when you visit our website or use our online services.</p>
+
+                        <h4>Information We Collect</h4>
+                        <ul>
+                            <li><strong>Personal Information:</strong> Name, address, email, phone number when you submit forms or create accounts</li>
+                            <li><strong>Payment Information:</strong> Billing details for online payments (processed securely through encrypted third-party services)</li>
+                            <li><strong>Usage Data:</strong> Website analytics, page views, and interaction patterns (anonymized)</li>
+                            <li><strong>Technical Information:</strong> IP address, browser type, device information for security and functionality</li>
+                        </ul>
+
+                        <h4>How We Use Information</h4>
+                        <ul>
+                            <li>Providing government services and processing requests</li>
+                            <li>Communicating about town services, meetings, and announcements</li>
+                            <li>Processing payments and maintaining account records</li>
+                            <li>Improving website functionality and user experience</li>
+                            <li>Complying with legal obligations and public records laws</li>
+                        </ul>
+
+                        <h4>Information Sharing</h4>
+                        <p>We do not sell, trade, or rent personal information to third parties. Information may be shared:</p>
+                        <ul>
+                            <li>As required by law or legal process</li>
+                            <li>For public records requests (as permitted by state law)</li>
+                            <li>With service providers who assist in website operations (under strict confidentiality agreements)</li>
+                            <li>In emergency situations to protect public safety</li>
+                        </ul>
+
+                        <h4>Data Security</h4>
+                        <p>We implement appropriate security measures including:</p>
+                        <ul>
+                            <li>SSL encryption for data transmission</li>
+                            <li>Secure servers with access controls</li>
+                            <li>Regular security updates and monitoring</li>
+                            <li>Staff training on data protection</li>
+                        </ul>
+
+                        <h4>Your Rights</h4>
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Access your personal information we maintain</li>
+                            <li>Request corrections to inaccurate information</li>
+                            <li>Opt out of non-essential communications</li>
+                            <li>Request deletion of information (subject to legal retention requirements)</li>
+                        </ul>
+
+                        <h4>Cookies &amp; Tracking</h4>
+                        <p>This website uses cookies to improve functionality and user experience. You can control cookie settings in your browser. Essential cookies for security and functionality cannot be disabled.</p>
+
+                        <div class="cookie-preferences">
+                            <h5>Cookie Preferences</h5>
+                            <div class="cookie-controls">
+                                <label class="cookie-toggle">
+                                    <input type="checkbox" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                    Essential Cookies (Required)
+                                </label>
+                                <label class="cookie-toggle">
+                                    <input type="checkbox" id="analytics-cookies">
+                                    <span class="toggle-slider"></span>
+                                    Analytics Cookies
+                                </label>
+                                <label class="cookie-toggle">
+                                    <input type="checkbox" id="preference-cookies">
+                                    <span class="toggle-slider"></span>
+                                    Preference Cookies
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="save-cookie-prefs">Save Preferences</button>
+                        </div>
+
+                        <h4>Contact Information</h4>
+                        <p>Questions about this privacy policy or your personal information:</p>
+                        <ul>
+                            <li><strong>Privacy Officer:</strong> <a href="mailto:privacy@townofwiley.gov">privacy@townofwiley.gov</a></li>
+                            <li><strong>Phone:</strong> <a href="tel:+15551234567">(555)&nbsp;;123&#8209;4567</a></li>
+                            <li><strong>Mail:</strong> Town of Wiley Privacy Officer, 123 Main Street, Wiley, State 12345</li>
+                        </ul>
+
+                        <p class="policy-updated"><strong>Last Updated:</strong> January 1, 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Town of Wiley</h3>
+                    <p>Serving our community with dedication and transparency since 1892.</p>
+                    <p><strong>ADA Compliance:</strong> This website meets WCAG 2.1 Level AA accessibility standards.</p>
+                </div>                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <nav aria-label="Footer navigation">
+                        <ul>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#government">Government</a></li>
+                            <li><a href="#business-directory">Business Directory</a></li>
+                            <li><a href="#calendar">Calendar</a></li>
+                            <li><a href="#documents">Documents</a></li>
+                            <li><a href="#payment-portal">Pay Online</a></li>
+                            <li><a href="#news">News</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p><strong>Email:</strong> <a href="mailto:info@townofwiley.gov">info@townofwiley.gov</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+15551234567">(555)&nbsp;;123&#8209;4567</a></p>
+                    <p><strong>Address:</strong> 123 Main Street, Wiley, State 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy;&amp; 2025 Town of Wiley. All rights reserved. |
+                   <a href="#accessibility-statement">Accessibility Statement</a> |
+                   <a href="#privacy-policy">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Accessibility Statement Modal (Hidden by default) -->
+    <div id="accessibility-modal" class="modal" role="dialog" aria-labelledby="accessibility-title" aria-describedby="accessibility-content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="accessibility-title">Accessibility Statement</h2>
+                <button type="button" class="modal-close" aria-label="Close accessibility statement">&times;</button>
+            </div>
+            <div class="modal-body" id="accessibility-content">
+                <p>The Town of Wiley is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards.</p>
+
+                <h3>Conformance Status</h3>
+                <p>This website conforms to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards as required by the Americans with Disabilities Act (ADA) for state and local government websites.</p>
+
+                <h3>Feedback</h3>
+                <p>We welcome your feedback on the accessibility of this website. Please contact us:</p>
+                <ul>
+                    <li>Email: <a href="mailto:accessibility@townofwiley.gov">accessibility@townofwiley.gov</a></li>
+                    <li>Phone: <a href="tel:+15551234567">(555)&nbsp;;123&#8209;4567</a></li>
+                    <li>Mail: Town of Wiley, 123 Main Street, Wiley, State 12345</li>
+                </ul>
+
+                <h3>Compatibility</h3>
+                <p>This website is designed to be compatible with assistive technologies including screen readers, keyboard navigation, and voice recognition software.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description" style="display: none">
+        <div class="cookie-content">
+            <h3 id="cookie-title">Cookie Notice</h3>
+            <p id="cookie-description">We use cookies to improve your browsing experience, provide personalized content, and analyze our traffic. Some cookies are essential for the website to function properly.</p>
+            <div class="cookie-actions">                <button type="button" class="btn btn-primary" id="accept-all-cookies">Accept All</button>
+                <button type="button" class="btn btn-secondary" id="cookie-settings-btn">Cookie Settings</button>
+                <button type="button" class="btn btn-text" id="decline-non-essential">Decline Non-Essential</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics and Performance Tracking -->
+    <script>
+        // Privacy-compliant analytics implementation
+        (function() {
+            // Only load analytics if user has consented
+            if (localStorage.getItem('analytics-consent') === 'true') {
+                // Placeholder for analytics code (Google Analytics, etc.)
+                console.log('Analytics tracking enabled')&amp;
+            }
+        })()&amp;
+
+        // Performance monitoring
+        if ('PerformanceObserver' in window) {
+            const observer = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    // Log performance metrics for site optimization
+                    if (entry.entryType === 'navigation') {
+                        console.log('Page load time:', entry.loadEventEnd - entry.loadEventStart)&amp;                    }
+                }
+            })&amp;
+            observer.observe({entryTypes: ['navigation', 'measure']})&amp;
+        }
+    </script>
+
+    <!-- Accessibility Statement Modal -->    <div id="accessibility-statement" class="modal" style="display: none" role="dialog" aria-labelledby="accessibility-statement-title" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="accessibility-statement-title">Website Accessibility Statement</h2>
+                <button type="button" class="modal-close" aria-label="Close accessibility statement">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The Town of Wiley is committed to ensuring digital accessibility for all users, including individuals with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards.</p>
+
+                <h3>Conformance Status</h3>
+                <p>This website aims to conform to Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. These guidelines explain how to make web content more accessible to people with disabilities.</p>
+
+                <h3>Accessibility Features</h3>
+                <ul>
+                    <li>Keyboard navigation support</li>
+                    <li>Screen reader compatibility</li>
+                    <li>High contrast color options</li>
+                    <li>Resizable text</li>
+                    <li>Alternative text for images</li>
+                    <li>Descriptive link text</li>
+                </ul>
+
+                <h3>Feedback</h3>
+                <p>We welcome your feedback on the accessibility of this website. Please contact us if you encounter accessibility barriers:</p>
+                <ul>
+                    <li>Email: <a href="mailto:accessibility@townofwiley.gov">accessibility@townofwiley.gov</a></li>
+                    <li>Phone: <a href="tel:+15551234567">(555)&nbsp;;123&#8209;4567</a></li>
+                    <li>Address: 123 Main Street, Wiley, State 12345</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendar Subscribe Modal -->
+    <div id="calendar-subscribe" class="modal" style="display: none" role="dialog" aria-labelledby="calendar-subscribe-title" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="calendar-subscribe-title">Subscribe to Town Calendar</h2>
+                <button type="button" class="modal-close" aria-label="Close calendar subscription">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Stay updated with town events, meetings, and important dates by subscribing to our calendar:</p>
+                <div class="calendar-links">
+                    <a href="#" class="btn btn-primary" onclick="alert('Google Calendar subscription link would be provided')">Add to Google Calendar</a>
+                    <a href="#" class="btn btn-secondary" onclick="alert('Outlook subscription link would be provided')">Add to Outlook</a>
+                    <a href="#" class="btn btn-outline" onclick="alert('iCal file would be downloaded')">Download iCal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Section -->
+    <div id="feedback" class="modal" style="display: none" role="dialog" aria-labelledby="feedback-title" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="feedback-title">Website Feedback</h2>
+                <button type="button" class="modal-close" aria-label="Close feedback form">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-type">Feedback Type:</label>
+                        <select id="feedback-type" name="type" required>
+                            <option value="">Select feedback type</option>
+                            <option value="accessibility">Accessibility Issue</option>
+                            <option value="bug">Technical Problem</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">                        <label for="modal-feedback-message">Message:</label>
+                        <textarea id="modal-feedback-message" name="message" rows="5" required placeholder="Please describe your feedback in detail..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-email">Email (optional):</label>
+                        <input type="email" id="feedback-email" name="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
