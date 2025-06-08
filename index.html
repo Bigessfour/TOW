@@ -9,15 +9,15 @@
     <meta name="author" content="Town of Wiley Government">
     <meta name="theme-color" content="#2c5aa0">
     <title>Town of Wiley - Official Website | Accessible Government Services</title>    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="manifest" href="manifest.json">    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/modernizr-custom.js"></script>
 </head>
 <body>
-    <!-- Skip to Content Link for Screen Readers -->
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    
+    <!-- Skip to Content Link for Screen Readers -->    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- Government Identification Banner -->
     <div class="gov-banner">
         <div class="container">
@@ -28,45 +28,47 @@
             </div>
         </div>
     </div>
-      
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">                <div class="logo">
-                    <img src="assets/images/logo.png" alt="Town of Wiley Logo" class="logo-image">
-                    <div class="logo-text">
-                        <h1>Town of Wiley</h1>
-                        <p class="tagline">Community • Service • Progress</p>
-                    </div>
+        <!-- Header -->
+    <header class="bg-gray-800 text-white flex justify-between p-4 fixed top-10 w-full z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo.png" alt="Town of Wiley Logo" class="max-w-md h-auto">
+                <div class="logo-text">
+                    <h1 class="text-xl font-semibold mb-0">Town of Wiley</h1>
+                    <p class="text-sm text-gray-300 mb-0">Community • Service • Progress</p>
                 </div>
-                <div class="header-search">
-                    <form class="search-form" role="search" aria-label="Site search">
-                        <label for="site-search" class="sr-only">Search website</label>
-                        <input type="search" id="site-search" name="search" placeholder="Search services, documents..." aria-describedby="search-help">
-                        <button type="submit" aria-label="Submit search">
-                            <span aria-hidden="true">🔍</span>
-                        </button>
-                        <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
-                    </form>                </div>
-                <nav class="nav" aria-label="Main navigation">
-                    <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-                        <span class="sr-only">Menu</span>                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </button>
-                    <ul class="nav-menu" id="nav-menu">
-                        <li><a href="#home" aria-current="page">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#government">Government</a></li>
-                        <li><a href="#news">News</a></li>
-                        <li><a href="#calendar">Calendar</a></li>
-                        <li><a href="#documents">Documents</a></li>
-                        <li><a href="#payment-portal">Pay Online</a></li>
-                        <li><a href="#business-directory">Business</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
             </div>
+            <div class="header-search hidden md:block">
+                <form class="search-form flex items-center" role="search" aria-label="Site search">
+                    <label for="site-search" class="sr-only">Search website</label>
+                    <input type="search" id="site-search" name="search" placeholder="Search services, documents..." 
+                           class="px-3 py-2 rounded-l border text-gray-800" aria-describedby="search-help">
+                    <button type="submit" aria-label="Submit search" 
+                            class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-r">
+                        <span aria-hidden="true">🔍</span>
+                    </button>
+                    <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
+                </form>
+            </div>            <nav class="nav hidden lg:flex" aria-label="Main navigation">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded" aria-current="page">Home</a></li>
+                    <li><a href="#services" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Services</a></li>
+                    <li><a href="#government" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Government</a></li>
+                    <li><a href="#news" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">News</a></li>
+                    <li><a href="#calendar" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Calendar</a></li>
+                    <li><a href="#documents" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Documents</a></li>
+                    <li><a href="#payment-portal" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Pay Online</a></li>
+                    <li><a href="#business-directory" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Business</a></li>
+                    <li><a href="#contact" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded">Contact</a></li>
+                </ul>
+                <button type="button" class="lg:hidden nav-toggle text-white hover:text-yellow-400" 
+                        aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="sr-only">Menu</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </nav>
         </div>
     </header>
 
@@ -238,12 +240,11 @@
                         <h3>Town Officials</h3>                        <div class="official-card">
                             <h4>Mayor John Smith</h4>
                             <p><strong>Email:</strong> <a href="mailto:mayor@townofwiley.gov">mayor@townofwiley.gov</a></p>
-                            <p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
-                        </div>
-                        <div class="official-card">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234567">(555)&nbsp;123&#8209;4567</a></p>
+                        </div>                        <div class="official-card">
                             <h4>Town Administrator</h4>
                             <p><strong>Email:</strong> <a href="mailto:admin@townofwiley.gov">admin@townofwiley.gov</a></p>
-                            <p><strong>Phone:</strong> <a href="tel:+15551234568">(555) 123-4568</a></p>
+                            <p><strong>Phone:</strong> <a href="tel:+15551234568">(555)&nbsp;123&#8209;4568</a></p>
                         </div>
                         <div class="official-card">
                             <h4>Town Council</h4>
@@ -500,7 +501,7 @@
                             How can I report a pothole or street issue?
                         </button>
                         <div class="faq-answer" id="faq-5" hidden>
-                            <p>Report street issues through our online service request form under Quick Links, call Public Works at (555) 123-4571, or use the feedback form on this website. Include the location and description of the problem.</p>
+                            <p>Report street issues through our online service request form under Quick Links, call Public Works at (555)&nbsp;123&#8209;4571, or use the feedback form on this website. Include the location and description of the problem.</p>
                         </div>
                     </div>
                 </div>
@@ -532,19 +533,17 @@
                     <li class="business-card">
                         <h3>Wiley Family Restaurant</h3>
                         <p class="business-category">Restaurant</p>
-                        <p class="business-description">Family-owned diner serving home-style cooking since 1952.</p>
-                        <div class="business-contact">
-                            <p><strong>Phone:</strong> <a href="tel:+15551234568">(555) 123-4568</a></p>
+                        <p class="business-description">Family-owned diner serving home-style cooking since 1952.</p>                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234568">(555)&nbsp;123&#8209;4568</a></p>
                             <p><strong>Address:</strong> 456 Main Street</p>
                             <p><strong>Hours:</strong> Mon-Sat 6AM-9PM, Sun 7AM-8PM</p>
-                        </div>                    </li>
+                        </div></li>
 
                     <li class="business-card">
                         <h3>Wiley Hardware Store</h3>
                         <p class="business-category">Retail</p>
-                        <p class="business-description">Your local source for tools, hardware, and home improvement supplies.</p>
-                        <div class="business-contact">
-                            <p><strong>Phone:</strong> <a href="tel:+15551234569">(555) 123-4569</a></p>
+                        <p class="business-description">Your local source for tools, hardware, and home improvement supplies.</p>                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234569">(555)&nbsp;123&#8209;4569</a></p>
                             <p><strong>Address:</strong> 789 Industrial Drive</p>
                             <p><strong>Hours:</strong> Mon-Fri 7AM-6PM, Sat 8AM-5PM</p>
                         </div>
@@ -553,9 +552,8 @@
                     <li class="business-card">
                         <h3>Countryside Veterinary Clinic</h3>
                         <p class="business-category">Healthcare</p>
-                        <p class="business-description">Complete veterinary care for your pets and livestock.</p>
-                        <div class="business-contact">
-                            <p><strong>Phone:</strong> <a href="tel:+15551234570">(555) 123-4570</a></p>
+                        <p class="business-description">Complete veterinary care for your pets and livestock.</p>                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234570">(555)&nbsp;123&#8209;4570</a></p>
                             <p><strong>Address:</strong> 321 Rural Route 1</p>
                             <p><strong>Hours:</strong> Mon-Fri 8AM-6PM, Sat 9AM-2PM</p>                        </div>
                     </li>
@@ -563,9 +561,8 @@
                     <li class="business-card">
                         <h3>Wiley Auto Repair</h3>
                         <p class="business-category">Automotive</p>
-                        <p class="business-description">Honest, reliable auto repair and maintenance services.</p>
-                        <div class="business-contact">
-                            <p><strong>Phone:</strong> <a href="tel:+15551234571">(555) 123-4571</a></p>
+                        <p class="business-description">Honest, reliable auto repair and maintenance services.</p>                        <div class="business-contact">
+                            <p><strong>Phone:</strong> <a href="tel:+15551234571">(555)&nbsp;123&#8209;4571</a></p>
                             <p><strong>Address:</strong> 654 Commerce Street</p>
                             <p><strong>Hours:</strong> Mon-Fri 7AM-6PM</p>
                         </div>
@@ -593,7 +590,7 @@
                                 123 Main Street<br>
                                 Wiley, State 12345
                             </address>
-                            <p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                            <p><strong>Phone:</strong> <a href="tel:+15551234567">(555)&nbsp;123&#8209;4567</a></p>
                             <p><strong>Email:</strong> <a href="mailto:info@townofwiley.gov">info@townofwiley.gov</a></p>
                             <p><strong>Hours:</strong><br>
                             Monday - Friday: 8:00 AM - 5:00 PM<br>
@@ -601,10 +598,9 @@
                         </div>
                         <div class="contact-card">
                             <h3>Emergency Services</h3>
-                            <p><strong>Emergency:</strong> <a href="tel:911">911</a></p>
-                            <p><strong>Police (Non-Emergency):</strong> <a href="tel:+15551234569">(555) 123-4569</a></p>
-                            <p><strong>Fire Department:</strong> <a href="tel:+15551234570">(555) 123-4570</a></p>
-                            <p><strong>Public Works:</strong> <a href="tel:+15551234571">(555)&nbsp;;123&#8209;4571</a></p>
+                            <p><strong>Emergency:</strong> <a href="tel:911">911</a></p>                            <p><strong>Police (Non-Emergency):</strong> <a href="tel:+15551234569">(555)&nbsp;123&#8209;4569</a></p>
+                            <p><strong>Fire Department:</strong> <a href="tel:+15551234570">(555)&nbsp;123&#8209;4570</a></p>
+                            <p><strong>Public Works:</strong> <a href="tel:+15551234571">(555)&nbsp;123&#8209;4571</a></p>
                         </div>
                     </div>
                     <div class="contact-form">

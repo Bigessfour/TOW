@@ -1,8 +1,81 @@
 # Town of Wiley - Official Government Website
 
-A modern, accessible, and comprehensive municipal website built to serve the rural community of Wiley with excellence, transparency, and full ADA compliance.
+A modern, accessible, and comprehensive municipal website built with **agentic AI workflow** using GitHub Copilot, featuring comprehensive browser compatibility testing with Modernizr, VS Code debugging integration, and full ADA compliance for rural community excellence.
 
-## 🌟 Key Features
+## 📁 Project Organization (Updated June 7, 2025)
+
+### File Structure (Jekyll-Style Organization)
+```
+Town of Wiley/
+├── _config.yml                    # Jekyll configuration
+├── _layouts/                      # Page templates
+│   ├── default.html               # Default layout
+│   ├── page.html                  # Page layout
+│   └── post.html                  # Post layout
+├── _includes/                     # Reusable components
+│   ├── header.html                # Site header
+│   ├── navigation.html            # Navigation menu
+│   └── footer.html                # Site footer
+├── _pages/                        # Content pages (Markdown)
+│   ├── services.md                # Services page
+│   ├── government.md              # Government page
+│   └── [6 other pages]
+├── _posts/                        # News/blog posts
+├── _site/                         # Generated static site (output)
+├── assets/                        # Static assets (organized by type)
+│   ├── css/styles.css             # Main stylesheet + Tailwind overrides
+│   ├── images/logo.png            # Town logo (web-optimized)
+│   └── js/                        # JavaScript files
+│       ├── modernizr-custom.js    # Custom feature detection build
+│       └── script.js              # Main functionality + accessibility
+├── docs/                          # Comprehensive documentation
+│   ├── JEKYLL_SUCCESS_REPORT.md   # Jekyll-style build system guide
+│   ├── FILE_ORGANIZATION_UPDATE.md # Latest file organization audit
+│   ├── DEPENDENCIES_TRACKING.md   # Cross-reference tracking
+│   ├── DEBUG_GUIDE.md             # Development & debugging
+│   └── [25 other documentation files]
+├── .vscode/                       # VS Code configuration
+│   ├── launch.json                # Debug configurations
+│   ├── settings.json              # Editor preferences  
+│   └── tasks.json                 # Build & validation tasks
+├── .github/copilot-instructions.md # AI coding guidelines
+├── index.md                       # Home page (Markdown)
+├── build.js                       # Custom Jekyll-style generator
+├── package.json                   # NPM configuration & scripts
+├── modernizr-config.json          # Feature detection configuration
+└── [Configuration & deployment files]
+```
+
+### ✅ All Dependencies Verified & Cross-Referenced
+- **HTML → CSS/JS**: All asset paths validated
+- **Package.json**: All dev dependencies current (14 packages)
+- **VS Code**: Debug & task configurations updated
+- **Documentation**: 25 comprehensive docs with cross-references
+
+## 🤖 Agentic AI Development Workflow
+
+### ✅ GitHub Copilot Integration
+- **AI-Assisted Development** - Intelligent code suggestions with government compliance
+- **ADA Compliance Guidance** - Built-in accessibility best practices  
+- **Tailwind CSS Integration** - Modern utility-first styling framework
+- **Government Standards** - Professional appearance for official use
+- **Real-time Code Review** - AI-powered quality assurance
+
+### 🛠️ Advanced Development Environment
+- **VS Code Debugging** - Multiple debug configurations (Chrome, Edge, Live Server)
+- **Live Development Server** - Hot reload on port 5500 with `npm run dev`
+- **Modernizr Feature Detection** - Custom build monitoring 15+ web APIs
+- **Browser Compatibility** - Real-time feature detection and fallbacks
+- **Debug Utilities** - Comprehensive logging and accessibility checking
+
+### 🔧 Modern Web Technologies
+- **Modernizr 3.13.1** - Custom build for feature detection (~15KB optimized)
+- **Tailwind CSS** - Responsive design with utility classes
+- **Progressive Enhancement** - Graceful degradation for older browsers
+- **Performance Monitoring** - Lighthouse integration for optimization
+- **Security Scanning** - Automated vulnerability assessment
+
+## 🌟 Core Features
 
 ### ✅ ADA Compliance & Accessibility
 - **WCAG 2.1 Level AA Compliant** - Meets 2024 ADA requirements for government websites
@@ -13,7 +86,7 @@ A modern, accessible, and comprehensive municipal website built to serve the rur
 - Alternative text for all images
 - High contrast mode and adjustable text sizes
 - Screen reader mode with enhanced announcements
-- Multi-language support (English/Spanish toggle)
+- **Automated Accessibility Testing** - Built-in compliance validation
 
 ### 🚨 Emergency Management
 - **Emergency Alerts Banner** - Real-time emergency notifications
@@ -110,10 +183,10 @@ The website is fully responsive across all device sizes:
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **Node.js** (v18 or higher) - For development tools and validation
-- **Git** - For version control and deployment
-- **Modern web browser** (Chrome, Firefox, Safari, Edge)
-- **Web server** (Apache, Nginx, or Node.js for development)
+- **Node.js** (v18 or higher) - For development tools and agentic workflow
+- **Git** - For version control and GitHub Copilot integration
+- **VS Code** - For AI-assisted development and debugging
+- **Modern web browser** (Chrome, Firefox, Safari, Edge) with debugging support
 
 ### Development Setup
 
@@ -125,6 +198,88 @@ cd TOW
 
 #### 2. Install Development Dependencies
 ```bash
+npm install
+```
+
+#### 3. Initialize Agentic Workflow
+```bash
+npm run workflow:init
+```
+This command will:
+- Generate the custom Modernizr build
+- Start the Live Server on http://localhost:5500
+- Enable GitHub Copilot AI assistance
+- Configure VS Code debugging
+
+#### 4. Start Development Server
+```bash
+# Jekyll-style development (recommended)
+npm run dev:jekyll        # Build with Jekyll-style processing and serve
+npm run serve:jekyll      # Start development server with auto-rebuild
+npm run build:jekyll      # Build static site only
+
+# Traditional development
+npm run dev               # Standard development mode  
+npm run agent:debug       # Enhanced debug mode with feature detection
+```
+
+#### 5. VS Code Setup
+- Install **GitHub Copilot** extension
+- Install **JavaScript Debugger (Nightly)** extension
+- Install **Live Server** extension
+- Open `.vscode/settings.json` for optimized development settings
+
+### 🤖 AI-Assisted Development Commands
+
+```bash
+# Agentic Workflow
+npm run agent:start          # Start with AI assistance
+npm run agent:debug          # Debug with feature detection
+
+# Modernizr Management
+npm run modernizr:build      # Generate feature detection build
+npm run modernizr:rebuild    # Regenerate custom build
+
+# Testing & Validation
+npm run test:modernizr       # Test feature detection
+npm run validate:all         # Complete validation suite
+npm run test                 # Full accessibility & performance tests
+
+# Documentation
+npm run workflow:docs        # Open development guides
+```
+
+### 🔧 VS Code Debugging
+
+Press **F5** in VS Code to start debugging with:
+- Chrome debugging (port 9222)
+- Live Server integration
+- Modernizr feature detection monitoring
+- Accessibility compliance checking
+
+Available debug configurations:
+- **Chrome Debug**: Launch Chrome with remote debugging
+- **Edge Debug**: Alternative browser debugging  
+- **Live Server**: Debug with hot reload
+- **Attach to Chrome**: Connect to existing browser instance
+
+### 🌐 Browser Compatibility Testing
+
+The website includes comprehensive feature detection via Modernizr:
+
+```javascript
+// Automatic feature detection logging
+🔧 Modernizr loaded successfully. Detected features: {
+  flexbox: true,
+  cssgrid: true,
+  csstransforms: true,
+  touchevents: false,
+  localstorage: true,
+  canvas: true,
+  svg: true
+  // + additional features...
+}
+```
 npm install
 ```
 

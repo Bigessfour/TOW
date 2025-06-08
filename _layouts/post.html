@@ -1,0 +1,114 @@
+---
+layout: default
+---
+
+<article class="post">
+    <header class="post-header bg-blue-50 py-8 mb-8">
+        <div class="container mx-auto px-4">
+            <h1 class="post-title text-3xl font-bold text-gray-800">{{ page.title }}</h1>
+            
+            <div class="post-meta flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
+                <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+                    📅 {{ page.date | date: "%B %d, %Y" }}
+                </time>
+                
+                {% if page.author %}
+                <span class="post-author">
+                    👤 By {{ page.author }}
+                </span>
+                {% endif %}
+                
+                {% if page.categories %}
+                <span class="post-categories">
+                    🏷️ 
+                    {% for category in page.categories %}
+                        <a href="{{ '/news/category/' | append: category | relative_url }}" class="text-blue-600 hover:text-blue-800">{{ category | capitalize }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                </span>
+                {% endif %}
+                
+                {% if page.urgent %}
+                <span class="urgent-badge bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">
+                    🚨 Urgent
+                </span>
+                {% endif %}
+            </div>
+            
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="Breadcrumb" class="mt-4">
+                <ol class="breadcrumb flex items-center space-x-2 text-sm">
+                    <li><a href="{{ '/' | relative_url }}" class="text-blue-600 hover:text-blue-800">Home</a></li>
+                    <li class="breadcrumb-separator text-gray-400" aria-hidden="true">/</li>
+                    <li><a href="{{ '/news/' | relative_url }}" class="text-blue-600 hover:text-blue-800">News</a></li>
+                    <li class="breadcrumb-separator text-gray-400" aria-hidden="true">/</li>
+                    <li class="text-gray-600" aria-current="page">{{ page.title }}</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <div class="post-content">
+        <div class="container mx-auto px-4">
+            <div class="prose max-w-none">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+
+    {% if page.related_links %}
+    <section class="related-links bg-gray-50 py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-xl font-semibold mb-4">Related Information</h2>
+            <ul class="space-y-2">
+                {% for link in page.related_links %}
+                <li>
+                    <a href="{{ link.url }}" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                        <span aria-hidden="true">🔗</span>
+                        {{ link.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    <footer class="post-footer bg-gray-100 py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="share-links">
+                    <span class="text-sm font-medium text-gray-700 mr-3">Share this announcement:</span>
+                    <div class="flex gap-2">
+                        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url | url_encode }}" 
+                           class="text-blue-600 hover:text-blue-800" aria-label="Share via email">📧</a>
+                        <button onclick="navigator.share({title: '{{ page.title }}', url: '{{ page.url | absolute_url }}'})" 
+                                class="text-blue-600 hover:text-blue-800" aria-label="Share this page">📤</button>
+                    </div>
+                </div>
+                
+                <div class="post-navigation">
+                    {% if page.previous %}
+                    <a href="{{ page.previous.url | relative_url }}" class="text-blue-600 hover:text-blue-800 text-sm">
+                        ← Previous: {{ page.previous.title }}
+                    </a>
+                    {% endif %}
+                    
+                    {% if page.next %}
+                    <a href="{{ page.next.url | relative_url }}" class="text-blue-600 hover:text-blue-800 text-sm ml-4">
+                        Next: {{ page.next.title }} →
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="contact-info mt-6 pt-6 border-t border-gray-300">
+                <p class="text-sm text-gray-600">
+                    Questions about this announcement? Contact us at 
+                    <a href="tel:{{ site.government.contact_phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}" class="text-blue-600 hover:text-blue-800">{{ site.government.contact_phone }}</a> 
+                    or 
+                    <a href="mailto:{{ site.government.contact_email }}" class="text-blue-600 hover:text-blue-800">{{ site.government.contact_email }}</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+</article>

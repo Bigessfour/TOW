@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+<div class="page-header bg-blue-50 py-8 mb-8">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-gray-800">Contact Us</h1>
+        
+            <p class="text-lg text-gray-600 mt-2">Contact information for the Town of Wiley including town hall, emergency services, and online contact form</p>
+        
+        
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mt-4">
+            <ol class="breadcrumb flex items-center space-x-2 text-sm">
+                <li><a href="/" class="text-blue-600 hover:text-blue-800">Home</a></li>
+                <li class="breadcrumb-separator text-gray-400" aria-hidden="true">/</li>
+                <li class="text-gray-600" aria-current="page">Contact Us</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="page-content">
+    <h1>Contact Information</h1>
+<h2>Town Hall</h2>
+<p><strong>Address:</strong><br>123 Main Street<br>Wiley, State 12345</p>
+<p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a><br><strong>Email:</strong> <a href="mailto:info@townofwiley.gov">info@townofwiley.gov</a></p>
+<p><strong>Hours:</strong><br>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 12:00 PM</p>
+<h2>Emergency Services</h2>
+<p><strong>Emergency:</strong> <a href="tel:911">911</a><br><strong>Police (Non-Emergency):</strong> <a href="tel:+15551234569">(555) 123-4569</a><br><strong>Fire Department:</strong> <a href="tel:+15551234570">(555) 123-4570</a><br><strong>Public Works:</strong> <a href="tel:+15551234571">(555) 123-4571</a></p>
+<h2>Send us a Message</h2>
+<form class="form" id="contactForm" novalidate>
+    <div class="form-group">
+        <label for="name">Full Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false">
+        <div id="name-error" class="error-message" aria-live="polite"></div>
+    </div>
+    
+<pre><code>&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email Address &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required aria-describedby=&quot;email-error&quot; aria-invalid=&quot;false&quot;&gt;
+    &lt;div id=&quot;email-error&quot; class=&quot;error-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;subject&quot;&gt;Subject &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;select id=&quot;subject&quot; name=&quot;subject&quot; required aria-describedby=&quot;subject-error&quot; aria-invalid=&quot;false&quot;&gt;
+        &lt;option value=&quot;&quot;&gt;Select a topic&lt;/option&gt;
+        &lt;option value=&quot;utilities&quot;&gt;Utilities&lt;/option&gt;
+        &lt;option value=&quot;permits&quot;&gt;Permits &amp; Licenses&lt;/option&gt;
+        &lt;option value=&quot;public-works&quot;&gt;Public Works&lt;/option&gt;
+        &lt;option value=&quot;complaint&quot;&gt;Complaint/Issue&lt;/option&gt;
+        &lt;option value=&quot;general&quot;&gt;General Inquiry&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div id=&quot;subject-error&quot; class=&quot;error-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;message&quot;&gt;Message &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;textarea id=&quot;message&quot; name=&quot;message&quot; rows=&quot;5&quot; required aria-describedby=&quot;message-error message-help&quot; aria-invalid=&quot;false&quot;&gt;&lt;/textarea&gt;
+    &lt;div id=&quot;message-help&quot; class=&quot;help-text&quot;&gt;Please provide details about your inquiry or request&lt;/div&gt;
+    &lt;div id=&quot;message-error&quot; class=&quot;error-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Send Message&lt;/button&gt;
+</code></pre>
+</form>
+
+<hr>
+<p>For immediate assistance during business hours, please call or visit town hall. For after-hours emergencies, dial 911.</p>
+
+</div>
+        
+        
+        <div class="contact-section bg-gray-50 p-6 rounded-lg mt-8">
+            <h2 class="text-xl font-semibold mb-4">Need More Information?</h2>
+            <p class="mb-4">Contact us for additional details about Contact Us.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="tel:" 
+                   class="btn btn-primary">
+                    📞 Call 
+                </a>
+                <a href="mailto:" class="btn btn-secondary">
+                    ✉️ Email Us
+                </a>
+                <a href="/contact/" class="btn btn-outline">
+                    📝 Contact Form
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</div>

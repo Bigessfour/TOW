@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; connect-src 'self'; img-src 'self' data:;">
+    
+    {% seo %}
+    
+    <meta name="theme-color" content="#2c5aa0">
+    <meta name="author" content="{{ site.author }}">
+    
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Modernizr for feature detection -->
+    <script src="{{ '/assets/js/modernizr-custom.js' | relative_url }}"></script>
+    
+    {% if page.title %}
+        <title>{{ page.title }} | {{ site.title }}</title>
+    {% else %}
+        <title>{{ site.title }} - {{ site.description }}</title>
+    {% endif %}
+</head>
+<body>    <!-- Skip to Content Link for Screen Readers -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>    {% include header.html %}{% include navigation.html %}
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content pt-8" role="main">
+        {{ content }}
+    </main>    {% include footer.html %}
+
+    <!-- Notification System -->
+    <div id="notification-system" class="notification-system fixed bottom-4 right-4 z-50" aria-live="polite"></div>
+
+    <!-- Emergency Alert Modal -->
+    <div id="emergency-modal" class="modal emergency-modal fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center p-4" role="dialog" aria-labelledby="emergency-modal-title" aria-describedby="emergency-modal-description">
+        <div class="modal-content bg-white rounded-lg max-w-md w-full p-6 relative">
+            <button type="button" class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close emergency alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="emergency-icon text-red-600 text-4xl mb-4">🚨</div>
+            <h2 id="emergency-modal-title" class="text-xl font-bold text-red-600 mb-4">Emergency Alert</h2>
+            <div id="emergency-modal-description" class="mb-4">
+                <p>This is a placeholder for emergency alerts. Real alerts would be managed through the town's emergency management system.</p>
+            </div>
+            <div class="modal-actions flex gap-2 justify-end">
+                <button type="button" class="btn btn-secondary modal-close">Dismiss</button>
+                <a href="{{ '/emergency/' | relative_url }}" class="btn btn-primary">More Information</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contact-modal" class="modal fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center p-4" role="dialog" aria-labelledby="contact-modal-title">
+        <div class="modal-content bg-white rounded-lg max-w-md w-full p-6 relative max-h-96 overflow-y-auto">
+            <button type="button" class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close contact form">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h2 id="contact-modal-title" class="text-xl font-bold mb-4">Quick Contact</h2>
+            <form class="form" id="quickContactForm" novalidate>
+                <div class="form-group">
+                    <label for="quick-name">Name (required):</label>
+                    <input type="text" id="quick-name" name="name" required aria-describedby="name-error">
+                    <div id="name-error" class="error-message" role="alert"></div>
+                </div>
+                <div class="form-group">
+                    <label for="quick-email">Email (required):</label>
+                    <input type="email" id="quick-email" name="email" required aria-describedby="email-error">
+                    <div id="email-error" class="error-message" role="alert"></div>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Message (required):</label>
+                    <textarea id="quick-message" name="message" rows="4" required aria-describedby="message-error"></textarea>
+                    <div id="message-error" class="error-message" role="alert"></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+    
+    {% if jekyll.environment == 'production' %}
+        <!-- Analytics or other production scripts would go here -->
+    {% endif %}
+</body>
+</html>

@@ -2,12 +2,22 @@
   "name": "town-of-wiley-website",
   "version": "1.0.0",
   "description": "Official website for the Town of Wiley - ADA compliant municipal government website",
-  "main": "index.html",  "scripts": {
+  "main": "index.html",
+  "scripts": {
     "setup": "echo Setting up Node.js PATH... && powershell -Command \"$env:PATH += ';C:\\Program Files\\nodejs'\" && node --version && npm --version",
-    "start": "live-server --port=3000 --entry-file=index.html","test": "npm run test:html && npm run test:css && npm run test:yaml && npm run test:accessibility:ci",
+    "start": "live-server --port=3000 --entry-file=index.html",
+    "dev": "live-server --port=5500 --entry-file=index.html --open",
+    "debug": "live-server --port=5500 --entry-file=index.html --wait=500",
+    "serve:debug": "live-server --port=5500 --entry-file=index.html --verbose",
+    "modernizr:build": "npx modernizr -c modernizr-config.json -d assets/js/modernizr-custom.js",
+    "modernizr:rebuild": "npm run modernizr:build",
+    "agent:start": "echo 'Agentic workflow ready. Use GitHub Copilot for AI-assisted development.' && npm run dev",
+    "agent:debug": "echo 'Starting debug session with Modernizr feature detection...' && npm run debug",
+    "test": "npm run test:html && npm run test:css && npm run test:yaml && npm run test:accessibility:ci",
     "test:html": "html-validate index.html",
     "test:css": "stylelint assets/css/styles.css",
     "test:yaml": "node scripts/validate-yaml.js",
+    "test:modernizr": "node -e \"console.log('🔧 Testing Modernizr build...'); const fs = require('fs'); const path = './assets/js/modernizr-custom.js'; if (fs.existsSync(path)) { const size = fs.statSync(path).size; console.log('✅ Modernizr build exists:', (size/1024).toFixed(1) + 'KB'); } else { console.error('❌ Modernizr build missing'); process.exit(1); }\"",
     "test:accessibility": "pa11y http://localhost:3000 --standard WCAG2AA --threshold 0",
     "test:accessibility:ci": "pa11y-ci --threshold 0 index.html",
     "test:axe": "axe --dir . --rules wcag2a,wcag2aa,wcag21aa --tags wcag2a,wcag2aa,wcag21aa",
@@ -16,14 +26,19 @@
     "test:lighthouse:ci": "lhci autorun --upload.target=temporary-public-storage",
     "test:security": "npm audit --audit-level=moderate",
     "validate": "html-validate index.html && stylelint assets/css/styles.css && npm run test:yaml",
-    "serve": "live-server --port=3000",
-    "serve:production": "python3 -m http.server 8080",
-    "build": "echo 'No build process needed for static site'",
+    "validate:all": "npm run validate && npm run test:modernizr && echo '✅ All validations passed'",
+    "serve": "live-server --port=3000",    "serve:production": "python3 -m http.server 8080",
+    "build": "npm run modernizr:build && node build.js build && echo '✅ Build complete with Modernizr integration'",
+    "build:jekyll": "node build.js build",
+    "serve:jekyll": "node build.js serve",
+    "dev:jekyll": "npm run build:jekyll && npm run serve:jekyll",
     "deploy": "gh-pages -d .",
     "accessibility-audit": "pa11y-ci --sitemap false --standard WCAG2AA --threshold 0 index.html",
     "security-audit": "npm audit && echo 'Manual security review recommended - see SECURITY_AUDIT.md'",
     "performance-audit": "lighthouse http://localhost:3000 --view",
-    "full-audit": "npm run test && npm run security-audit && npm run performance-audit"
+    "full-audit": "npm run test && npm run security-audit && npm run performance-audit",
+    "workflow:init": "echo 'Initializing agentic workflow...' && npm run build && npm run agent:start",
+    "workflow:docs": "echo 'Opening workflow documentation...' && start docs/DEBUG_GUIDE.md"
   },
   "repository": {
     "type": "git",
@@ -44,20 +59,26 @@
   "bugs": {
     "url": "https://github.com/Bigessfour/TOW/issues"
   },
-  "homepage": "https://github.com/Bigessfour/TOW#readme",  "devDependencies": {
+  "homepage": "https://github.com/Bigessfour/TOW#readme",
+  "dependencies": {
+    "marked": "^12.0.0",
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "@axe-core/cli": "^4.8.0",
+    "@lhci/cli": "^0.12.0",
+    "axe-core": "^4.8.0",
+    "css-validator": "^0.11.0",
+    "gh-pages": "^6.0.0",
     "html-validate": "^8.0.0",
-    "stylelint": "^15.0.0",
-    "stylelint-config-standard": "^34.0.0",
+    "js-yaml": "^4.1.0",
+    "lighthouse": "^11.0.0",
+    "live-server": "^1.2.2",
+    "modernizr": "^3.13.1",
     "pa11y": "^6.2.3",
     "pa11y-ci": "^3.0.1",
-    "lighthouse": "^11.0.0",
-    "@lhci/cli": "^0.12.0",
-    "live-server": "^1.2.2",
-    "gh-pages": "^6.0.0",
-    "axe-core": "^4.8.0",
-    "@axe-core/cli": "^4.8.0",
-    "css-validator": "^0.11.0",
-    "js-yaml": "^4.1.0"
+    "stylelint": "^15.0.0",
+    "stylelint-config-standard": "^34.0.0"
   },
   "engines": {
     "node": ">=16.0.0",

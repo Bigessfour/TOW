@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<div class="page-header bg-blue-50 py-8 mb-8">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-gray-800">{{ page.title }}</h1>
+        {% if page.description %}
+            <p class="text-lg text-gray-600 mt-2">{{ page.description }}</p>
+        {% endif %}
+        
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mt-4">
+            <ol class="breadcrumb flex items-center space-x-2 text-sm">
+                <li><a href="{{ '/' | relative_url }}" class="text-blue-600 hover:text-blue-800">Home</a></li>
+                <li class="breadcrumb-separator text-gray-400" aria-hidden="true">/</li>
+                <li class="text-gray-600" aria-current="page">{{ page.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="page-content">
+    {{ content }}
+</div>
+        
+        {% if page.show_contact_info %}
+        <div class="contact-section bg-gray-50 p-6 rounded-lg mt-8">
+            <h2 class="text-xl font-semibold mb-4">Need More Information?</h2>
+            <p class="mb-4">Contact us for additional details about {{ page.title | downcase }}.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="tel:{{ site.government.contact_phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}" 
+                   class="btn btn-primary">
+                    📞 Call {{ site.government.contact_phone }}
+                </a>
+                <a href="mailto:{{ site.government.contact_email }}" class="btn btn-secondary">
+                    ✉️ Email Us
+                </a>
+                <a href="{{ '/contact/' | relative_url }}" class="btn btn-outline">
+                    📝 Contact Form
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

@@ -10,7 +10,7 @@ This is a static website for a small rural town government. The website provides
 - `script.js` - Interactive JavaScript functionality
 
 ## Design Principles
-- **Accessibility First**: Use semantic HTML, proper ARIA labels, and keyboard navigation
+- **Accessibility First**: Follow ADA compliance, use semantic HTML, proper ARIA labels, and keyboard navigation
 - **Mobile Responsive**: Mobile-first design approach with responsive grid layouts
 - **Government Standards**: Professional appearance appropriate for official government use
 - **Rural Community Focus**: Simple, clear navigation suitable for all age groups and technical skill levels
@@ -21,6 +21,7 @@ This is a static website for a small rural town government. The website provides
 - Smooth scrolling between sections
 - Notification system for user feedback
 - Accessibility features including proper focus states
+- ADA compliant design with high contrast and proper semantic structure
 
 ## Content Areas
 - Town information and services
@@ -31,13 +32,16 @@ This is a static website for a small rural town government. The website provides
 
 ## Customization Guidelines
 - Maintain professional government appearance
+- Follow ADA compliance standards for all web content
 - Ensure all interactive elements are accessible
 - Keep content clear and easy to understand
 - Preserve responsive design when adding new content
 - Test all forms and interactive features before deployment
+- Use Tailwind CSS for styling and responsive design
 
 ## Technology Stack
 - Vanilla HTML5, CSS3, and JavaScript (no frameworks)
+- **Tailwind CSS** for modern utility-first styling
 - Google Fonts for typography
 - CSS Grid and Flexbox for layouts
 - Intersection Observer API for scroll animations

@@ -1,0 +1,89 @@
+# Jekyll Configuration for Town of Wiley Government Website
+
+# Site settings
+title: "Town of Wiley"
+description: "Official website of the Town of Wiley - Your rural community government providing accessible services, programs, and activities to all residents"
+author: "Town of Wiley Government"
+email: info@townofwiley.gov
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://townofwiley.netlify.app" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Front Matter Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Town of Wiley Government"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Exclude from processing
+exclude:
+  - node_modules/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile.lock
+  - vendor/
+  - package.json
+  - package-lock.json
+  - scripts/
+  - docs/
+  - README.md
+
+# Include files
+include:
+  - _pages
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Accessibility and SEO
+lang: en-US
+timezone: America/Denver
+
+# Government website settings
+government:
+  contact_phone: "(555) 123-4567"
+  contact_email: "info@townofwiley.gov"
+  address: "123 Main Street, Wiley, State 12345"
+  office_hours: "Monday - Friday: 8:00 AM - 5:00 PM, Saturday: 9:00 AM - 12:00 PM"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Government"
+    url: "/government/"
+  - title: "Services"
+    url: "/services/"
+  - title: "Community"
+    url: "/community/"
+  - title: "News"
+    url: "/news/"
+  - title: "Contact"
+    url: "/contact/"

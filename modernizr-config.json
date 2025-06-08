@@ -1,0 +1,31 @@
+{
+  "minify": true,
+  "options": [
+    "setClasses",
+    "addTest",
+    "html5printshiv",
+    "testProp",
+    "fnBind"
+  ],
+  "feature-detects": [
+    "css/flexbox",
+    "css/cssgrid",
+    "css/transforms",
+    "css/transforms3d",
+    "css/animations",
+    "css/transitions",
+    "input",
+    "inputtypes",
+    "touchevents",
+    "svg",
+    "video",
+    "audio",
+    "webgl",
+    "canvas",
+    "storage/localstorage",
+    "storage/sessionstorage",
+    "websockets",
+    "custom-elements",
+    "serviceworker"
+  ]
+}

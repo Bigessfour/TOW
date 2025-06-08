@@ -1,0 +1,55 @@
+<!-- Government Identif        <div class="header-search hidden md:block">
+            <form class="search-form flex items-center" role="search" aria-label="Site search">
+                <label for="site-search" class="sr-only">Search website</label>
+                <input type="search" id="site-search" name="search" placeholder="Search services, documents..." 
+                       class="px-3 py-2 rounded-l border text-gray-800" aria-describedby="search-help">
+                <button type="submit" aria-label="Submit search" 
+                        class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-r">
+                    <span aria-hidden="true">🔍</span>
+                </button>
+                <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
+            </form>
+        </div>
+        <button class="mobile-menu-toggle md:hidden text-white" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+</header> -->
+<div class="gov-banner">
+    <div class="container">
+        <div class="gov-banner-content">
+            <span class="gov-banner-text">
+                <strong>Official Website</strong> of the Town of Wiley Government
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="bg-gray-800 text-white flex justify-between p-4 fixed top-10 w-full z-50 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Town of Wiley Logo" class="max-w-md h-auto">
+            <div class="logo-text">
+                <h1 class="text-xl font-semibold mb-0">
+                    <a href="{{ '/' | relative_url }}" class="text-white no-underline">Town of Wiley</a>
+                </h1>
+                <p class="text-sm text-gray-300 mb-0">Community • Service • Progress</p>
+            </div>
+        </div>
+        <div class="header-search hidden md:block">
+            <form class="search-form flex items-center" role="search" aria-label="Site search">
+                <label for="site-search" class="sr-only">Search website</label>
+                <input type="search" id="site-search" name="search" placeholder="Search services, documents..." 
+                       class="px-3 py-2 rounded-l border text-gray-800" aria-describedby="search-help">
+                <button type="submit" aria-label="Submit search" 
+                        class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-r">
+                    <span aria-hidden="true">🔍</span>
+                </button>
+                <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
+            </form>
+        </div>
+    </div>
+</header>
