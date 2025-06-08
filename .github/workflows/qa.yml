@@ -19,6 +19,14 @@ on:
   pull_request:
     branches: [ main ]           # Run on pull requests to main branch
 
+# Permissions needed for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+  security-events: write
+
 # Environment variables shared across jobs
 env:
   NODE_VERSION: '18'             # Node.js version for consistency across jobs
@@ -182,7 +190,7 @@ jobs:
   # ==========================================================================
   # PRODUCTION DEPLOYMENT JOB
   # ==========================================================================
-  # Deploys to production environment (townofwiley.gov)
+  # Deploys to production environment using GitHub Pages
   # Only runs on main branch after all QA tests pass
   # ==========================================================================
   deploy-production:
@@ -191,21 +199,32 @@ jobs:
     if: github.ref == 'refs/heads/main'  # Only deploy from main branch
     needs: [accessibility-test, html-css-validation]  # Only require core QA jobs
     
+    # Concurrency group to prevent multiple deployments
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full history for proper deployment
           
-      - name: Deploy to GitHub Pages (Production)
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./                    # Deploy entire repository
-          # cname: townofwiley.gov            # Custom domain configuration (disabled for troubleshooting)
-          force_orphan: true                 # Create orphan gh-pages branch
-          enable_jekyll: false               # Disable Jekyll processing
-          exclude_assets: '.github,docs,scripts,node_modules'  # Exclude unnecessary files
+          path: '.'  # Upload entire repository root
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
   # ==========================================================================
   # PERFORMANCE TESTING JOB
   # ==========================================================================
