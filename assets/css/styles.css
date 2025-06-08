@@ -10,12 +10,12 @@
     --success-color: #65a30d; /* lime-600 */
     --warning-color: #f59e0b; /* amber-500 */
     --error-color: #dc2626;
-    --text-primary: #1a1a1a;
+    --text-primary: #1f2937; /* Darker text for better contrast */
     --text-secondary: #78350f; /* amber-900 */
     --background-light: #fffbeb; /* amber-50 */
     --border-color: #fbbf24; /* amber-400 */
     --light-gray: #fef3c7; /* amber-100 */
-    --muted-color: #9ca3af;
+    --muted-color: #6b7280; /* Darker for better contrast */
     --danger-bg: #fee2e2;
     --danger-color: #dc2626;
 }
@@ -174,8 +174,8 @@
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    color: #1a1a1a; /* Updated for better contrast */
-    background-color: #fffbeb; /* amber-50 - very subtle amber background */
+    color: #1f2937; /* Darker text for better contrast */
+    background-color: #ffffff; /* Pure white background for better contrast */
 }
 
 .container {
@@ -1723,6 +1723,60 @@ main {
     h2 {
         font-size: 1.5rem;
     }
+}
+
+/* Content Width and Responsive Fixes */
+.main-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+/* Ensure all content is properly contained */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Table responsiveness */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    min-width: 100%;
+}
+
+/* Image responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Accessibility */

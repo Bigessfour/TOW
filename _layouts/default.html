@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; connect-src 'self'; img-src 'self' data:;">
+    
+    <!-- Primary Meta Tags -->
+    {% if page.description %}
+        <meta name="description" content="{{ page.description }}">
+    {% elsif site.description %}
+        <meta name="description" content="{{ site.description }}">
+    {% else %}
+        <meta name="description" content="Town of Wiley - Down Wiley Way, It's Kids and Hay. Serving our rural community with pride and dedication.">
+    {% endif %}
+    
+    <!-- Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; connect-src 'self'; img-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
     
     {% seo %}
     
-    <meta name="theme-color" content="#2c5aa0">
+    <meta name="theme-color" content="#92400e">
     <meta name="author" content="{{ site.author }}">
-    
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+      <!-- Preload critical CSS -->
+    <link rel="preload" href="{{ '/assets/css/styles{% if jekyll.environment == 'production' %}.min{% endif %}.css' | relative_url }}" as="style">
+    <link rel="stylesheet" href="{{ '/assets/css/styles{% if jekyll.environment == 'production' %}.min{% endif %}.css' | relative_url }}">
     <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts with display=swap for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
     
     <!-- Modernizr for feature detection -->
-    <script src="{{ '/assets/js/modernizr-custom.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/modernizr-custom{% if jekyll.environment == 'production' %}.min{% endif %}.js' | relative_url }}"></script>
     
     {% if page.title %}
         <title>{{ page.title }} | {{ site.title }}</title>
@@ -88,10 +100,23 @@
                 </div>
             </form>
         </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+    </div>    <!-- Scripts -->
+    <script src="{{ '/assets/js/script{% if jekyll.environment == 'production' %}.min{% endif %}.js' | relative_url }}"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
     
     {% if jekyll.environment == 'production' %}
         <!-- Analytics or other production scripts would go here -->

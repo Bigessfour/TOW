@@ -65,18 +65,16 @@ keywords: "Town of Wiley, government, services, utilities, permits, meetings, ac
             <h2 id="news-preview-heading" class="section-title">Latest News</h2>
             <div class="news-grid">
                 {% for post in site.posts limit:3 %}
-                <article class="news-item">
-                    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <article class="news-item">                    <h3><a href="{{ post.url | relative_url }}" aria-label="Read full article: {{ post.title }}">{{ post.title }}</a></h3>
                     <time datetime="{{ post.date | date_to_xmlschema }}" class="news-date">
                         {{ post.date | date: "%B %d, %Y" }}
                     </time>
                     <p>{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-                    <a href="{{ post.url | relative_url }}" class="read-more">Read more</a>
+                    <a href="{{ post.url | relative_url }}" class="read-more" aria-label="Read full article about {{ post.title }}">Read more about {{ post.title | truncatewords: 5 }}</a>
                 </article>
                 {% endfor %}
-            </div>
-            <div class="text-center mt-6">
-                <a href="{{ '/news/' | relative_url }}" class="btn btn-outline">View All News</a>
+            </div>            <div class="text-center mt-6">
+                <a href="{{ '/news/' | relative_url }}" class="btn btn-outline" aria-label="View all news and announcements from the Town of Wiley">View All News</a>
             </div>
         </div>
     </section>

@@ -1,8 +1,8 @@
 <!-- Government Banner -->
-<div class="gov-banner bg-amber-900 text-amber-100">
+<div class="gov-banner bg-amber-900 text-amber-50">
     <div class="container mx-auto">
         <div class="gov-banner-content py-2 text-center">
-            <span class="gov-banner-text text-sm">
+            <span class="gov-banner-text text-sm font-medium">
                 <strong>Official Website</strong> of the Town of Wiley Government
             </span>
         </div>
@@ -15,14 +15,14 @@
         <!-- Main Header -->
         <div class="flex justify-between items-center py-4">
             <div class="flex items-center gap-4">
-                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Town of Wiley Logo" class="h-16 w-auto">
+                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Town of Wiley Logo" class="h-16 w-auto" width="64" height="64">
                 <div class="logo-text">
                     <h1 class="text-2xl font-bold mb-1">
-                        <a href="{{ '/' | relative_url }}" class="text-white no-underline hover:text-amber-200 transition-colors">
+                        <a href="{{ '/' | relative_url }}" class="text-white no-underline hover:text-amber-100 transition-colors">
                             Town of Wiley
                         </a>
                     </h1>
-                    <p class="text-amber-200 text-sm font-medium mb-0">Down Wiley Way, It's Kids and Hay</p>
+                    <p class="text-amber-100 text-sm font-medium mb-0">Down Wiley Way, It's Kids and Hay</p>
                 </div>
             </div>
             
@@ -31,14 +31,15 @@
                 <form class="search-form flex items-center" role="search" aria-label="Site search">
                     <label for="site-search" class="sr-only">Search website</label>
                     <input type="search" id="site-search" name="search" placeholder="Search services..." 
-                           class="px-3 py-2 rounded-l border-amber-700 text-gray-800 focus:ring-2 focus:ring-amber-500" 
+                           class="px-3 py-2 rounded-l border-amber-700 text-gray-900 bg-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500" 
                            aria-describedby="search-help">
                     <button type="submit" aria-label="Submit search" 
                             class="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-r transition-colors">
                         <span aria-hidden="true">🔍</span>
                     </button>
-                <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
-            </form>
+                    <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
+                </form>
+            </div>
         </div>
     </div>
 </header>

@@ -2,6 +2,60 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Setup Jekyll Environment",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-ExecutionPolicy", "Bypass", 
+				"-File", "${workspaceFolder}\\setup-jekyll.ps1"
+			],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Jekyll Site",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-Command",
+				"$env:PATH = 'C:\\Ruby31-x64\\bin;' + $env:PATH; bundle exec jekyll build"
+			],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Town Development Server",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-Command",
+				"$env:PATH = 'C:\\Ruby31-x64\\bin;' + $env:PATH; bundle exec jekyll build; if ($LASTEXITCODE -eq 0) { node -e \"const http = require('http'); const fs = require('fs'); const path = require('path'); const server = http.createServer((req, res) => { let filePath = path.join('_site', req.url === '/' ? 'index.html' : req.url); fs.readFile(filePath, (err, data) => { if (err) { res.writeHead(404); res.end('Not found'); } else { const ext = path.extname(filePath); const contentType = ext === '.css' ? 'text/css' : ext === '.js' ? 'application/javascript' : 'text/html'; res.writeHead(200, {'Content-Type': contentType}); res.end(data); } }); }); server.listen(8080, () => { console.log('Server running on http://localhost:8080'); console.log('Server is ready and listening'); });\" }"
+			],
+			"group": "build",
+			"isBackground": true,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		},
+		{
 			"label": "Open Town Website",
 			"type": "shell",
 			"command": "start",
