@@ -151,7 +151,7 @@ a:hover, a:focus {
 
 /* Header */
 .header {
-    background-color: #1a1a1a;
+    background-color: #4CAF50;
     color: #fff;
     padding: 1rem 0;
     position: fixed;
@@ -169,7 +169,7 @@ a:hover, a:focus {
 
 .logo h1 {
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 0;
 }
 
