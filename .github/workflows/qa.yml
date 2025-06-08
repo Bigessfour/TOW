@@ -198,11 +198,14 @@ jobs:
           fetch-depth: 0  # Fetch full history for proper deployment
           
       - name: Deploy to GitHub Pages (Production)
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./                    # Deploy entire repository
-          cname: townofwiley.gov            # Custom domain configuration
+          # cname: townofwiley.gov            # Custom domain configuration (disabled for troubleshooting)
+          force_orphan: true                 # Create orphan gh-pages branch
+          enable_jekyll: false               # Disable Jekyll processing
+          exclude_assets: '.github,docs,scripts,node_modules'  # Exclude unnecessary files
   # ==========================================================================
   # PERFORMANCE TESTING JOB
   # ==========================================================================
