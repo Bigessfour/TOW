@@ -252,22 +252,44 @@ jobs:
         run: |
           # Start Python HTTP server in background
           python3 -m http.server 8080 &
-          # Wait for server to be ready
-          sleep 10
+          SERVER_PID=$!
+          echo "Started server with PID: $SERVER_PID"
+          
+          # Wait for server to be ready with better error handling
+          echo "Waiting for server to start..."
+          sleep 5
+          
           # Verify server is responding with retries
-          for i in {1..5}; do
-            if curl -I http://localhost:8080; then
-              echo "Server is ready"
+          for i in {1..10}; do
+            if curl -f -s http://localhost:8080/ > /dev/null; then
+              echo "✅ Server is ready and responding"
               break
             else
-              echo "Waiting for server... attempt $i"
-              sleep 5
+              echo "⏳ Waiting for server... attempt $i/10"
+              sleep 3
+            fi
+            if [ $i -eq 10 ]; then
+              echo "❌ Server failed to start properly"
+              ps aux | grep python
+              netstat -tlnp | grep 8080 || true
+              exit 1
             fi
           done
           
       - name: Run Lighthouse CI performance audit
         run: |
-          lhci autorun --upload.target=temporary-public-storage || echo "Performance audit completed with warnings"
+          echo "🔍 Starting Lighthouse CI performance audit..."
+          echo "Testing URL: http://localhost:8080/"
+          
+          # Verify the URL is accessible before running Lighthouse
+          curl -f http://localhost:8080/ || (echo "❌ Server not accessible" && exit 1)
+          
+          # Run Lighthouse CI with detailed output
+          lhci autorun --upload.target=temporary-public-storage --config=lighthouserc.json || {
+            echo "⚠️ Lighthouse CI completed with warnings or threshold violations"
+            echo "This is not necessarily an error - check the reports for details"
+            exit 0
+          }
         continue-on-error: true
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -279,3 +301,10 @@ jobs:
           name: lighthouse-report
           path: .lighthouseci/
           retention-days: 30  # Keep reports for 30 days
+          
+      - name: Cleanup server process
+        if: always()  # Always run cleanup
+        run: |
+          # Kill any remaining Python HTTP server processes
+          pkill -f "python3 -m http.server" || true
+          echo "✅ Server cleanup completed"
