@@ -2,131 +2,33 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Setup Jekyll Environment",
-			"type": "shell",
-			"command": "powershell",
-			"args": [
-				"-ExecutionPolicy", "Bypass", 
-				"-File", "${workspaceFolder}\\setup-jekyll.ps1"
-			],
-			"group": "build",
-			"isBackground": false,
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			},
-			"problemMatcher": []
-		},
-		{
 			"label": "Build Jekyll Site",
 			"type": "shell",
-			"command": "powershell",
-			"args": [
-				"-Command",
-				"$env:PATH = 'C:\\Ruby31-x64\\bin;' + $env:PATH; bundle exec jekyll build"
-			],
-			"group": "build",
-			"isBackground": false,
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
+			"command": "bundle exec jekyll build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
 			},
 			"problemMatcher": []
 		},
 		{
-			"label": "Start Town Development Server",
+			"label": "Start Development Server",
 			"type": "shell",
-			"command": "powershell",
-			"args": [
-				"-Command",
-				"$env:PATH = 'C:\\Ruby31-x64\\bin;' + $env:PATH; bundle exec jekyll build; if ($LASTEXITCODE -eq 0) { node -e \"const http = require('http'); const fs = require('fs'); const path = require('path'); const server = http.createServer((req, res) => { let filePath = path.join('_site', req.url === '/' ? 'index.html' : req.url); fs.readFile(filePath, (err, data) => { if (err) { res.writeHead(404); res.end('Not found'); } else { const ext = path.extname(filePath); const contentType = ext === '.css' ? 'text/css' : ext === '.js' ? 'application/javascript' : 'text/html'; res.writeHead(200, {'Content-Type': contentType}); res.end(data); } }); }); server.listen(8080, () => { console.log('Server running on http://localhost:8080'); console.log('Server is ready and listening'); });\" }"
-			],
-			"group": "build",
+			"command": "bundle exec jekyll serve --livereload",
 			"isBackground": true,
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			},
 			"problemMatcher": []
 		},
 		{
-			"label": "Open Town Website",
+			"label": "Fix Setup Issues",
 			"type": "shell",
-			"command": "start",
-			"args": [
-				"index.html"
-			],
-			"group": "build",
-			"isBackground": false,
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			},
+			"command": "powershell -ExecutionPolicy Bypass -File fix-all-issues.ps1",
 			"problemMatcher": []
 		},
 		{
-			"label": "Start Live Server",
+			"label": "Quick Python Server",
 			"type": "shell",
-			"command": "npx",
-			"args": [
-				"live-server",
-				"--port=5500",
-				"--open=/index.html"
-			],
-			"group": "build",
+			"command": "cd _site && python -m http.server 8000",
 			"isBackground": true,
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			},
-			"problemMatcher": [],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			}
-		},
-		{
-			"label": "Start Chrome with Debug Port",
-			"type": "shell",
-			"command": "powershell",
-			"args": [
-				"-Command",
-				"Start-Process chrome -ArgumentList '--remote-debugging-port=9222', '--new-window', '--user-data-dir=${workspaceFolder}\\.vscode\\chrome-debug-profile', 'file://${workspaceFolder}\\index.html'"
-			],
-			"group": "build",
-			"isBackground": false,
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			},
-			"problemMatcher": []
-		},
-		{
-			"label": "Validate HTML",
-			"type": "shell",
-			"command": "npx",
-			"args": [
-				"html-validate",
-				"index.html"
-			],
-			"group": "test",
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			},
 			"problemMatcher": []
 		}
 	]

@@ -29,7 +29,7 @@ Saturday: 9:00 AM - 12:00 PM
 
 ## Send us a Message
 
-<form class="form" id="contactForm" novalidate>
+<form class="form" id="contactForm" novalidate action="/contact" method="POST">
     <div class="form-group">
         <label for="name">Full Name <span class="required">*</span></label>
         <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false">

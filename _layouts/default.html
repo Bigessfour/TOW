@@ -21,8 +21,13 @@
     <meta name="theme-color" content="#92400e">
     <meta name="author" content="{{ site.author }}">
       <!-- Preload critical CSS -->
-    <link rel="preload" href="{{ '/assets/css/styles{% if jekyll.environment == 'production' %}.min{% endif %}.css' | relative_url }}" as="style">
-    <link rel="stylesheet" href="{{ '/assets/css/styles{% if jekyll.environment == 'production' %}.min{% endif %}.css' | relative_url }}">
+    {% if jekyll.environment == 'production' %}
+      {% assign styles_file = '/assets/css/styles.min.css' %}
+    {% else %}
+      {% assign styles_file = '/assets/css/styles.css' %}
+    {% endif %}
+    <link rel="preload" href="{{ styles_file | relative_url }}" as="style">
+    <link rel="stylesheet" href="{{ styles_file | relative_url }}">
     <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
     
     <!-- Google Fonts with display=swap for better performance -->
@@ -34,13 +39,19 @@
     <script src="https://cdn.tailwindcss.com" defer></script>
     
     <!-- Modernizr for feature detection -->
-    <script src="{{ '/assets/js/modernizr-custom{% if jekyll.environment == 'production' %}.min{% endif %}.js' | relative_url }}"></script>
+    {% if jekyll.environment == 'production' %}
+      {% assign modernizr_file = '/assets/js/modernizr-custom.min.js' %}
+    {% else %}
+      {% assign modernizr_file = '/assets/js/modernizr-custom.js' %}
+    {% endif %}
+    <script src="{{ modernizr_file | relative_url }}"></script>
     
     {% if page.title %}
         <title>{{ page.title }} | {{ site.title }}</title>
     {% else %}
         <title>{{ site.title }} - {{ site.description }}</title>
     {% endif %}
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
 </head>
 <body>    <!-- Skip to Content Link for Screen Readers -->
     <a class="skip-link" href="#main-content">Skip to main content</a>    {% include header.html %}{% include navigation.html %}
@@ -101,7 +112,12 @@
             </form>
         </div>
     </div>    <!-- Scripts -->
-    <script src="{{ '/assets/js/script{% if jekyll.environment == 'production' %}.min{% endif %}.js' | relative_url }}"></script>
+    {% if jekyll.environment == 'production' %}
+      {% assign script_file = '/assets/js/script.min.js' %}
+    {% else %}
+      {% assign script_file = '/assets/js/script.js' %}
+    {% endif %}
+    <script src="{{ script_file | relative_url }}"></script>
     
     <!-- Service Worker Registration -->
     <script>

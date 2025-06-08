@@ -11,41 +11,24 @@
                 <span class="hamburger-line bg-white"></span>
                 <span class="hamburger-line bg-white"></span>
             </button>            <!-- Navigation menu -->
-            <ul class="nav-menu flex flex-col md:flex-row" id="nav-menu" role="menubar">
+            <ul class="nav-menu flex flex-col md:flex-row items-center w-full" id="nav-menu" role="menubar">
                 <li role="none" class="nav-item">
-                    <a href="{{ '/' | relative_url }}" 
-                       class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium {% if page.url == '/' %}bg-amber-800{% endif %}" 
-                       role="menuitem" 
-                       aria-current="{% if page.url == '/' %}page{% endif %}">Home</a>
+                    <a href="{{ '/' | relative_url }}" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium focus:outline-none focus:ring-2 focus:ring-amber-400 {% if page.url == '/' %}bg-amber-900{% endif %}" role="menuitem" aria-current="{% if page.url == '/' %}page{% endif %}">Home</a>
                 </li>
                 <li role="none" class="nav-item">
-                    <a href="{{ '/services/' | relative_url }}" 
-                       class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium {% if page.url == '/services/' %}bg-amber-800{% endif %}" 
-                       role="menuitem" 
-                       aria-current="{% if page.url == '/services/' %}page{% endif %}">Services</a>
+                    <a href="{{ '/services/' | relative_url }}" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium focus:outline-none focus:ring-2 focus:ring-amber-400 {% if page.url == '/services/' %}bg-amber-900{% endif %}" role="menuitem" aria-current="{% if page.url == '/services/' %}page{% endif %}">Services</a>
                 </li>
                 <li role="none" class="nav-item">
-                    <a href="{{ '/government/' | relative_url }}" 
-                       class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium {% if page.url == '/government/' %}bg-amber-800{% endif %}" 
-                       role="menuitem" 
-                       aria-current="{% if page.url == '/government/' %}page{% endif %}">Government</a>
+                    <a href="{{ '/government/' | relative_url }}" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium focus:outline-none focus:ring-2 focus:ring-amber-400 {% if page.url == '/government/' %}bg-amber-900{% endif %}" role="menuitem" aria-current="{% if page.url == '/government/' %}page{% endif %}">Government</a>
                 </li>
                 <li role="none" class="nav-item">
-                    <a href="{{ '/news/' | relative_url }}" 
-                       class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium {% if page.url contains '/news/' or layout == 'post' %}bg-amber-800{% endif %}" 
-                       role="menuitem" 
-                       aria-current="{% if page.url contains '/news/' or layout == 'post' %}page{% endif %}">News</a>
+                    <a href="{{ '/news/' | relative_url }}" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium focus:outline-none focus:ring-2 focus:ring-amber-400 {% if page.url contains '/news/' or layout == 'post' %}bg-amber-900{% endif %}" role="menuitem" aria-current="{% if page.url contains '/news/' or layout == 'post' %}page{% endif %}">News</a>
                 </li>
                 <li role="none" class="nav-item">
-                    <a href="{{ '/contact/' | relative_url }}" 
-                       class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium {% if page.url == '/contact/' %}bg-amber-800{% endif %}" 
-                       role="menuitem" 
-                       aria-current="{% if page.url == '/contact/' %}page{% endif %}">Contact</a>
+                    <a href="{{ '/contact/' | relative_url }}" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium focus:outline-none focus:ring-2 focus:ring-amber-400 {% if page.url == '/contact/' %}bg-amber-900{% endif %}" role="menuitem" aria-current="{% if page.url == '/contact/' %}page{% endif %}">Contact</a>
                 </li>
                 <li class="nav-cta md:ml-auto" role="none">
-                    <a href="{{ '/payments/' | relative_url }}" 
-                       class="btn bg-white text-amber-900 hover:bg-amber-50 hover:text-amber-900 font-bold px-5 py-2 rounded-md shadow-sm m-3 inline-block transition-colors" 
-                       role="menuitem">Pay Online</a>
+                    <a href="{{ '/payments/' | relative_url }}" class="btn bg-white text-amber-900 hover:bg-amber-50 hover:text-amber-900 font-bold px-5 py-2 rounded-md shadow-sm m-3 inline-block transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400" role="menuitem">Pay Online</a>
                 </li>
             </ul>
         </div>

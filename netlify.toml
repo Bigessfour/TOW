@@ -1,0 +1,5 @@
+[build]
+  command = "jekyll build && npm install"
+  publish = "_site"
+[functions]
+  directory = "functions"

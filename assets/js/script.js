@@ -222,9 +222,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
+            const header = document.querySelector('.header');
+            const headerHeight = header ? header.offsetHeight : 0;
             const targetPosition = target.offsetTop - headerHeight - 20;
-            
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
@@ -510,15 +510,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Header scroll effect
+// Header scroll effect (best practice: guard for null and match actual header selector)
 window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
+    // Try to select the header by tag (first <header> element)
+    const header = document.querySelector('header');
+    if (!header) return;
     if (window.scrollY > 50) {
         header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
         header.style.backdropFilter = 'blur(10px)';
     } else {
-        header.style.backgroundColor = '#2c3e50';
-        header.style.backdropFilter = 'none';
+        header.style.backgroundColor = '';
+        header.style.backdropFilter = '';
     }
 });
 
@@ -697,22 +699,36 @@ function showAccessibilityStatement() {
     });
     
     function closeModal() {
-        document.body.removeChild(modal);
+        try {
+            if (modal && modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+        } catch (err) {
+            console.error('Accessibility modal close error:', err);
+        }
         // Return focus to the link that opened the modal
         const accessibilityLink = document.querySelector('a[href="#accessibility-statement"]');
         if (accessibilityLink) {
             accessibilityLink.focus();
         }
     }
-    
+
     closeButton.addEventListener('click', closeModal);
-    
+
     // Close on backdrop click
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
         }
     });
+
+    // Extra: Defensive - forcibly close modal if stuck after 10s
+    setTimeout(() => {
+        if (document.body.contains(modal)) {
+            closeModal();
+            console.warn('Accessibility modal forcibly closed after timeout.');
+        }
+    }, 10000);
 }
 
 // Enhanced accessibility improvements
@@ -1270,71 +1286,7 @@ document.addEventListener('DOMContentLoaded', function() {
         declineNonEssentialBtn.addEventListener('click', declineNonEssential);
     }
     
-    // Modal handling
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'flex';
-            modal.setAttribute('aria-hidden', 'false');
-            // Focus the first focusable element in the modal
-            const firstFocusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            if (firstFocusable) {
-                setTimeout(() => firstFocusable.focus(), 100);
-            }
-        }
-    }
-    
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'none';
-            modal.setAttribute('aria-hidden', 'true');
-        }
-    }
-    
-    // Handle modal close buttons
-    document.querySelectorAll('.modal-close').forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            if (modal) {
-                closeModal(modal.id);
-            }
-        });
-    });
-    
-    // Handle modal backdrop clicks
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal(this.id);
-            }
-        });
-    });
-    
-    // Handle keyboard navigation for modals
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const openModal = document.querySelector('.modal[style*="flex"]');
-            if (openModal) {
-                closeModal(openModal.id);
-            }
-        }
-    });
-    
-    // Handle links that open modals
-    document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[href^="#"]');
-        if (link) {
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            // Check if target is a modal
-            if (targetElement && targetElement.classList.contains('modal')) {
-                e.preventDefault();
-                openModal(targetId);
-                return;
-            }
-        }    });
+    // Removed generic modal open/close handlers to ensure only the accessibility modal is opened by script
 });
 
 // Initialize debug logging at page load
