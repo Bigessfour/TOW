@@ -19,11 +19,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# Collections
-collections:
-  pages:
-    output: true
-    permalink: /:name/
+# Collections - removed pages collection to avoid conflicts with _pages directory
 
 # Front Matter Defaults
 defaults:
@@ -34,10 +30,11 @@ defaults:
       layout: "post"
       author: "Town of Wiley Government"
   - scope:
-      path: ""
+      path: "_pages"
       type: "pages"
     values:
       layout: "page"
+      permalink: /:basename/
 
 # Exclude from processing
 exclude:

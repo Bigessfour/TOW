@@ -1,0 +1,79 @@
+name: Content Monitoring
+
+on:
+  schedule:
+    # Check for broken links and content issues daily at 6 AM
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  content-health-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Ruby for Jekyll
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    
+    - name: Build site
+      run: bundle exec jekyll build
+    
+    - name: Check for broken links
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        use-verbose-mode: 'yes'
+        config-file: '.github/mlc_config.json'
+    
+    - name: Spell check content
+      uses: rojopolis/spellcheck-github-actions@0.35.0
+      with:
+        config_path: '.github/spellcheck-settings.yml'
+        task_name: Markdown
+    
+    - name: Check for accessibility issues
+      run: |
+        cd _site
+        python -m http.server 8000 &
+        sleep 5
+        npx pa11y-ci --sitemap http://localhost:8000/sitemap.xml --reporter json > accessibility-report.json
+    
+    - name: Upload accessibility report
+      uses: actions/upload-artifact@v4
+      with:
+        name: accessibility-report
+        path: accessibility-report.json
+    
+    - name: Create issue if problems found
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const title = `Content Health Check Failed - ${new Date().toISOString().split('T')[0]}`;
+          const body = `
+          ## Content Health Check Results
+          
+          The automated content health check has detected issues with the website.
+          
+          **Timestamp:** ${new Date().toISOString()}
+          **Workflow:** ${context.workflow}
+          **Run:** ${context.runNumber}
+          
+          Please review the workflow logs and artifacts for detailed information about:
+          - Broken links
+          - Spelling errors  
+          - Accessibility issues
+          
+          **Action Required:** Please address these issues to maintain website quality and compliance.
+          `;
+          
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            body: body,
+            labels: ['bug', 'content', 'automated']
+          });

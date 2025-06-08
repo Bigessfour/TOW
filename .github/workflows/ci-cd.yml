@@ -1,0 +1,209 @@
+name: CI/CD Pipeline for Town of Wiley Website
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run security scans weekly on Sundays at 2 AM
+    - cron: '0 2 * * 0'
+
+jobs:
+  # Build and Test
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Setup Ruby for Jekyll
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        bundle install
+    
+    - name: Build Tailwind CSS
+      run: npm run css:build:prod
+    
+    - name: Build Jekyll site
+      run: bundle exec jekyll build
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: site-build
+        path: _site/
+
+  # Accessibility Testing
+  accessibility-audit:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: site-build
+        path: _site/
+    
+    - name: Install Pa11y CLI
+      run: npm install -g pa11y-ci
+    
+    - name: Run accessibility tests
+      run: |
+        cd _site
+        python -m http.server 8000 &
+        sleep 5
+        pa11y-ci --sitemap http://localhost:8000/sitemap.xml --standard WCAG2AA
+    
+    - name: Run Axe accessibility tests
+      uses: chax-at/axe-action@v2.7.0
+      with:
+        directory: _site/
+        urls: |
+          /
+          /contact/
+          /services/
+          /government/
+
+  # Security Scanning
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run CodeQL Analysis
+      uses: github/codeql-action/init@v3
+      with:
+        languages: javascript
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+    
+    - name: Run npm audit
+      run: npm audit --audit-level=moderate
+    
+    - name: Security scan with Trivy
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    
+    - name: Upload Trivy scan results
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+  # Performance Testing
+  lighthouse-audit:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: site-build
+        path: _site/
+    
+    - name: Run Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        configPath: './lighthouserc.json'
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+
+  # Link Checking
+  link-checker:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: site-build
+        path: _site/
+    
+    - name: Check internal links
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'yes'
+        folder-path: '_site'
+
+  # HTML Validation
+  html-validation:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: site-build
+        path: _site/
+    
+    - name: Validate HTML
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+      with:
+        root: _site/
+        css: true
+        also-check-css: true
+
+  # Deploy to GitHub Pages
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build-and-test, accessibility-audit, security-scan, lighthouse-audit, link-checker, html-validation]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: site-build
+        path: _site/
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
+    - name: Upload to GitHub Pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: _site/
+    
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

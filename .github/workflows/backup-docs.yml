@@ -1,0 +1,104 @@
+name: Backup and Documentation
+
+on:
+  schedule:
+    # Weekly backup every Sunday at 3 AM
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+jobs:
+  backup-content:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for complete backup
+    
+    - name: Create content backup
+      run: |
+        # Create timestamped backup
+        DATE=$(date +%Y-%m-%d)
+        mkdir -p backups/$DATE
+        
+        # Backup important content
+        cp -r _pages backups/$DATE/
+        cp -r _posts backups/$DATE/
+        cp -r _data backups/$DATE/
+        cp -r assets backups/$DATE/
+        cp _config.yml backups/$DATE/
+        cp package.json backups/$DATE/
+        cp Gemfile backups/$DATE/
+        
+        # Create backup manifest
+        echo "# Town of Wiley Backup - $DATE" > backups/$DATE/README.md
+        echo "Generated: $(date)" >> backups/$DATE/README.md
+        echo "Commit: $GITHUB_SHA" >> backups/$DATE/README.md
+        
+        # List all files in backup
+        find backups/$DATE -type f | sort >> backups/$DATE/file-list.txt
+    
+    - name: Upload backup artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: site-backup-${{ github.run_number }}
+        path: backups/
+        retention-days: 90
+    
+    - name: Generate documentation
+      run: |
+        # Auto-generate API documentation
+        echo "# Town of Wiley Website Documentation" > AUTO_DOCS.md
+        echo "Generated: $(date)" >> AUTO_DOCS.md
+        echo "" >> AUTO_DOCS.md
+        
+        echo "## File Structure" >> AUTO_DOCS.md
+        tree -I 'node_modules|_site|.git|vendor|.bundle' >> AUTO_DOCS.md
+        
+        echo "## Dependencies" >> AUTO_DOCS.md
+        echo "### NPM Packages" >> AUTO_DOCS.md
+        npm list --depth=0 >> AUTO_DOCS.md
+        
+        echo "### Ruby Gems" >> AUTO_DOCS.md
+        bundle list >> AUTO_DOCS.md
+        
+        echo "## Recent Changes" >> AUTO_DOCS.md
+        git log --oneline -10 >> AUTO_DOCS.md
+    
+    - name: Update documentation
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: 'docs: auto-update documentation and backup metadata'
+        file_pattern: 'AUTO_DOCS.md backups/'
+
+  generate-reports:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Generate analytics report
+      run: |
+        # Create monthly analytics report
+        MONTH=$(date +%Y-%m)
+        mkdir -p reports/$MONTH
+        
+        echo "# Town of Wiley Analytics Report - $MONTH" > reports/$MONTH/analytics.md
+        echo "Generated: $(date)" >> reports/$MONTH/analytics.md
+        echo "" >> reports/$MONTH/analytics.md
+        
+        # Git statistics
+        echo "## Development Activity" >> reports/$MONTH/analytics.md
+        echo "### Commits this month:" >> reports/$MONTH/analytics.md
+        git log --since="1 month ago" --oneline | wc -l >> reports/$MONTH/analytics.md
+        
+        echo "### Contributors:" >> reports/$MONTH/analytics.md
+        git shortlog -sn --since="1 month ago" >> reports/$MONTH/analytics.md
+        
+        # File changes
+        echo "### Most Modified Files:" >> reports/$MONTH/analytics.md
+        git log --since="1 month ago" --name-only --pretty=format: | sort | uniq -c | sort -nr | head -10 >> reports/$MONTH/analytics.md
+    
+    - name: Upload reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: monthly-reports
+        path: reports/

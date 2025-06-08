@@ -3,78 +3,9 @@ layout: default
 title: Home
 permalink: /
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:;">
-    <meta name="description" content="Official website of the Town of Wiley - Your rural community government providing accessible services, programs, and activities to all residents">
-    <meta name="keywords" content="Town of Wiley, government, services, utilities, permits, meetings, accessibility">
-    <meta name="author" content="Town of Wiley Government">
-    <meta name="theme-color" content="#2c5aa0">
-    <title>Town of Wiley - Official Website | Accessible Government Services</title>    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="manifest" href="manifest.json">    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="assets/js/modernizr-custom.js"></script>
-</head>
-<body>
-    <!-- Skip to Content Link for Screen Readers -->
-    <a href="#main-content" class="skip-link focus:outline-none focus:ring-2 focus:ring-yellow-400">Skip to main content</a>
 
-    <!-- Government Identification Banner -->
-    <div class="w-full bg-amber-900 text-amber-50 py-2 text-center text-sm font-medium">
-        <span><strong>Official Website</strong> of the Town of Wiley Government</span>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-amber-800 text-white shadow-lg fixed top-10 w-full z-50">
-      <div class="container mx-auto flex flex-col md:flex-row justify-between items-center py-4">
-        <div class="flex items-center gap-4 mb-2 md:mb-0">
-          <div class="flex items-center justify-center bg-white rounded-full shadow-md p-2 h-20 w-20 md:h-20 md:w-20">
-            <img src="assets/images/logo.png" alt="Town of Wiley Logo" class="h-16 w-16 object-contain" width="64" height="64">
-          </div>
-          <div>
-            <h1 class="text-3xl font-extrabold tracking-tight text-white drop-shadow-lg mb-1">Town of Wiley</h1>
-            <p class="text-amber-100 text-base font-medium mb-0">Community • Service • Progress</p>
-          </div>
-        </div>
-        <div class="hidden md:block flex-1 mx-8">
-          <form class="flex items-center bg-white rounded shadow px-2 py-1" role="search" aria-label="Site search">
-            <label for="site-search" class="sr-only">Search website</label>
-            <input type="search" id="site-search" name="search" placeholder="Search services, documents..." class="px-3 py-2 rounded-l text-gray-900 focus:ring-2 focus:ring-amber-500 focus:border-amber-500" aria-describedby="search-help">
-            <button type="submit" aria-label="Submit search" class="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-r transition-colors">
-              <span aria-hidden="true">🔍</span>
-            </button>
-            <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
-          </form>
-        </div>
-        <nav class="hidden lg:flex">
-          <ul class="flex space-x-2">
-            <li><a href="#home" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors" aria-current="page">Home</a></li>
-            <li><a href="#services" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Services</a></li>
-            <li><a href="#government" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Government</a></li>
-            <li><a href="#news" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">News</a></li>
-            <li><a href="#calendar" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Calendar</a></li>
-            <li><a href="#documents" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Documents</a></li>
-            <li><a href="#payment-portal" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Pay Online</a></li>
-            <li><a href="#business-directory" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Business</a></li>
-            <li><a href="#contact" class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-2 rounded font-medium transition-colors">Contact</a></li>
-          </ul>
-        </nav>
-        <!-- Mobile Hamburger -->
-        <button type="button" class="lg:hidden p-4 text-white" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-          <span class="sr-only">Menu</span>
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </header>
-
-    <!-- Emergency Alerts Banner -->
-    <div id="emergency-alerts" class="emergency-alerts" role="alert" aria-live="assertive" style="display: none">
+<!-- Emergency Alerts Banner -->
+<div id="emergency-alerts" class="emergency-alerts" role="alert" aria-live="assertive" style="display: none">
         <div class="container">
             <div class="alert-content">
                 <span class="alert-icon" aria-hidden="true">⚠️</span>
@@ -134,10 +65,9 @@ permalink: /
                     <p><strong>Last Updated:</strong> <span id="alert-timestamp">No recent alerts</span></p>
                 </div>
             </div>
-        </div>
-    </div>    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
+        </div>    </div>
+
+<!-- Hero Section -->
         <section id="home" class="hero" aria-labelledby="hero-heading">
             <div class="container mx-auto py-16 px-4 text-center bg-gradient-to-br from-amber-50 via-amber-100 to-white rounded-b-3xl shadow-lg mb-8">
               <div class="hero-content max-w-2xl mx-auto">
@@ -1003,5 +933,3 @@ permalink: /
             </div>
         </div>
     </div>    <script src="assets/js/script.js"></script>
-</body>
-</html>
