@@ -98,6 +98,7 @@ jobs:
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         if: always()
+        continue-on-error: true  # Don't fail if upload has issues
         with:
           sarif_file: 'trivy-results.sarif'
   # ==========================================================================
@@ -187,13 +188,15 @@ jobs:
   deploy-production:
     runs-on: ubuntu-latest
     name: Deploy to Production
-    if: github.ref == 'refs/heads/main' && always()  # Deploy even if some QA jobs have warnings
-    needs: [accessibility-test, html-css-validation, security-scan]  # Wait for core QA jobs to complete
+    if: github.ref == 'refs/heads/main'  # Only deploy from main branch
+    needs: [accessibility-test, html-css-validation]  # Only require core QA jobs
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+        with:
+          fetch-depth: 0  # Fetch full history for proper deployment
+          
       - name: Deploy to GitHub Pages (Production)
         uses: peaceiris/actions-gh-pages@v3
         with:
