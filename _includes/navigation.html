@@ -1,52 +1,52 @@
 <!-- Navigation -->
-<nav class="bg-blue-700 shadow-md" role="navigation" aria-label="Main navigation">
+<nav class="bg-amber-700 shadow-md" role="navigation" aria-label="Main navigation">
     <div class="container mx-auto">
         <div class="navigation">
             <!-- Mobile menu button -->
-            <button class="mobile-menu-btn md:hidden" 
+            <button class="mobile-menu-btn md:hidden p-4 text-white" 
                     aria-expanded="false" 
                     aria-controls="nav-menu"
                     aria-label="Toggle navigation menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+                <span class="hamburger-line bg-white"></span>
+                <span class="hamburger-line bg-white"></span>
+                <span class="hamburger-line bg-white"></span>
             </button>
 
             <!-- Navigation menu -->
-            <ul class="nav-menu" id="nav-menu" role="menubar">
-                <li role="none">
+            <ul class="nav-menu flex flex-col md:flex-row" id="nav-menu" role="menubar">
+                <li role="none" class="nav-item">
                     <a href="{{ '/' | relative_url }}" 
-                       class="nav-link {% if page.url == '/' %}active{% endif %}" 
+                       class="nav-link text-white hover:bg-amber-600 px-4 py-3 block md:inline-block {% if page.url == '/' %}bg-amber-800{% endif %}" 
                        role="menuitem" 
                        aria-current="{% if page.url == '/' %}page{% endif %}">Home</a>
                 </li>
-                <li role="none">
+                <li role="none" class="nav-item">
                     <a href="{{ '/services/' | relative_url }}" 
-                       class="nav-link {% if page.url == '/services/' %}active{% endif %}" 
+                       class="nav-link text-white hover:bg-amber-600 px-4 py-3 block md:inline-block {% if page.url == '/services/' %}bg-amber-800{% endif %}" 
                        role="menuitem" 
                        aria-current="{% if page.url == '/services/' %}page{% endif %}">Services</a>
                 </li>
-                <li role="none">
+                <li role="none" class="nav-item">
                     <a href="{{ '/government/' | relative_url }}" 
-                       class="nav-link {% if page.url == '/government/' %}active{% endif %}" 
+                       class="nav-link text-white hover:bg-amber-600 px-4 py-3 block md:inline-block {% if page.url == '/government/' %}bg-amber-800{% endif %}" 
                        role="menuitem" 
                        aria-current="{% if page.url == '/government/' %}page{% endif %}">Government</a>
                 </li>
-                <li role="none">
+                <li role="none" class="nav-item">
                     <a href="{{ '/news/' | relative_url }}" 
-                       class="nav-link {% if page.url contains '/news/' or layout == 'post' %}active{% endif %}" 
+                       class="nav-link text-white hover:bg-amber-600 px-4 py-3 block md:inline-block {% if page.url contains '/news/' or layout == 'post' %}bg-amber-800{% endif %}" 
                        role="menuitem" 
                        aria-current="{% if page.url contains '/news/' or layout == 'post' %}page{% endif %}">News</a>
                 </li>
-                <li role="none">
+                <li role="none" class="nav-item">
                     <a href="{{ '/contact/' | relative_url }}" 
-                       class="nav-link {% if page.url == '/contact/' %}active{% endif %}" 
+                       class="nav-link text-white hover:bg-amber-600 px-4 py-3 block md:inline-block {% if page.url == '/contact/' %}bg-amber-800{% endif %}" 
                        role="menuitem" 
                        aria-current="{% if page.url == '/contact/' %}page{% endif %}">Contact</a>
                 </li>
-                <li class="nav-cta" role="none">
+                <li class="nav-cta md:ml-auto" role="none">
                     <a href="{{ '/payments/' | relative_url }}" 
-                       class="btn btn-secondary" 
+                       class="btn bg-amber-100 text-amber-900 hover:bg-amber-200 font-medium px-5 py-2 rounded-md shadow-sm m-3 inline-block transition-colors" 
                        role="menuitem">Pay Online</a>
                 </li>
             </ul>

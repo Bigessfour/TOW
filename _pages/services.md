@@ -2,33 +2,39 @@
 layout: page
 title: Town Services
 permalink: /services/
-description: "Comprehensive government services for Town of Wiley residents including utilities, public safety, planning, and recreation"
+description: "Comprehensive government services for Town of Wiley residents including farming support, youth programs, utilities, and community resources"
 ---
 
 # Town Services
 
-## Utilities
+<div class="services-banner bg-amber-50 border-l-4 border-amber-700 p-4 mb-8 rounded shadow-sm">
+  <p class="text-amber-900 font-medium">
+    <strong>Down Wiley Way, It's Kids and Hay</strong> - Our services are designed to support our agricultural heritage and family-focused community.
+  </p>
+</div>
+
+## Family & Youth Programs
+- Children's Recreation Programs
+- Summer Farm Camp for Kids
+- Youth Agricultural Education
+- Family Support Services
+
+## Agricultural Services
+- Hay Production Resources
+- Farm Equipment Sharing
+- Agricultural Education & Training
+- Seasonal Farmers Market
+
+## Utilities & Infrastructure
 - Water & Sewer Services
 - Trash & Recycling
-- Street Maintenance
-- Snow Removal
+- Rural Road Maintenance
+- Agricultural Water Management
 
-## Public Safety
-- Police Department
-- Fire Department
-- Emergency Management
-- Animal Control
-
-## Planning & Development
-- Building Permits
-- Zoning Information
-- Business Licenses
-- Code Enforcement
-
-## Recreation
-- Parks & Facilities
-- Community Events
-- Youth Programs
+## Community Resources
+- Town Hall Meeting Space
+- Community Events & Festivals
+- Agricultural Heritage Museum
 - Senior Services
 
 ---
