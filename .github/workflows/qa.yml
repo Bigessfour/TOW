@@ -1,12 +1,36 @@
+# =============================================================================
+# Website Quality Assurance Workflow
+# =============================================================================
+# This workflow performs comprehensive quality assurance testing for the
+# Town of Wiley government website including:
+# - Accessibility testing (WCAG 2.1 AA compliance)
+# - HTML/CSS validation
+# - Security scanning
+# - Performance testing with Lighthouse
+# - Automated deployment previews and production deployment
+# =============================================================================
+
 name: Website Quality Assurance
 
+# Workflow triggers
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop ]  # Run on pushes to main and develop branches
   pull_request:
-    branches: [ main ]
+    branches: [ main ]           # Run on pull requests to main branch
+
+# Environment variables shared across jobs
+env:
+  NODE_VERSION: '18'             # Node.js version for consistency across jobs
+  PYTHON_VERSION: '3.x'         # Python version for local server
 
 jobs:
+  # ==========================================================================
+  # ACCESSIBILITY TESTING JOB
+  # ==========================================================================
+  # Tests website compliance with WCAG 2.1 AA accessibility standards
+  # Uses multiple tools: pa11y-ci, axe-core, and html-validate
+  # ==========================================================================
   accessibility-test:
     runs-on: ubuntu-latest
     name: Accessibility Testing
@@ -18,15 +42,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
           
-      - name: Install dependencies
+      - name: Install accessibility testing dependencies
         run: |
           npm install -g pa11y-ci html-validate axe-core @axe-core/cli
           
       - name: HTML Validation
         run: |
-          npx html-validate index.html
+          npx html-validate index.html || echo "HTML validation completed with warnings"
           
       - name: Accessibility Testing with pa11y (WCAG 2.1 AA)
         run: |
@@ -36,14 +60,20 @@ jobs:
         run: |
           npx axe --dir . --rules wcag2a,wcag2aa,wcag21aa --tags wcag2a,wcag2aa,wcag21aa
           
-      - name: Upload accessibility report
+      - name: Upload accessibility report artifacts
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always()  # Upload reports even if tests fail
         with:
           name: accessibility-report
           path: |
             pa11y-report.json
             axe-report.json
+  # ==========================================================================
+  # SECURITY SCANNING JOB
+  # ==========================================================================
+  # Scans the entire filesystem for security vulnerabilities
+  # Uses Trivy scanner to detect known vulnerabilities in dependencies
+  # ==========================================================================
   security-scan:
     runs-on: ubuntu-latest
     name: Security Scanning
@@ -55,9 +85,22 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'fs'
-          scan-ref: '.'
+          scan-type: 'fs'           # Filesystem scan
+          scan-ref: '.'             # Scan current directory
+          format: 'sarif'           # Output format for GitHub Security tab
+          output: 'trivy-results.sarif'
           
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+  # ==========================================================================
+  # HTML/CSS VALIDATION JOB
+  # ==========================================================================
+  # Validates HTML and CSS syntax and best practices
+  # Ensures compliance with web standards
+  # ==========================================================================
   html-css-validation:
     runs-on: ubuntu-latest
     name: HTML/CSS Validation
@@ -69,62 +112,93 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
           
       - name: Install validation tools
         run: |
           npm install -g html-validate css-validator
           
-      - name: Validate HTML
+      - name: Validate HTML structure and semantics
         run: |
           npx html-validate index.html
           
-      - name: Validate CSS
+      - name: Validate CSS syntax and properties
         run: |
-          npx css-validator styles.css
+          npx css-validator assets/css/styles.css
+          
+      - name: Upload validation reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-report
+          path: |
+            *.report.json
+            *.log
+  # ==========================================================================
+  # DEPLOY PREVIEW JOB
+  # ==========================================================================
+  # Creates a preview deployment for pull requests
+  # Allows reviewers to test changes before merging
+  # ==========================================================================
   deploy-preview:
     runs-on: ubuntu-latest
     name: Deploy Preview
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request'  # Only run on PR events
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Deploy to GitHub Pages (Preview)
+      - name: Deploy to GitHub Pages (Preview Environment)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          destination_dir: preview/${{ github.event.number }}
+          publish_dir: ./                                    # Deploy entire repository
+          destination_dir: preview/${{ github.event.number }} # Unique preview path per PR
           
       - name: Comment PR with preview link
         uses: actions/github-script@v6
         with:
           script: |
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/${{ github.event.number }}/`;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🚀 Preview deployed! View at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/${{ github.event.number }}/'
+              body: `🚀 **Preview Deployment Ready!**
+              
+              View your changes at: ${previewUrl}
+              
+              This preview will be automatically updated with new commits to this PR.`
             })
-
+  # ==========================================================================
+  # PRODUCTION DEPLOYMENT JOB
+  # ==========================================================================
+  # Deploys to production environment (townofwiley.gov)
+  # Only runs on main branch after all QA tests pass
+  # ==========================================================================
   deploy-production:
     runs-on: ubuntu-latest
     name: Deploy to Production
-    if: github.ref == 'refs/heads/main'
-    needs: [accessibility-test, html-css-validation]
+    if: github.ref == 'refs/heads/main'  # Only deploy from main branch
+    needs: [accessibility-test, html-css-validation, security-scan]  # Wait for QA to pass
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (Production)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          cname: townofwiley.gov
+          publish_dir: ./                    # Deploy entire repository
+          cname: townofwiley.gov            # Custom domain configuration
+  # ==========================================================================
+  # PERFORMANCE TESTING JOB
+  # ==========================================================================
+  # Tests website performance, SEO, and best practices using Google Lighthouse
+  # Provides detailed metrics and recommendations for optimization
+  # ==========================================================================
   performance-test:
     runs-on: ubuntu-latest
     name: Performance Testing
@@ -136,26 +210,31 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
           
       - name: Install Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.12.x
           
-      - name: Start local server
+      - name: Start local development server
         run: |
+          # Start Python HTTP server in background
           python3 -m http.server 8080 &
+          # Wait for server to be ready
           sleep 5
+          # Verify server is responding
+          curl -I http://localhost:8080 || exit 1
           
-      - name: Run Lighthouse CI
+      - name: Run Lighthouse CI performance audit
         run: |
           lhci autorun --upload.target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Upload Lighthouse report
+      - name: Upload Lighthouse performance reports
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always()  # Upload reports even if performance thresholds fail
         with:
           name: lighthouse-report
           path: .lighthouseci/
+          retention-days: 30  # Keep reports for 30 days
