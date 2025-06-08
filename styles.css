@@ -9,7 +9,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #1a1a1a; /* Updated for better contrast */
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 .container {
@@ -23,8 +23,8 @@ body {
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #000000;
-    color: #ffffff;
+    background: #000;
+    color: #fff;
     padding: 8px;
     text-decoration: none;
     border-radius: 0 0 4px 4px;
@@ -79,12 +79,12 @@ p {
 
 /* High Contrast Links */
 a {
-    color: #0066cc; /* High contrast blue */
+    color: #06c; /* High contrast blue */
     text-decoration: underline;
 }
 
 a:hover, a:focus {
-    color: #004499;
+    color: #049;
     text-decoration: underline;
 }
 
@@ -106,59 +106,59 @@ a:hover, a:focus {
 }
 
 .btn-primary {
-    background-color: #0066cc;
-    color: #ffffff;
-    border-color: #0066cc;
+    background-color: #06c;
+    color: #fff;
+    border-color: #06c;
 }
 
 .btn-primary:hover, .btn-primary:focus {
-    background-color: #004499;
-    border-color: #004499;
-    color: #ffffff;
+    background-color: #049;
+    border-color: #049;
+    color: #fff;
     text-decoration: none;
-    outline: 3px solid #ffdd00; /* High contrast focus indicator */
+    outline: 3px solid #fd0; /* High contrast focus indicator */
     outline-offset: 2px;
 }
 
 .btn-secondary {
     background-color: #1a1a1a;
-    color: #ffffff;
+    color: #fff;
     border-color: #1a1a1a;
 }
 
 .btn-secondary:hover, .btn-secondary:focus {
     background-color: #2c2c2c;
     border-color: #2c2c2c;
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
-    outline: 3px solid #ffdd00;
+    outline: 3px solid #fd0;
     outline-offset: 2px;
 }
 
 .btn-outline {
     background-color: transparent;
-    color: #0066cc;
-    border: 2px solid #0066cc;
+    color: #06c;
+    border: 2px solid #06c;
 }
 
 .btn-outline:hover, .btn-outline:focus {
-    background-color: #0066cc;
-    color: #ffffff;
+    background-color: #06c;
+    color: #fff;
     text-decoration: none;
-    outline: 3px solid #ffdd00;
+    outline: 3px solid #fd0;
     outline-offset: 2px;
 }
 
 /* Header */
 .header {
     background-color: #1a1a1a;
-    color: #ffffff;
+    color: #fff;
     padding: 1rem 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 30%);
 }
 
 .header-content {
@@ -168,14 +168,14 @@ a:hover, a:focus {
 }
 
 .logo h1 {
-    color: #ffffff;
+    color: #fff;
     font-size: 1.8rem;
     margin-bottom: 0;
 }
 
 .tagline {
     font-size: 0.9rem;
-    color: #cccccc; /* Better contrast */
+    color: #ccc; /* Better contrast */
     margin-bottom: 0;
 }
 
@@ -187,7 +187,7 @@ a:hover, a:focus {
 }
 
 .nav-menu a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: underline;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -196,45 +196,45 @@ a:hover, a:focus {
 }
 
 .nav-menu a:hover, .nav-menu a:focus {
-    color: #ffdd00; /* High contrast hover color */
-    background-color: rgba(255, 221, 0, 0.1);
-    outline: 2px solid #ffdd00;
+    color: #fd0; /* High contrast hover color */
+    background-color: rgb(255 221 0 / 10%);
+    outline: 2px solid #fd0;
     outline-offset: 2px;
 }
 
 .nav-menu a[aria-current="page"] {
-    color: #ffdd00;
-    background-color: rgba(255, 221, 0, 0.1);
+    color: #fd0;
+    background-color: rgb(255 221 0 / 10%);
 }
 
 .nav-toggle {
     display: none;
     flex-direction: column;
     background: none;
-    border: 2px solid #ffffff;
+    border: 2px solid #fff;
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
 }
 
 .nav-toggle:hover, .nav-toggle:focus {
-    border-color: #ffdd00;
-    outline: 2px solid #ffdd00;
+    border-color: #fd0;
+    outline: 2px solid #fd0;
     outline-offset: 2px;
 }
 
 .nav-toggle span {
     width: 25px;
     height: 3px;
-    background-color: #ffffff;
+    background-color: #fff;
     margin: 3px 0;
     transition: 0.3s;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #0066cc 0%, #1a1a1a 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #06c 0%, #1a1a1a 100%);
+    color: #fff;
     padding: 120px 0 80px;
     text-align: center;
 }
@@ -242,7 +242,7 @@ a:hover, a:focus {
 .hero-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: #fff;
 }
 
 .hero-content p {
@@ -251,7 +251,7 @@ a:hover, a:focus {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    color: #ffffff;
+    color: #fff;
 }
 
 .hero-buttons {
@@ -264,7 +264,7 @@ a:hover, a:focus {
 /* Quick Links */
 .quick-links {
     padding: 80px 0;
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 .quick-links-grid {
@@ -279,19 +279,19 @@ a:hover, a:focus {
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 15px rgb(0 0 0 / 15%);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid transparent;
 }
 
 .quick-link-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgb(0 0 0 / 20%);
 }
 
 .quick-link-card:focus-within {
-    border-color: #0066cc;
-    outline: 2px solid #ffdd00;
+    border-color: #06c;
+    outline: 2px solid #fd0;
     outline-offset: 2px;
 }
 
@@ -313,25 +313,25 @@ a:hover, a:focus {
 }
 
 .service-card {
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 15px rgb(0 0 0 / 15%);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid transparent;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgb(0 0 0 / 20%);
 }
 
 .service-card:focus-within {
-    border-color: #0066cc;
+    border-color: #06c;
 }
 
 .service-card h3 {
-    color: #0066cc;
+    color: #06c;
     margin-bottom: 1.5rem;
     border-bottom: 2px solid #e5e5e5;
     padding-bottom: 0.5rem;
@@ -348,7 +348,7 @@ a:hover, a:focus {
     padding-left: 1.5rem;
 }
 
-.service-card li:before {
+.service-card li::before {
     content: "✓";
     color: #008000; /* High contrast green */
     font-weight: bold;
@@ -401,7 +401,7 @@ a:hover, a:focus {
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 15px rgb(0 0 0 / 8%);
     transition: transform 0.3s ease;
 }
 
@@ -496,7 +496,7 @@ a:hover, a:focus {
 .form-group textarea.error,
 .form-group select.error {
     border-color: #e74c3c;
-    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+    box-shadow: 0 0 0 2px rgb(231 76 60 / 20%);
 }
 
 .error-message {
@@ -518,7 +518,7 @@ a:hover, a:focus {
 }
 
 .accessibility-modal [role="dialog"] > div:focus-within {
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 0 0 3px rgb(52 152 219 / 30%);
 }
 
 /* Modal Styles */
@@ -528,7 +528,7 @@ a:hover, a:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(0 0 0 / 50%);
     z-index: 10001;
     display: flex;
     align-items: center;
@@ -543,7 +543,7 @@ a:hover, a:focus {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 20%);
 }
 
 .modal-header {
@@ -693,7 +693,7 @@ a:hover, a:focus {
 }
 
 .alert-message h3 {
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
     font-size: 1.1rem;
 }
 
@@ -715,7 +715,7 @@ a:hover, a:focus {
 
 .alert-close:hover,
 .alert-close:focus {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 20%);
 }
 
 /* Mass Notification Signup */
@@ -741,7 +741,7 @@ a:hover, a:focus {
     background: white;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
 }
 
 .alert-signup-form {
@@ -796,7 +796,7 @@ a:hover, a:focus {
 }
 
 .business-search {
-    margin: 30px 0 40px 0;
+    margin: 30px 0 40px;
     text-align: center;
 }
 
@@ -843,18 +843,18 @@ a:hover, a:focus {
     background: white;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .business-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
 }
 
 .business-card h3 {
     color: #2c3e50;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
     font-size: 1.3rem;
 }
 
@@ -863,12 +863,12 @@ a:hover, a:focus {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
-    margin: 0 0 15px 0;
+    margin: 0 0 15px;
 }
 
 .business-description {
     color: #5a6c7d;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
     line-height: 1.5;
 }
 
@@ -905,13 +905,13 @@ a:hover, a:focus {
 
 .privacy-overview h3 {
     color: #2c3e50;
-    margin: 30px 0 15px 0;
+    margin: 30px 0 15px;
     font-size: 1.4rem;
 }
 
 .privacy-overview h4 {
     color: #34495e;
-    margin: 25px 0 10px 0;
+    margin: 25px 0 10px;
     font-size: 1.1rem;
 }
 
@@ -934,7 +934,7 @@ a:hover, a:focus {
 }
 
 .cookie-preferences h5 {
-    margin: 0 0 15px 0;
+    margin: 0 0 15px;
     color: #2c3e50;
 }
 
@@ -988,7 +988,7 @@ a:hover, a:focus {
 
 .cookie-toggle input:disabled + .toggle-slider {
     background: #95a5a6;
-    opacity: 0.7;
+    opacity: 70%;
 }
 
 .policy-updated {
@@ -1009,17 +1009,17 @@ a:hover, a:focus {
     color: white;
     padding: 20px;
     z-index: 10000;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -2px 10px rgb(0 0 0 / 20%);
 }
 
 .cookie-consent h3 {
     color: #fefeff; /* Ensure high contrast for cookie title */
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
     font-size: 1.1rem;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .nav-menu {
         display: none;
         flex-direction: column;
@@ -1029,7 +1029,7 @@ a:hover, a:focus {
         width: 100%;
         background-color: #2c3e50;
         padding: 1rem 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
     }
 
     .nav-menu.active {
@@ -1118,7 +1118,7 @@ a:hover, a:focus {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .container {
         padding: 0 15px;
     }
@@ -1145,17 +1145,7 @@ a:hover, a:focus {
 }
 
 /* Accessibility */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
+
 
 /* Focus styles for accessibility */
 button:focus,
@@ -1175,11 +1165,11 @@ html {
 /* Loading animation */
 @keyframes fadeInUp {
     from {
-        opacity: 0;
+        opacity: 0%;
         transform: translateY(30px);
     }
     to {
-        opacity: 1;
+        opacity: 100%;
         transform: translateY(0);
     }
 }
@@ -1223,19 +1213,7 @@ html {
 }
 
 /* Screen Reader Mode */
-.screen-reader-mode .sr-only {
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 5px !important;
-    margin: 5px !important;
-    overflow: visible !important;
-    clip: auto !important;
-    white-space: normal !important;
-    border: 1px solid #ddd !important;
-    background: #f9f9f9 !important;
-    font-size: 0.9rem !important;
-}
+.screen-reader-mode 
 
 /* Print Styles */
 @media print {
@@ -1271,7 +1249,7 @@ html {
         color: black;
     }
     
-    a[href^="http"]:after {
+    a[href^="http"]::after {
         content: " (" attr(href) ")";
         font-size: 10pt;
         color: #4a4a4a;
