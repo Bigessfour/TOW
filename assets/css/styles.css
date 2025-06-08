@@ -4,40 +4,23 @@
 
 /* Custom CSS Variables for Town Branding - Earthy Browns Theme */
 :root {
-    --primary-color: #92400e; /* amber-800 */
-    --secondary-color: #b45309; /* amber-700 */
-    --accent-color: #d97706; /* amber-600 */
-    --success-color: #65a30d; /* lime-600 */
-    --warning-color: #f59e0b; /* amber-500 */
+    --primary-color: #3A5F0B; /* Field Green */
+    --secondary-color: #6B8E23; /* Grass Accent */
+    --accent-color: #E8B923; /* Crop Gold */
+    --success-color: #6B8E23; /* Grass Accent */
+    --warning-color: #E8B923; /* Crop Gold */
     --error-color: #dc2626;
     --text-primary: #1f2937; /* Darker text for better contrast */
-    --text-secondary: #78350f; /* amber-900 */
-    --background-light: #fffbeb; /* amber-50 */
-    --border-color: #fbbf24; /* amber-400 */
-    --light-gray: #fef3c7; /* amber-100 */
-    --muted-color: #6b7280; /* Darker for better contrast */
+    --text-secondary: #3A5F0B; /* Field Green */
+    --background-light: #87CEEB; /* Sky Blue */
+    --border-color: #8B4513; /* Soil Brown */
+    --light-gray: #fef3c7; /* For subtle backgrounds */
+    --muted-color: #6B8E23; /* Grass Accent */
     --danger-bg: #fee2e2;
     --danger-color: #dc2626;
 }
 
-/* Jekyll Navigation Enhancements */
-.nav-link.active {
-    background-color: #92400e; /* amber-800 */
-    color: white;
-}
-
-/* Jekyll Post Styling */
-.post-content {
-    max-width: none;
-    line-height: 1.75;
-    font-size: 1.125rem;
-}
-
-.post-meta {
-    font-size: 0.875rem;
-    color: #78350f; /* amber-900 */
-    margin-bottom: 1rem;
-}
+/* Remove legacy navigation and post styling (use Tailwind classes instead) */
 
 .post-categories .category-tag {
     display: inline-block;
@@ -51,23 +34,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* News Grid for Jekyll Posts */
-.news-grid {
-    display: grid;
-    gap: 1.5rem;
-}
-
-@media (width >= 768px) {
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (width >= 1024px) {
-    .news-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
+/* Remove legacy news grid (use Tailwind grid utilities) */
 
 .news-card {
     background-color: white;
@@ -172,7 +139,7 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', 'Roboto', Arial, sans-serif;
     line-height: 1.6;
     color: #1f2937; /* Darker text for better contrast */
     background-color: #ffffff; /* Pure white background for better contrast */
@@ -254,65 +221,7 @@ a:hover, a:focus {
     text-decoration: underline;
 }
 
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    line-height: 1.2;
-    min-height: 44px; /* Minimum touch target size */
-    min-width: 44px;
-}
-
-.btn-primary {
-    background-color: #06c;
-    color: #fff;
-    border-color: #06c;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-    background-color: #049;
-    border-color: #049;
-    color: #fff;
-    text-decoration: none;
-    outline: 3px solid #fd0; /* High contrast focus indicator */
-    outline-offset: 2px;
-}
-
-.btn-secondary {
-    background-color: #1a1a1a;
-    color: #fff;
-    border-color: #1a1a1a;
-}
-
-.btn-secondary:hover, .btn-secondary:focus {
-    background-color: #2c2c2c;
-    border-color: #2c2c2c;
-    color: #fff;
-    text-decoration: none;
-    outline: 3px solid #fd0;
-    outline-offset: 2px;
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: #06c;
-    border: 2px solid #06c;
-}
-
-.btn-outline:hover, .btn-outline:focus {
-    background-color: #06c;
-    color: #fff;
-    text-decoration: none;    outline: 3px solid #fd0;
-    outline-offset: 2px;
-}
+/* Remove legacy button styles (use Tailwind button utilities) */
 
 /* Header - Updated to work with Tailwind */
 
@@ -351,80 +260,48 @@ a:hover, a:focus {
     font-weight: 400;
 }
 
-/* Navigation */
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-menu a {
-    color: #fff;
-    text-decoration: underline;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
-
-.nav-menu a:hover, .nav-menu a:focus {
-    color: #fd0; /* High contrast hover color */
-    background-color: rgb(255 221 0 / 10%);
-    outline: 2px solid #fd0;
-    outline-offset: 2px;
-}
-
-.nav-menu a[aria-current="page"] {
-    color: #fd0;
-    background-color: rgb(255 221 0 / 10%);
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: 2px solid #fff;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 4px;
-}
-
-.nav-toggle:hover, .nav-toggle:focus {
-    border-color: #fd0;
-    outline: 2px solid #fd0;
-    outline-offset: 2px;
-}
-
-.nav-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 3px 0;
-    transition: 0.3s;
-}
+/* Remove legacy navigation styles (use Tailwind flex/grid utilities) */
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #06c 0%, #1a1a1a 100%);
-    color: #fff;
+    background: linear-gradient(135deg, var(--background-light) 0%, #fff 100%);
+    color: var(--primary-color);
     padding: 120px 0 40px; /* Adjusted for new Tailwind header height */
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('/assets/images/hero-farm.jpg') center/cover no-repeat;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.hero-content, .hero-content * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h2 {
-    font-size: 2rem;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 2.5rem;
     margin-bottom: 0.75rem;
-    color: #fff;
-    font-weight: 600;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 1px 1px 8px #fff8, 0 2px 8px #fff8;
 }
 
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
-    color: #fff;
+    color: var(--secondary-color);
     line-height: 1.5;
 }
 
@@ -771,8 +648,8 @@ a:hover, a:focus {
 
 /* Footer */
 .footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: var(--border-color);
+    color: #fff;
     padding: 3rem 0 1rem;
 }
 

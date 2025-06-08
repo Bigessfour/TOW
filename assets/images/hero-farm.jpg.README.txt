@@ -1,0 +1,5 @@
+/*
+  Placeholder royalty-free farm landscape for hero section.
+  Replace with a local Wiley, CO field image if available.
+  Source: unsplash.com/photos/green-grass-field-under-blue-sky-during-daytime-8manzosRGPE
+*/
