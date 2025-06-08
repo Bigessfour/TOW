@@ -153,9 +153,9 @@ a:hover, a:focus {
 .header {
     background-color: #4CAF50;
     color: #fff;
-    padding: 1rem 0;
+    padding: 0.25rem 0;
     position: fixed;
-    top: 0;
+    top: 2.5rem; /* Adjust for government banner */
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 10px rgb(0 0 0 / 30%);
@@ -167,16 +167,30 @@ a:hover, a:focus {
     align-items: center;
 }
 
-.logo h1 {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-image {
+    height: 2.5rem;
+    width: auto;
+    max-width: 2.5rem;
+}
+
+.logo-text h1 {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 0;
+    font-weight: 600;
 }
 
 .tagline {
-    font-size: 0.9rem;
-    color: #ccc; /* Better contrast */
+    font-size: 0.75rem;
+    color: #e8e8e8;
     margin-bottom: 0;
+    font-weight: 400;
 }
 
 /* Navigation */
@@ -235,23 +249,25 @@ a:hover, a:focus {
 .hero {
     background: linear-gradient(135deg, #06c 0%, #1a1a1a 100%);
     color: #fff;
-    padding: 120px 0 80px;
+    padding: 100px 0 40px; /* Increased top padding to account for government banner + header */
     text-align: center;
 }
 
 .hero-content h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
     color: #fff;
+    font-weight: 600;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     color: #fff;
+    line-height: 1.5;
 }
 
 .hero-buttons {
@@ -1018,7 +1034,58 @@ a:hover, a:focus {
     font-size: 1.1rem;
 }
 
-/* Responsive Design */
+/* Government identification banner */
+.gov-banner {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.gov-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.gov-banner-text {
+    color: #495057;
+    margin: 0;
+}
+
+.gov-banner-text strong {
+    color: #1a1a1a;
+}
+
+/* Main content adjustment for compact header */
+main {
+    padding-top: 45px; /* Adjusted for smaller header */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        padding-top: 50px; /* Slightly more space on mobile for nav toggle */
+    }
+    
+    .hero {
+        padding: 40px 0 30px;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
 @media (width <= 768px) {
     .nav-menu {
         display: none;
@@ -1213,7 +1280,9 @@ html {
 }
 
 /* Screen Reader Mode */
-.screen-reader-mode 
+.screen-reader-mode {
+    /* Add screen reader specific styles here */
+}
 
 /* Print Styles */
 @media print {
