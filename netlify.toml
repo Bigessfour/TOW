@@ -1,5 +1,16 @@
 [build]
-  command = "jekyll build && npm install"
+  command = "npm run build:jekyll"
   publish = "_site"
+
 [functions]
   directory = "functions"
+
+# Enable Netlify Identity for CMS authentication
+[identity]
+  settings = {external_providers=["github"], roles=["admin", "editor"]}
+
+# Git Gateway settings for Netlify CMS
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200

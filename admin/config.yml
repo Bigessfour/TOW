@@ -1,11 +1,23 @@
 backend:
   name: git-gateway
-media_folder: "images"
+  branch: main
+media_folder: "assets/images"
+public_folder: "/assets/images"
 collections:
-  - name: "content"
-    label: "Content"
-    folder: "."
+  - name: "pages"
+    label: "Pages"
+    folder: "_pages"
     create: true
+    slug: "{{slug}}.md"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Body", name: "body", widget: "markdown"}
