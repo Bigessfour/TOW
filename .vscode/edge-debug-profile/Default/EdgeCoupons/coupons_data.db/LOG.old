@@ -1,0 +1,5 @@
+2025/06/08-12:36:16.125 42b8 Creating DB C:\Users\biges\Desktop\Town of Wiley\.vscode\edge-debug-profile\Default\EdgeCoupons/coupons_data.db since it was missing.
+2025/06/08-12:36:16.139 42b8 Reusing MANIFEST C:\Users\biges\Desktop\Town of Wiley\.vscode\edge-debug-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2025/06/08-12:36:26.296 1050 Level-0 table #5: started
+2025/06/08-12:36:26.302 1050 Level-0 table #5: 670812 bytes OK
+2025/06/08-12:36:26.303 1050 Delete type=0 #3

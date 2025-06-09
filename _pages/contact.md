@@ -29,16 +29,20 @@ Saturday: 9:00 AM - 12:00 PM
 
 ## Send us a Message
 
-<form class="form" id="contactForm" novalidate action="/contact" method="POST">
-    <div class="form-group">
+<div class="mb-4">
+    <button type="button" onclick="openContactModal()" class="btn bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
+        Open Quick Contact Form
+    </button>
+</div>
+
+<form class="form" id="contactForm" novalidate action="/contact" method="POST"><div class="form-group">
         <label for="name">Full Name <span class="required">*</span></label>
-        <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false">
+        <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error" aria-invalid="false">
         <div id="name-error" class="error-message" aria-live="polite"></div>
     </div>
-    
-    <div class="form-group">
+      <div class="form-group">
         <label for="email">Email Address <span class="required">*</span></label>
-        <input type="email" id="email" name="email" required aria-describedby="email-error" aria-invalid="false">
+        <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error" aria-invalid="false">
         <div id="email-error" class="error-message" aria-live="polite"></div>
     </div>
     

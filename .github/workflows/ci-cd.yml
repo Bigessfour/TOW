@@ -72,10 +72,10 @@ jobs:
         pa11y-ci --sitemap http://localhost:8000/sitemap.xml --standard WCAG2AA
     
     - name: Run Axe accessibility tests
-      uses: chax-at/axe-action@v2.7.0
+      uses: jsdev17/axe-core-action@v1
       with:
-        directory: _site/
-        urls: |
+        folder: _site
+        include: |
           /
           /contact/
           /services/

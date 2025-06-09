@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
+      <!-- Primary Meta Tags -->
     {% if page.description %}
         <meta name="description" content="{{ page.description }}">
     {% elsif site.description %}
         <meta name="description" content="{{ site.description }}">
     {% else %}
-        <meta name="description" content="Town of Wiley - Down Wiley Way, It's Kids and Hay. Serving our rural community with pride and dedication.">
+        <meta name="description" content="Official website of the Town of Wiley - Your rural community government providing accessible services, programs, and activities to all residents">
     {% endif %}
     
     <!-- Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; connect-src 'self'; img-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
     
     {% seo %}
-    
-    <meta name="theme-color" content="#92400e">
-    <meta name="author" content="{{ site.author }}">
+      <meta name="theme-color" content="#92400e">
+    <meta name="author" content="Town of Wiley Government">
       <!-- Preload critical CSS -->
     {% if jekyll.environment == 'production' %}
       {% assign styles_file = '/assets/css/styles.min.css' %}
@@ -80,13 +78,17 @@
                 <a href="{{ '/emergency/' | relative_url }}" class="btn btn-primary">More Information</a>
             </div>
         </div>
-    </div>
-
-    <!-- Contact Form Modal -->
-    <div id="contact-modal" class="modal fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center p-4" role="dialog" aria-labelledby="contact-modal-title">
-        <div class="modal-content bg-white rounded-lg max-w-md w-full p-6 relative max-h-96 overflow-y-auto">
-            <button type="button" class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close contact form">
-                <span aria-hidden="true">&times;</span>
+    </div>    <!-- Contact Form Modal -->
+    <div id="contact-modal" class="modal fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center p-4" role="dialog" aria-labelledby="contact-modal-title" aria-hidden="true">
+        <div class="modal-content bg-white rounded-lg max-w-md w-full p-6 relative max-h-96 overflow-y-auto">            <!-- Enhanced close button with multiple selectors -->
+            <button type="button" 
+                    class="modal-close close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+                    aria-label="Close contact form"
+                    data-dismiss="modal"
+                    data-modal-close="contact"
+                    title="Close">
+                <span aria-hidden="true" class="text-2xl font-bold">&times;</span>
+                <span class="sr-only">Close</span>
             </button>
             <h2 id="contact-modal-title" class="text-xl font-bold mb-4">Quick Contact</h2>
             <form class="form" id="quickContactForm" novalidate>
@@ -104,14 +106,13 @@
                     <label for="quick-message">Message (required):</label>
                     <textarea id="quick-message" name="message" rows="4" required aria-describedby="message-error"></textarea>
                     <div id="message-error" class="error-message" role="alert"></div>
-                </div>
-                <div class="form-actions">
+                </div>                <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Send Message</button>
-                    <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                    <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal" data-modal-close="contact">Cancel</button>
                 </div>
             </form>
         </div>
-    </div>    <!-- Scripts -->
+    </div><!-- Scripts -->
     {% if jekyll.environment == 'production' %}
       {% assign script_file = '/assets/js/script.min.js' %}
     {% else %}
