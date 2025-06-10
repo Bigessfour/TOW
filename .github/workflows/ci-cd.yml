@@ -71,33 +71,33 @@ jobs:
         sleep 5
         pa11y-ci --sitemap http://localhost:8000/sitemap.xml --standard WCAG2AA
     
-    - name: Run Axe accessibility tests
-      uses: jsdev17/axe-core-action@v1
-      with:
-        folder: _site
-        include: |
-          /
-          /contact/
-          /services/
-          /government/
+    # Axe accessibility tests removed: jsdev17/axe-core-action@v1 is unavailable
+    # Pa11y accessibility tests are already included above
+    # Optionally, add more pa11y-ci or axe-core CLI tests here if needed
 
   # Security Scanning
   security-scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Run CodeQL Analysis
       uses: github/codeql-action/init@v3
       with:
         languages: javascript
-    
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-    
+
     - name: Run npm audit
       run: npm audit --audit-level=moderate
-    
+
     - name: Security scan with Trivy
       uses: aquasecurity/trivy-action@master
       with:
@@ -105,7 +105,7 @@ jobs:
         scan-ref: '.'
         format: 'sarif'
         output: 'trivy-results.sarif'
-    
+
     - name: Upload Trivy scan results
       uses: github/codeql-action/upload-sarif@v3
       with:
@@ -133,6 +133,7 @@ jobs:
         configPath: './lighthouserc.json'
         uploadArtifacts: true
         temporaryPublicStorage: true
+        artifactName: 'lighthouse_report'
 
   # Link Checking
   link-checker:

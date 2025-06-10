@@ -632,8 +632,14 @@ function showNotification(message, type = 'info') {
     notification.setAttribute('role', 'alert');
     notification.setAttribute('aria-live', 'polite');
     
+    // Sanitize message to prevent XSS
+    const sanitizeHTML = (input) => {
+        const div = document.createElement('div');
+        div.innerText = input;
+        return div.innerHTML;
+    };
     notification.innerHTML = `
-        <span>${message}</span>
+        <span>${sanitizeHTML(message)}</span>
         <button class="notification-close" aria-label="Close notification">&times;</button>
     `;
     
@@ -661,6 +667,7 @@ function showAccessibilityStatement() {
     modal.setAttribute('aria-labelledby', 'accessibility-title');
     modal.className = 'accessibility-modal';
     
+    // No user input is injected here, but if you ever add dynamic content, sanitize it before insertion.
     modal.innerHTML = `
         <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10001; display: flex; align-items: center; justify-content: center; padding: 20px;">
             <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">
