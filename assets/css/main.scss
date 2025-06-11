@@ -1,0 +1,12 @@
+---
+# Main stylesheet for Town of Wiley
+---
+
+// Custom Town of Wiley variables
+$brand-color: #92400e !default; // amber-700
+$grey-color: #6b7280 !default; // gray-500  
+$text-color: #374151 !default; // gray-700
+$background-color: #ffffff !default;
+
+// Import Minima base styles
+@import "minima";

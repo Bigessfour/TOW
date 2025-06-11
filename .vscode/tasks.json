@@ -4,18 +4,61 @@
     {
       "label": "Build Jekyll Site",
       "type": "shell",
-      "command": "bundle exec jekyll build",
+      "command": "mise",
+      "args": ["exec", "--", "bundle", "exec", "jekyll", "build"],
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
       },
       "problemMatcher": []
     },
     {
       "label": "Start Development Server",
       "type": "shell",
-      "command": "bundle exec jekyll serve --livereload",
+      "command": "mise",
+      "args": ["exec", "--", "bundle", "exec", "jekyll", "serve", "--livereload"],
       "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Netlify Build",
+      "type": "shell",
+      "command": "C:\\Users\\biges\\AppData\\Roaming\\npm\\netlify.cmd",
+      "args": ["build"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Netlify Dev",
+      "type": "shell",
+      "command": "C:\\Users\\biges\\AppData\\Roaming\\npm\\netlify.cmd",
+      "args": ["dev"],
+      "group": "test",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
       "problemMatcher": []
     },
     {

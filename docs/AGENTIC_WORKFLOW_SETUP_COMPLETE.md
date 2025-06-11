@@ -25,6 +25,59 @@
 - **Professional Commit**: Detailed commit message following conventional
   commits
 
+### 4. ✅ VS Code Netlify Environment Configuration
+
+The VS Code workspace has been configured to match Netlify's build environment exactly:
+
+#### Version Management (mise)
+- **Ruby**: 3.1.0 (configured in `mise.toml` and `.ruby-version`)
+- **Python**: 3.8.20 (configured in `mise.toml` and `.python-version`)
+- **Node.js**: 16.20.2 (automatically installed, `.nvmrc` created)
+
+#### Build Tools
+- **Bundler**: 2.6.9 (matches Netlify requirements)
+- **Netlify CLI**: 22.1.3 (installed globally)
+
+#### VS Code Extensions Installed
+- Prettier - Code formatter (`esbenp.prettier-vscode`)
+- ESLint (`dbaeumer.vscode-eslint`)
+
+#### Available VS Code Tasks
+- **Build Jekyll Site** - Build using mise environment
+- **Start Development Server** - Jekyll serve with live reload
+- **Netlify Build** - Build using Netlify CLI
+- **Netlify Dev** - Local development with Netlify functions
+
+#### Configuration Files Created/Updated
+- `.ruby-version` - Specifies Ruby 3.1.0
+- `.python-version` - Specifies Python 3.8.20
+- `.nvmrc` - Specifies Node.js 16
+- `netlify.toml` - Enhanced with dev server configuration
+- `.vscode/tasks.json` - Updated with mise-aware tasks
+
+#### Usage
+Run commands using mise for consistency:
+```powershell
+mise exec -- bundle exec jekyll serve
+mise exec -- python --version
+mise exec -- ruby --version
+```
+
+For Netlify CLI (use full path on Windows):
+```powershell
+C:\Users\biges\AppData\Roaming\npm\netlify.cmd dev
+```
+
+#### Build Verification
+✅ Jekyll build successful  
+✅ Ruby 3.1.0 configured  
+✅ Python 3.8.20 configured  
+✅ Node.js 16.20.2 configured  
+✅ Bundler 2.6.9 installed  
+✅ Netlify CLI 22.1.3 accessible  
+✅ Bundle dependencies installed  
+✅ VS Code tasks configured  
+
 ## Next Steps to Complete Agentic Workflow
 
 ### 1. Install GitHub CLI (Required for Automation)

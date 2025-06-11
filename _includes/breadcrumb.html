@@ -1,0 +1,49 @@
+<!-- Breadcrumb Navigation -->
+{% unless page.url == '/' %}
+<nav aria-label="Breadcrumb" class="breadcrumb bg-amber-50 py-3 border-b border-amber-200">
+  <div class="container mx-auto px-4">
+    <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a 
+          href="{{ '/' | relative_url }}" 
+          class="text-amber-700 hover:text-amber-800 transition-colors"
+          itemprop="item"
+        >
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1" />
+      </li>
+      
+      {% assign url_parts = page.url | split: '/' %}
+      {% assign path = '' %}
+      {% assign position = 2 %}
+      
+      {% for part in url_parts %}
+        {% unless part == '' %}
+          {% assign path = path | append: '/' | append: part %}
+          {% if forloop.last %}
+            <li class="flex items-center" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="mx-2 text-gray-400" aria-hidden="true">›</span>
+              <span class="text-gray-600 font-medium" itemprop="name">{{ page.title }}</span>
+              <meta itemprop="position" content="{{ position }}" />
+            </li>
+          {% else %}
+            <li class="flex items-center" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="mx-2 text-gray-400" aria-hidden="true">›</span>
+              <a 
+                href="{{ path | append: '/' | relative_url }}" 
+                class="text-amber-700 hover:text-amber-800 transition-colors capitalize"
+                itemprop="item"
+              >
+                <span itemprop="name">{{ part | replace: '-', ' ' | replace: '_', ' ' }}</span>
+              </a>
+              <meta itemprop="position" content="{{ position }}" />
+            </li>
+          {% endif %}
+          {% assign position = position | plus: 1 %}
+        {% endunless %}
+      {% endfor %}
+    </ol>
+  </div>
+</nav>
+{% endunless %}

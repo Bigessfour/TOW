@@ -1,6 +1,11 @@
 [build]
   command = "bundle exec jekyll build"
   publish = "_site"
+  functions = "functions"
+
+[dev]
+  command = "bundle exec jekyll serve"
+  port = 8888
 
 [functions]
   directory = "functions"

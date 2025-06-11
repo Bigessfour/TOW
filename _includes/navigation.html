@@ -60,6 +60,15 @@
             >Contact</a
           >
         </li>
+        <li role="none" class="nav-item">
+          <a
+            href="{{ '/accessibility/' | relative_url }}"
+            class="nav-link text-white hover:bg-amber-600 hover:text-white px-4 py-3 block md:inline-block font-medium focus:outline-none focus:ring-2 focus:ring-amber-400 {% if page.url == '/accessibility/' %}bg-amber-900{% endif %}"
+            role="menuitem"
+            aria-current="{% if page.url == '/accessibility/' %}page{% endif %}"
+            >Accessibility</a
+          >
+        </li>
         <li class="nav-cta md:ml-auto" role="none">
           <a
             href="{{ '/payments/' | relative_url }}"
