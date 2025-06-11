@@ -1,11 +1,10 @@
-bundle-check(1) -- Verifies if dependencies are satisfied by installed gems
-===========================================================================
+# bundle-check(1) -- Verifies if dependencies are satisfied by installed gems
 
 ## SYNOPSIS
 
 `bundle check` [--dry-run]
-               [--gemfile=FILE]
-               [--path=PATH]
+[--gemfile=FILE]
+[--path=PATH]
 
 ## DESCRIPTION
 
@@ -20,12 +19,12 @@ installed on the local machine, if they satisfy the requirements.
 
 ## OPTIONS
 
-* `--dry-run`:
+- `--dry-run`:
   Locks the [`Gemfile(5)`][Gemfile(5)] before running the command.
 
-* `--gemfile=GEMFILE`:
+- `--gemfile=GEMFILE`:
   Use the specified gemfile instead of the [`Gemfile(5)`][Gemfile(5)].
 
-* `--path=PATH`:
+- `--path=PATH`:
   Specify a different path than the system default (`$BUNDLE_PATH` or `$GEM_HOME`).
   Bundler will remember this value for future installs on this machine.

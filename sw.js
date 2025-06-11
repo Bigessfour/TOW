@@ -7,13 +7,14 @@ const ASSETS_TO_CACHE = [
   '/assets/js/script.js',
   '/assets/js/modernizr-custom.js',
   '/assets/images/logo.png',
-  '/manifest.json'
+  '/manifest.json',
 ];
 
 // Install event - cache assets
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches
+      .open(CACHE_NAME)
       .then(cache => cache.addAll(ASSETS_TO_CACHE))
       .then(() => self.skipWaiting())
   );
@@ -22,7 +23,8 @@ self.addEventListener('install', event => {
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys()
+    caches
+      .keys()
       .then(cacheNames => {
         return Promise.all(
           cacheNames.map(cacheName => {
@@ -39,13 +41,11 @@ self.addEventListener('activate', event => {
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
       }
-    )
+      return fetch(event.request);
+    })
   );
 });

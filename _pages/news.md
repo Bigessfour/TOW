@@ -2,7 +2,8 @@
 layout: page
 title: News & Updates
 permalink: /news/
-description: "Latest news, announcements, and updates from the Town of Wiley government"
+description:
+  'Latest news, announcements, and updates from the Town of Wiley government'
 ---
 
 # News & Updates
@@ -40,6 +41,7 @@ Stay informed with the latest news and announcements from the Town of Wiley.
 </div>
 
 {% if site.posts.size == 0 %}
+
 <div class="text-center py-8">
   <p>No news articles available at this time. Please check back later for updates.</p>
 </div>
@@ -50,8 +52,10 @@ Stay informed with the latest news and announcements from the Town of Wiley.
 ## Subscribe to Updates
 
 Stay informed about town news and announcements by:
+
 - Following us on social media
 - Signing up for our newsletter
 - Attending town council meetings
 
-For urgent announcements, visit our [contact page](/contact/) or call town hall at [(555) 123-4567](tel:+15551234567).
+For urgent announcements, visit our [contact page](/contact/) or call town hall
+at [(555) 123-4567](tel:+15551234567).

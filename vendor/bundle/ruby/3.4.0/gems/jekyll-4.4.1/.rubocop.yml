@@ -6,33 +6,33 @@
 # the rake task via `bundle exec rake rubocop:format_config`.
 # -----------------------------------------------------------------------------
 
-inherit_from: ".rubocop_todo.yml"
+inherit_from: '.rubocop_todo.yml'
 
 require:
-- "./rubocop/jekyll"
-- rubocop-minitest
-- rubocop-performance
-- rubocop-rake
-- rubocop-rspec
+  - './rubocop/jekyll'
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
 
 # Directive for all cops
 AllCops:
   TargetRubyVersion: 2.7
   Include:
-  - lib/**/*.rb
-  - test/**/*.rb
+    - lib/**/*.rb
+    - test/**/*.rb
   Exclude:
-  - benchmark/**/*
-  - bin/**/*
-  - exe/**/*
-  - script/**/*
-  - tmp/**/*
-  - vendor/**/*
+    - benchmark/**/*
+    - bin/**/*
+    - exe/**/*
+    - script/**/*
+    - tmp/**/*
+    - vendor/**/*
 
 # Configure custom cop
 Jekyll/NoPutsAllowed:
   Exclude:
-  - rake/*.rake
+    - rake/*.rake
 
 # Configure built-in cops
 # =======================
@@ -74,10 +74,10 @@ Layout/LineEndStringConcatenationIndentation:
   Enabled: true
 Layout/LineLength:
   Exclude:
-  - Gemfile
-  - Rakefile
-  - features/**/*.rb
-  - rake/**/*.rake
+    - Gemfile
+    - Rakefile
+    - features/**/*.rb
+    - rake/**/*.rake
   Max: 100
   Severity: warning
 Layout/MultilineMethodCallIndentation:
@@ -91,7 +91,7 @@ Layout/SpaceBeforeBrackets:
 Layout/SpaceInsideHashLiteralBraces:
   Enabled: true
   Exclude:
-  - test/**/*.rb
+    - test/**/*.rb
 
 # Lint cops
 # ----------------------------------------
@@ -106,7 +106,7 @@ Lint/BinaryOperatorWithIdenticalOperands:
 Lint/ConstantDefinitionInBlock:
   Enabled: true
   Exclude:
-  - test/**/*.rb
+    - test/**/*.rb
 Lint/ConstantOverwrittenInRescue:
   Enabled: true
 Lint/DeprecatedConstants:
@@ -151,7 +151,7 @@ Lint/MixedRegexpCaptureTypes:
   Enabled: false
 Lint/NestedPercentLiteral:
   Exclude:
-  - test/test_site.rb
+    - test/test_site.rb
 Lint/NoReturnInBeginEndBlocks:
   Enabled: true
 Lint/NumberedParameterAssignment:
@@ -204,7 +204,7 @@ Lint/UselessTimes:
   Enabled: true
 Lint/Void:
   Exclude:
-  - lib/jekyll/site.rb
+    - lib/jekyll/site.rb
 
 # Metrics cops
 # ----------------------------------------
@@ -212,24 +212,24 @@ Metrics/AbcSize:
   Max: 23
 Metrics/BlockLength:
   Exclude:
-  - lib/jekyll/configuration.rb
-  - rake/**/*.rake
-  - test/**/*.rb
+    - lib/jekyll/configuration.rb
+    - rake/**/*.rake
+    - test/**/*.rb
 Metrics/ClassLength:
   Exclude:
-  - features/**/*.rb
-  - lib/jekyll/commands/serve.rb
-  - lib/jekyll/configuration.rb
-  - lib/jekyll/document.rb
-  - lib/jekyll/site.rb
-  - test/**/*.rb
+    - features/**/*.rb
+    - lib/jekyll/commands/serve.rb
+    - lib/jekyll/configuration.rb
+    - lib/jekyll/document.rb
+    - lib/jekyll/site.rb
+    - test/**/*.rb
   Max: 240
 Metrics/CollectionLiteralLength:
   Enabled: true
 Metrics/CyclomaticComplexity:
   Exclude:
-  - lib/jekyll/commands/serve.rb
-  - lib/jekyll/utils.rb
+    - lib/jekyll/commands/serve.rb
+    - lib/jekyll/utils.rb
   Max: 11
 Metrics/MethodLength:
   CountComments: false
@@ -237,7 +237,7 @@ Metrics/MethodLength:
   Severity: error
 Metrics/ModuleLength:
   Exclude:
-  - lib/jekyll/filters.rb
+    - lib/jekyll/filters.rb
   Max: 240
 Metrics/ParameterLists:
   Max: 4
@@ -307,7 +307,7 @@ Minitest/SkipWithoutReason:
 Minitest/TestFileName:
   Enabled: true
   Exclude:
-  - test/helper.rb
+    - test/helper.rb
 Minitest/TestMethodName:
   Enabled: false
 Minitest/UnreachableAssertion:
@@ -323,13 +323,13 @@ Naming/FileName:
   Enabled: false
 Naming/HeredocDelimiterNaming:
   Exclude:
-  - test/**/*.rb
+    - test/**/*.rb
 Naming/MemoizedInstanceVariableName:
   Exclude:
-  - lib/jekyll/convertible.rb
-  - lib/jekyll/drops/site_drop.rb
-  - lib/jekyll/drops/unified_payload_drop.rb
-  - lib/jekyll/page_without_a_file.rb
+    - lib/jekyll/convertible.rb
+    - lib/jekyll/drops/site_drop.rb
+    - lib/jekyll/drops/unified_payload_drop.rb
+    - lib/jekyll/page_without_a_file.rb
 
 # Performance cops
 # ----------------------------------------
@@ -372,7 +372,7 @@ Performance/StringIdentifierArgument:
 Performance/StringInclude:
   Enabled: true
   Exclude:
-  - lib/jekyll/utils/platforms.rb
+    - lib/jekyll/utils/platforms.rb
 Performance/Sum:
   Enabled: true
 
@@ -384,12 +384,12 @@ Security/IoMethods:
   Enabled: true
 Security/MarshalLoad:
   Exclude:
-  - lib/jekyll/regenerator.rb
-  - test/**/*.rb
+    - lib/jekyll/regenerator.rb
+    - test/**/*.rb
 Security/YAMLLoad:
   Exclude:
-  - features/**/*.rb
-  - test/**/*.rb
+    - features/**/*.rb
+    - test/**/*.rb
 
 # Style cops
 # ----------------------------------------
@@ -413,7 +413,7 @@ Style/CaseLikeIf:
   Enabled: true
 Style/ClassAndModuleChildren:
   Exclude:
-  - test/**/*.rb
+    - test/**/*.rb
 Style/ClassEqualityComparison:
   Enabled: true
 Style/CollectionCompact:
@@ -452,9 +452,9 @@ Style/FileWrite:
   Enabled: true
 Style/FormatStringToken:
   Exclude:
-  - lib/jekyll/liquid_renderer/table.rb
-  - lib/jekyll/profiler.rb
-  - lib/jekyll/utils/ansi.rb
+    - lib/jekyll/liquid_renderer/table.rb
+    - lib/jekyll/profiler.rb
+    - lib/jekyll/utils/ansi.rb
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
 Style/GlobalStdStream:
@@ -492,7 +492,7 @@ Style/MinMaxComparison:
   Enabled: true
 Style/MixinUsage:
   Exclude:
-  - test/helper.rb
+    - test/helper.rb
 Style/ModuleFunction:
   Enabled: false
 Style/MultilineTernaryOperator:
@@ -510,16 +510,16 @@ Style/OperatorMethodCall:
 Style/OptionalBooleanParameter:
   Enabled: true
   Exclude:
-  - lib/jekyll/log_adapter.rb
+    - lib/jekyll/log_adapter.rb
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
-    "%Q": "{}"
-    "%W": "()"
-    "%q": "{}"
-    "%r": "!!"
-    "%s": "()"
-    "%w": "()"
-    "%x": "()"
+    '%Q': '{}'
+    '%W': '()'
+    '%q': '{}'
+    '%r': '!!'
+    '%s': '()'
+    '%w': '()'
+    '%x': '()'
 Style/QuotedSymbols:
   Enabled: true
 Style/RedundantArgument:
@@ -547,7 +547,7 @@ Style/RedundantHeredocDelimiterQuotes:
 Style/RedundantInitialize:
   Enabled: true
   Exclude:
-  - lib/jekyll/plugin.rb
+    - lib/jekyll/plugin.rb
 Style/RedundantLineContinuation:
   Enabled: true
 Style/RedundantRegexpArgument:
@@ -572,8 +572,8 @@ Style/ReturnNilInPredicateMethodDefinition:
   Enabled: true
 Style/SafeNavigation:
   Exclude:
-  - lib/jekyll/document.rb
-  - lib/jekyll/page.rb
+    - lib/jekyll/document.rb
+    - lib/jekyll/page.rb
 Style/SignalException:
   EnforcedStyle: only_raise
 Style/SingleArgumentDig:
@@ -589,8 +589,8 @@ Style/StringChars:
 Style/StringConcatenation:
   Enabled: true
   Exclude:
-  - lib/jekyll/commands/*.rb
-  - test/**/*.rb
+    - lib/jekyll/commands/*.rb
+    - test/**/*.rb
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 Style/StringLiteralsInInterpolation:

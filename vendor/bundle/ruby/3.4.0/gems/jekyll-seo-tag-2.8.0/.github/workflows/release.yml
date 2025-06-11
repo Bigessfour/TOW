@@ -5,13 +5,13 @@ on:
     branches:
       - master
     paths:
-      - "lib/**/version.rb"
+      - 'lib/**/version.rb'
 
 jobs:
   release:
     if: "github.repository_owner == 'jekyll'"
-    name: "Release Gem (Ruby ${{ matrix.ruby_version }})"
-    runs-on: "ubuntu-latest"
+    name: 'Release Gem (Ruby ${{ matrix.ruby_version }})'
+    runs-on: 'ubuntu-latest'
     strategy:
       fail-fast: true
       matrix:
@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: "Set up Ruby ${{ matrix.ruby_version }}"
+      - name: 'Set up Ruby ${{ matrix.ruby_version }}'
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}

@@ -15,9 +15,9 @@ name: Website Quality Assurance
 # Workflow triggers
 on:
   push:
-    branches: [ main, develop ]  # Run on pushes to main and develop branches
+    branches: [main, develop] # Run on pushes to main and develop branches
   pull_request:
-    branches: [ main ]           # Run on pull requests to main branch
+    branches: [main] # Run on pull requests to main branch
 
 # Permissions needed for GitHub Pages deployment
 permissions:
@@ -29,8 +29,8 @@ permissions:
 
 # Environment variables shared across jobs
 env:
-  NODE_VERSION: '18'             # Node.js version for consistency across jobs
-  PYTHON_VERSION: '3.x'         # Python version for local server
+  NODE_VERSION: '18' # Node.js version for consistency across jobs
+  PYTHON_VERSION: '3.x' # Python version for local server
 
 jobs:
   # ==========================================================================
@@ -42,38 +42,38 @@ jobs:
   accessibility-test:
     runs-on: ubuntu-latest
     name: Accessibility Testing
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          
+
       - name: Install accessibility testing dependencies
         run: |
           npm install -g pa11y-ci html-validate axe-core @axe-core/cli
-          
+
       - name: HTML Validation
         run: |
           npx html-validate index.html || echo "HTML validation completed with warnings - check output above"
         continue-on-error: true
-          
+
       - name: Accessibility Testing with pa11y (WCAG 2.1 AA)
         run: |
           npx pa11y-ci --sitemap false --standard WCAG2AA --threshold 5 index.html
         continue-on-error: true
-          
+
       - name: Accessibility Testing with axe-core
         run: |
           npx axe --dir . --rules wcag2a,wcag2aa,wcag21aa --tags wcag2a,wcag2aa,wcag21aa || echo "Axe testing completed with findings - check output above"
         continue-on-error: true
-          
+
       - name: Upload accessibility report artifacts
         uses: actions/upload-artifact@v4
-        if: always()  # Upload reports even if tests fail
+        if: always() # Upload reports even if tests fail
         with:
           name: accessibility-report
           path: |
@@ -88,25 +88,25 @@ jobs:
   security-scan:
     runs-on: ubuntu-latest
     name: Security Scanning
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'fs'           # Filesystem scan
-          scan-ref: '.'             # Scan current directory
-          format: 'sarif'           # Output format for GitHub Security tab
+          scan-type: 'fs' # Filesystem scan
+          scan-ref: '.' # Scan current directory
+          format: 'sarif' # Output format for GitHub Security tab
           output: 'trivy-results.sarif'
-          exit-code: '0'            # Don't fail the action on vulnerabilities
+          exit-code: '0' # Don't fail the action on vulnerabilities
           severity: 'CRITICAL,HIGH' # Only report critical and high vulnerabilities
-          
+
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         if: always()
-        continue-on-error: true  # Don't fail if upload has issues
+        continue-on-error: true # Don't fail if upload has issues
         with:
           sarif_file: 'trivy-results.sarif'
   # ==========================================================================
@@ -118,30 +118,30 @@ jobs:
   html-css-validation:
     runs-on: ubuntu-latest
     name: HTML/CSS Validation
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          
+
       - name: Install validation tools
         run: |
           npm install -g html-validate css-validator
-          
+
       - name: Validate HTML structure and semantics
         run: |
           npx html-validate index.html || echo "HTML validation completed with warnings - check output above"
         continue-on-error: true
-          
+
       - name: Validate CSS syntax and properties
         run: |
           npx css-validator assets/css/styles.css || echo "CSS validation completed with warnings - check output above"
         continue-on-error: true
-          
+
       - name: Upload validation reports
         uses: actions/upload-artifact@v4
         if: always()
@@ -159,19 +159,19 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-latest
     name: Deploy Preview
-    if: github.event_name == 'pull_request'  # Only run on PR events
-    
+    if: github.event_name == 'pull_request' # Only run on PR events
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Deploy to GitHub Pages (Preview Environment)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./                                    # Deploy entire repository
+          publish_dir: ./ # Deploy entire repository
           destination_dir: preview/${{ github.event.number }} # Unique preview path per PR
-          
+
       - name: Comment PR with preview link
         uses: actions/github-script@v6
         with:
@@ -196,32 +196,32 @@ jobs:
   deploy-production:
     runs-on: ubuntu-latest
     name: Deploy to Production
-    if: github.ref == 'refs/heads/main'  # Only deploy from main branch
-    needs: [accessibility-test, html-css-validation]  # Only require core QA jobs
-    
+    if: github.ref == 'refs/heads/main' # Only deploy from main branch
+    needs: [accessibility-test, html-css-validation] # Only require core QA jobs
+
     # Concurrency group to prevent multiple deployments
     concurrency:
       group: pages
       cancel-in-progress: false
-    
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch full history for proper deployment
-          
+          fetch-depth: 0 # Fetch full history for proper deployment
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Upload entire repository root
-          
+          path: '.' # Upload entire repository root
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -234,31 +234,31 @@ jobs:
   performance-test:
     runs-on: ubuntu-latest
     name: Performance Testing
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          
+
       - name: Install Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.12.x
-          
+
       - name: Start local development server
         run: |
           # Start Python HTTP server in background
           python3 -m http.server 8080 &
           SERVER_PID=$!
           echo "Started server with PID: $SERVER_PID"
-          
+
           # Wait for server to be ready with better error handling
           echo "Waiting for server to start..."
           sleep 5
-          
+
           # Verify server is responding with retries
           for i in {1..10}; do
             if curl -f -s http://localhost:8080/ > /dev/null; then
@@ -275,15 +275,15 @@ jobs:
               exit 1
             fi
           done
-          
+
       - name: Run Lighthouse CI performance audit
         run: |
           echo "🔍 Starting Lighthouse CI performance audit..."
           echo "Testing URL: http://localhost:8080/"
-          
+
           # Verify the URL is accessible before running Lighthouse
           curl -f http://localhost:8080/ || (echo "❌ Server not accessible" && exit 1)
-          
+
           # Run Lighthouse CI with detailed output
           lhci autorun --upload.target=temporary-public-storage --config=lighthouserc.json || {
             echo "⚠️ Lighthouse CI completed with warnings or threshold violations"
@@ -293,17 +293,17 @@ jobs:
         continue-on-error: true
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Upload Lighthouse performance reports
         uses: actions/upload-artifact@v4
-        if: always()  # Upload reports even if performance thresholds fail
+        if: always() # Upload reports even if performance thresholds fail
         with:
           name: lighthouse-report
           path: .lighthouseci/
-          retention-days: 30  # Keep reports for 30 days
-          
+          retention-days: 30 # Keep reports for 30 days
+
       - name: Cleanup server process
-        if: always()  # Always run cleanup
+        if: always() # Always run cleanup
         run: |
           # Kill any remaining Python HTTP server processes
           pkill -f "python3 -m http.server" || true

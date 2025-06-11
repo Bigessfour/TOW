@@ -1,13 +1,16 @@
 # Changelog
 
-All notable changes to the Town of Wiley website will be documented in this file.
+All notable changes to the Town of Wiley website will be documented in this
+file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
 ### Added
+
 - Automated release workflow
 - Enhanced accessibility testing in CI/CD
 - Community feedback issue templates
@@ -16,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2024-01-XX
 
 ### Added
+
 - Initial release of Town of Wiley municipal website
 - Full WCAG 2.1 Level AA accessibility compliance
 - Responsive design for all device types
@@ -28,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Security and privacy compliance (GDPR/CCPA)
 
 ### Technical Features
+
 - HTML5 semantic markup
 - CSS Grid and Flexbox layouts
 - Progressive enhancement with JavaScript
@@ -36,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automated deployment to GitHub Pages
 
 ### Accessibility Features
+
 - Screen reader compatibility
 - Keyboard navigation support
 - Skip links and focus management
@@ -45,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Voice recognition software support
 
 ### Performance Optimizations
+
 - Optimized images and assets
 - Compressed CSS and JavaScript
 - Efficient caching strategies
@@ -52,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Core Web Vitals compliance
 
 ### Security Features
+
 - SSL/TLS encryption
 - Security headers implementation
 - Content Security Policy

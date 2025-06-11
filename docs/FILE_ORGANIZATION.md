@@ -38,6 +38,7 @@ Town of Wiley/
 ## 🔗 File Dependencies Map
 
 ### Core Dependencies
+
 ```mermaid
 graph TD
     A[index.html] --> B[assets/css/styles.css]
@@ -45,17 +46,18 @@ graph TD
     A --> D[assets/js/modernizr-custom.js]
     A --> E[assets/images/logo.png]
     A --> F[manifest.json]
-    
+
     G[modernizr-config.json] --> D
     H[package.json] --> I[node_modules/modernizr]
     I --> D
-    
+
     J[.github/copilot-instructions.md] --> K[GitHub Copilot]
     L[.vscode/launch.json] --> M[VS Code Debugging]
     N[.vscode/tasks.json] --> O[VS Code Tasks]
 ```
 
 ### Development Workflow Dependencies
+
 ```mermaid
 graph LR
     A[Developer] --> B[VS Code]
@@ -65,7 +67,7 @@ graph LR
     E --> F[Debug Sessions]
     E --> G[Live Server]
     G --> H[http://localhost:5500]
-    
+
     I[script.js] --> J[Modernizr Detection]
     I --> K[Debug Utilities]
     I --> L[Accessibility Checks]
@@ -74,11 +76,14 @@ graph LR
 ## 📋 File Relationships
 
 ### 1. **Core Website Files**
+
 - `index.html` → Primary entry point
-  - References: `styles.css`, `script.js`, `modernizr-custom.js`, `logo.png`, `manifest.json`
+  - References: `styles.css`, `script.js`, `modernizr-custom.js`, `logo.png`,
+    `manifest.json`
   - Loads: Tailwind CSS (CDN), Google Fonts
 
 ### 2. **JavaScript Dependencies**
+
 - `script.js` → Main functionality
   - Depends on: `modernizr-custom.js` (must load first)
   - Provides: Debug utilities, accessibility checking, navigation
@@ -87,6 +92,7 @@ graph LR
   - Built via: `package.json` scripts
 
 ### 3. **Development Configuration**
+
 - `.vscode/launch.json` → Debug configurations
   - References: Chrome, Edge, Live Server setups
 - `.vscode/tasks.json` → Automated tasks
@@ -95,6 +101,7 @@ graph LR
   - Influences: All code generation and suggestions
 
 ### 4. **Build & Package Management**
+
 - `package.json` → Dependencies and scripts
   - Contains: Modernizr, Live Server, testing tools
   - Scripts: Build, test, validate, serve commands
@@ -104,6 +111,7 @@ graph LR
 ## 🛠️ Development Scripts & Commands
 
 ### Available NPM Scripts
+
 ```bash
 # Agentic Workflow Commands
 npm run agent:start          # Start development with AI assistance
@@ -131,6 +139,7 @@ npm run workflow:docs        # Open workflow documentation
 ## 🔧 Configuration Files Cross-Reference
 
 ### VS Code Configuration
+
 - **launch.json** → 4 debug configurations
   - Chrome Debug, Edge Debug, Live Server, Attach to Chrome
 - **settings.json** → Development optimizations
@@ -139,15 +148,16 @@ npm run workflow:docs        # Open workflow documentation
   - Live Server start, Chrome debug launch, validation
 
 ### Package Dependencies
+
 ```json
 {
   "devDependencies": {
-    "modernizr": "^3.13.1",           // Feature detection
-    "live-server": "^1.2.2",         // Development server
-    "@axe-core/cli": "^4.8.0",       // Accessibility testing
-    "lighthouse": "^11.0.0",         // Performance testing
-    "html-validate": "^8.0.0",       // HTML validation
-    "stylelint": "^15.0.0"           // CSS validation
+    "modernizr": "^3.13.1", // Feature detection
+    "live-server": "^1.2.2", // Development server
+    "@axe-core/cli": "^4.8.0", // Accessibility testing
+    "lighthouse": "^11.0.0", // Performance testing
+    "html-validate": "^8.0.0", // HTML validation
+    "stylelint": "^15.0.0" // CSS validation
   }
 }
 ```
@@ -155,12 +165,14 @@ npm run workflow:docs        # Open workflow documentation
 ## 📊 File Size & Performance
 
 ### Asset Sizes
+
 - `modernizr-custom.js`: ~40KB (minified, optimized)
 - `script.js`: ~35KB (with debug utilities)
 - `styles.css`: ~25KB (with Tailwind overrides)
 - `logo.png`: ~15KB (optimized)
 
 ### Load Order (Critical Path)
+
 1. HTML structure
 2. Tailwind CSS (CDN)
 3. Google Fonts (preconnect)
@@ -171,18 +183,21 @@ npm run workflow:docs        # Open workflow documentation
 ## 🔄 Update Procedures
 
 ### Adding New Features
+
 1. Update `modernizr-config.json` if new web APIs needed
 2. Run `npm run modernizr:rebuild` to regenerate build
 3. Update `script.js` for new functionality
 4. Test with `npm run validate:all`
 
 ### Modifying Dependencies
+
 1. Update `package.json` dependencies
 2. Run `npm install` to install changes
 3. Update VS Code configurations if needed
 4. Test workflow with `npm run workflow:init`
 
 ### Documentation Updates
+
 1. Update relevant files in `docs/` directory
 2. Update this file (`docs/FILE_ORGANIZATION.md`)
 3. Commit changes with descriptive messages

@@ -20,9 +20,10 @@ More performance improvements:
 - Improve general performance!
 - Further improve performance for ASCII strings
 
-*You should really upgrade - it's much faster now!*
+_You should really upgrade - it's much faster now!_
 
 ## 2.4.0
+
 - Improve performance for ASCII-only strings, by @fatkodima
 - Require Ruby 2.4
 
@@ -32,7 +33,7 @@ More performance improvements:
 
 ## 2.2.0
 
-- Add *Hangul Jamo Extended-B* block to zero-width chars, thanks @ninjalj #22
+- Add _Hangul Jamo Extended-B_ block to zero-width chars, thanks @ninjalj #22
 
 ## 2.1.0
 
@@ -49,19 +50,24 @@ More performance improvements:
 
 ## 2.0.0.pre1
 
-Will be published as non-pre version on rubygems.org when Ruby 3.0 is released (December 2020)
+Will be published as non-pre version on rubygems.org when Ruby 3.0 is released
+(December 2020)
 
-- Introduce new class-based API, which remembers your string-width configuration. See README for details.
+- Introduce new class-based API, which remembers your string-width
+  configuration. See README for details.
 - Remove auto-loading of string extension
-  - You can: `require "unicode/display_width/string_ext"` to continue to use the string extension
-  - The manual opt-out `require "unicode/display_width/no_string_ext"` is not needed anymore and will
-    issue a warning in the future
-- Remove (already deprecated) String#display_size and String#display_width aliases
+  - You can: `require "unicode/display_width/string_ext"` to continue to use the
+    string extension
+  - The manual opt-out `require "unicode/display_width/no_string_ext"` is not
+    needed anymore and will issue a warning in the future
+- Remove (already deprecated) String#display_size and String#display_width
+  aliases
 
 Refactorings / Internal Changes:
 
 - Freeze string literals
-- The Unicode::DisplayWidth now is class, instead of a module, this enables the new config-object API
+- The Unicode::DisplayWidth now is class, instead of a module, this enables the
+  new config-object API
 
 ## 1.8.0
 
@@ -85,7 +91,7 @@ Refactorings / Internal Changes:
 
 ## 1.4.1
 
-- Only bundle required lib/* and data/* files in actual rubygem, patch by @tas50
+- Only bundle required lib/_ and data/_ files in actual rubygem, patch by @tas50
 
 ## 1.4.0
 
@@ -93,8 +99,8 @@ Refactorings / Internal Changes:
 
 ## 1.3.3
 
-- Replace Gem::Util.gunzip with direct zlib implementation
-  This removes the dependency on rubygems, fixes #17
+- Replace Gem::Util.gunzip with direct zlib implementation This removes the
+  dependency on rubygems, fixes #17
 
 ## 1.3.2
 
@@ -114,9 +120,12 @@ Refactorings / Internal Changes:
 
 ## 1.2.0
 
-- Add zero-width codepoint ranges: U+2060..U+206F, U+FFF0..U+FFF8, U+E0000..U+E0FFF
-- Add full-witdh codepoint ranges: U+3400..U+4DBF, U+4E00..U+9FFF, U+F900..U+FAFF, U+20000..U+2FFFD, U+30000..U+3FFFD
-- Experimental emoji support using the [unicode-emoji](https://github.com/janlelis/unicode-emoji) gem
+- Add zero-width codepoint ranges: U+2060..U+206F, U+FFF0..U+FFF8,
+  U+E0000..U+E0FFF
+- Add full-witdh codepoint ranges: U+3400..U+4DBF, U+4E00..U+9FFF,
+  U+F900..U+FAFF, U+20000..U+2FFFD, U+30000..U+3FFFD
+- Experimental emoji support using the
+  [unicode-emoji](https://github.com/janlelis/unicode-emoji) gem
 - Fix minor bug in index compression scheme
 
 ## 1.1.3
@@ -161,7 +170,8 @@ Refactorings / Internal Changes:
 
 - Faster than 0.3.1
 - Advanced determination of character width
-- This includes: Treat width of most chars of general categories (Mn, Me, Cf) as 0
+- This includes: Treat width of most chars of general categories (Mn, Me, Cf) as
+  0
 - This includes: Introduce list of characters with special widths
 - Allow custom overrides for specific codepoints
 - Set required Ruby version to 2.0
@@ -189,11 +199,9 @@ Refactorings / Internal Changes:
 - Don't build index table automatically when not available
 - Don't include EastAsianWidth.txt in gem (only index)
 
-
 ## 0.1.0
 
 - Fix github issue #1
-
 
 ## 0.1.0
 

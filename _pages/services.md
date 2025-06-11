@@ -2,7 +2,9 @@
 layout: page
 title: Town Services
 permalink: /services/
-description: "Comprehensive government services for Town of Wiley residents including farming support, youth programs, utilities, and community resources"
+description:
+  'Comprehensive government services for Town of Wiley residents including
+  farming support, youth programs, utilities, and community resources'
 ---
 
 # Town Services
@@ -14,24 +16,28 @@ description: "Comprehensive government services for Town of Wiley residents incl
 </div>
 
 ## Family & Youth Programs
+
 - Children's Recreation Programs
 - Summer Farm Camp for Kids
 - Youth Agricultural Education
 - Family Support Services
 
 ## Agricultural Services
+
 - Hay Production Resources
 - Farm Equipment Sharing
 - Agricultural Education & Training
 - Seasonal Farmers Market
 
 ## Utilities & Infrastructure
+
 - Water & Sewer Services
 - Trash & Recycling
 - Rural Road Maintenance
 - Agricultural Water Management
 
 ## Community Resources
+
 - Town Hall Meeting Space
 - Community Events & Festivals
 - Agricultural Heritage Museum
@@ -39,4 +45,5 @@ description: "Comprehensive government services for Town of Wiley residents incl
 
 ---
 
-For more information about any of these services, please [contact us](/contact/) or visit us during business hours.
+For more information about any of these services, please [contact us](/contact/)
+or visit us during business hours.

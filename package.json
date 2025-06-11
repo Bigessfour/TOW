@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "setup": "echo Setting up Node.js PATH... && powershell -Command \"$env:PATH += ';C:\\Program Files\\nodejs'\" && node --version && npm --version",
+    "format:fix": "npx prettier --write .",
     "start": "http-server -p 3000 -c-1 -a localhost -o index.html",
     "dev": "http-server -p 5500 -c-1 -a localhost -o index.html",
     "debug": "http-server -p 5500 -c-1 -a localhost -o index.html",
@@ -73,7 +74,8 @@
     "express": "^5.1.0",
     "marked": "^12.0.0",
     "mime-types": "^2.1.35",
-    "nodemailer": "^7.0.3"
+    "nodemailer": "^7.0.3",
+    "playwright": "^1.52.0"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.10.2",

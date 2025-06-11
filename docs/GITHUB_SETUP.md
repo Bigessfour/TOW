@@ -9,20 +9,23 @@
    - Repository name: `town-of-wiley-website` (or your preferred name)
    - Description: `Official website for the Town of Wiley municipal government`
    - Set to **Public** (so GitHub Pages will work for free)
-   - **DO NOT** initialize with README, .gitignore, or license (we already have these)
+   - **DO NOT** initialize with README, .gitignore, or license (we already have
+     these)
 5. **Click "Create repository"**
 
 ## Step 2: Copy Repository URL
 
-After creating the repository, GitHub will show you a page with setup instructions. 
-**Copy the HTTPS URL** which will look like:
+After creating the repository, GitHub will show you a page with setup
+instructions. **Copy the HTTPS URL** which will look like:
+
 ```
 https://github.com/YOUR_USERNAME/town-of-wiley-website.git
 ```
 
 ## Step 3: Tell me the URL
 
-Once you have the repository URL, provide it to me and I'll push the code to GitHub.
+Once you have the repository URL, provide it to me and I'll push the code to
+GitHub.
 
 ## What's Already Done ✅
 
@@ -35,6 +38,7 @@ Once you have the repository URL, provide it to me and I'll push the code to Git
 ## What Happens Next
 
 Once you provide the GitHub repository URL, I will:
+
 1. Add the remote repository
 2. Push all the code to GitHub
 3. Help you set up GitHub Pages for free hosting

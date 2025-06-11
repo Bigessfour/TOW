@@ -1,10 +1,10 @@
 # TZInfo - Ruby Time Zone Library
 
-[![RubyGems](https://img.shields.io/gem/v/tzinfo?logo=rubygems&label=Gem)](https://rubygems.org/gems/tzinfo) [![Tests](https://github.com/tzinfo/tzinfo/workflows/Tests/badge.svg?branch=master&event=push)](https://github.com/tzinfo/tzinfo/actions?query=workflow%3ATests+branch%3Amaster+event%3Apush)
+[![RubyGems](https://img.shields.io/gem/v/tzinfo?logo=rubygems&label=Gem)](https://rubygems.org/gems/tzinfo)
+[![Tests](https://github.com/tzinfo/tzinfo/workflows/Tests/badge.svg?branch=master&event=push)](https://github.com/tzinfo/tzinfo/actions?query=workflow%3ATests+branch%3Amaster+event%3Apush)
 
 [TZInfo](https://tzinfo.github.io) is a Ruby library that provides access to
 time zone data and allows times to be converted using time zone rules.
-
 
 ## Data Sources
 
@@ -32,7 +32,6 @@ The default data source selection can be overridden by calling
 Custom data sources can also be used. See the `TZInfo::DataSource.set`
 documentation for further details.
 
-
 ## Installation
 
 The TZInfo gem can be installed by running `gem install tzinfo` or by adding
@@ -42,14 +41,12 @@ To use the Ruby modules as the data source, TZInfo::Data will also need to be
 installed by running `gem install tzinfo-data` or by adding `gem 'tzinfo-data'`
 to your `Gemfile`.
 
-
 ## IANA Time Zone Database
 
 The data returned and used by TZInfo is sourced from the
 [IANA Time Zone Database](http://www.iana.org/time-zones). The
 [Theory and pragmatics of the tz code and data](https://data.iana.org/time-zones/theory.html)
 document gives details of how the data is organized and managed.
-
 
 ## Example Usage
 
@@ -321,12 +318,11 @@ zi.timezone.to_local(Time.utc(2018, 2, 1, 12, 30, 0))
 For further detail, please refer to the API documentation for the
 `TZInfo::Timezone` and `TZInfo::Country` classes.
 
-
 ## Time Zone Selection
 
 The Time Zone Database maintainers recommend that time zone identifiers are not
-made visible to end-users (see [Names of
-timezones](https://data.iana.org/time-zones/theory.html#naming)).
+made visible to end-users (see
+[Names of timezones](https://data.iana.org/time-zones/theory.html#naming)).
 
 Instead of displaying a list of time zone identifiers, time zones can be
 selected by the user's country. Call `TZInfo::Country.all` to obtain a list of
@@ -345,8 +341,8 @@ croatia.zone_info[0].identifier
 # => "Europe/Belgrade"
 ```
 
-Some countries have multiple time zones. The `zone_info` method can be used
-to obtain a list of user-friendly descriptions of the available options:
+Some countries have multiple time zones. The `zone_info` method can be used to
+obtain a list of user-friendly descriptions of the available options:
 
 ```ruby
 australia = TZInfo::Country.get('AU')
@@ -365,12 +361,10 @@ aid to help users select a time zone data appropriate for their practical needs.
 It is not intended to take or endorse any position on legal or territorial
 claims.
 
-
 ## Compatibility
 
 TZInfo v2.0.0 requires a minimum of Ruby MRI 1.9.3 or JRuby 1.7 (in 1.9 mode or
 later).
-
 
 ## Thread-Safety
 
@@ -379,23 +373,19 @@ to use class and instance methods of `TZInfo::Country` and `TZInfo::Timezone` in
 concurrently executing threads. Instances of both classes can be shared across
 thread boundaries.
 
-
 ## Documentation
 
 API documentation for TZInfo is available on
 [RubyDoc.info](https://www.rubydoc.info/gems/tzinfo/).
 
-
 ## License
 
 TZInfo is released under the MIT license, see LICENSE for details.
-
 
 ## Source Code
 
 Source code for TZInfo is available on
 [GitHub](https://github.com/tzinfo/tzinfo).
-
 
 ## Issue Tracker
 

@@ -1,5 +1,4 @@
-bundle-inject(1) -- Add named gem(s) with version requirements to Gemfile
-=========================================================================
+# bundle-inject(1) -- Add named gem(s) with version requirements to Gemfile
 
 ## SYNOPSIS
 
@@ -25,8 +24,8 @@ The `bundle inject` command was deprecated in Bundler 2.1 and will be removed in
 
 ## OPTIONS
 
-* `--source=SOURCE`:
+- `--source=SOURCE`:
   Install gem from the given source.
 
-* `--group=GROUP`:
+- `--group=GROUP`:
   Install gem into a bundler group.

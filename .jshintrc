@@ -8,10 +8,7 @@
   "globalstrict": false,
   "undef": true,
   "unused": true,
-  "predef": [
-    "gtag",
-    "Modernizr"
-  ],
+  "predef": ["gtag", "Modernizr"],
   "indent": 2,
   "maxlen": 120,
   "trailing": true,

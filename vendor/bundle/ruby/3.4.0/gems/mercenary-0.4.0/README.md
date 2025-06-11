@@ -128,8 +128,8 @@ of this chaining is to reduce redundancy.
 
 Sets or gets the description of the command. Accepts one optional argument:
 
-- `desc` - (optional) the description to set for the command. If
-  provided, will override any previous description set for the command.
+- `desc` - (optional) the description to set for the command. If provided, will
+  override any previous description set for the command.
 
 #### `#default_command`
 
@@ -145,8 +145,8 @@ subcommand is passed during execution. Accepts one optional argument:
 Adds a new option to the command. Accepts many arguments:
 
 - `config_key` - the configuration key that the value of this option maps to.
-- `*options` - all the options, globbed, to be passed to `OptionParser`, namely the
-  switches and the option description. Usually in the format
+- `*options` - all the options, globbed, to be passed to `OptionParser`, namely
+  the switches and the option description. Usually in the format
   `"-s", "--switch", "Sets the 'switch' flag"`.
 
 Valid option calls:
@@ -228,7 +228,7 @@ cmd.logger.fatal "I can't continue doing what I'm doing."
 Creates a new subcommand for the current command. Accepts two arguments:
 
 - `cmd_name` - the command name, as a Symbol
-- `block` -  the specification of the subcommand in a block
+- `block` - the specification of the subcommand in a block
 
 Example:
 

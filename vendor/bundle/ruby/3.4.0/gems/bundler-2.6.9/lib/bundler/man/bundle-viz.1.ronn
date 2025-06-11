@@ -1,13 +1,12 @@
-bundle-viz(1) -- Generates a visual dependency graph for your Gemfile
-=====================================================================
+# bundle-viz(1) -- Generates a visual dependency graph for your Gemfile
 
 ## SYNOPSIS
 
 `bundle viz` [--file=FILE]
-             [--format=FORMAT]
-             [--requirements]
-             [--version]
-             [--without=GROUP GROUP]
+[--format=FORMAT]
+[--requirements]
+[--version]
+[--without=GROUP GROUP]
 
 ## DESCRIPTION
 
@@ -20,17 +19,17 @@ The associated gems must also be installed via [`bundle install(1)`](bundle-inst
 
 ## OPTIONS
 
-* `--file=FILE`, `-f=FILE`:
+- `--file=FILE`, `-f=FILE`:
   The name to use for the generated file. See `--format` option
 
-* `--format=FORMAT`, `-F=FORMAT`:
+- `--format=FORMAT`, `-F=FORMAT`:
   This is output format option. Supported format is png, jpg, svg, dot ...
 
-* `--requirements`, `-R`:
+- `--requirements`, `-R`:
   Set to show the version of each required dependency.
 
-* `--version`, `-v`:
+- `--version`, `-v`:
   Set to show each gem version.
 
-* `--without=<list>`, `-W=<list>`:
+- `--without=<list>`, `-W=<list>`:
   Exclude gems that are part of the specified named group.

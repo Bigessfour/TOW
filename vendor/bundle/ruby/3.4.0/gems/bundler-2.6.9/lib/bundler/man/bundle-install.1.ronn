@@ -1,30 +1,29 @@
-bundle-install(1) -- Install the dependencies specified in your Gemfile
-=======================================================================
+# bundle-install(1) -- Install the dependencies specified in your Gemfile
 
 ## SYNOPSIS
 
 `bundle install` [--binstubs[=DIRECTORY]]
-                 [--clean]
-                 [--deployment]
-                 [--frozen]
-                 [--full-index]
-                 [--gemfile=GEMFILE]
-                 [--jobs=NUMBER]
-                 [--local]
-                 [--no-cache]
-                 [--no-prune]
-                 [--path PATH]
-                 [--prefer-local]
-                 [--quiet]
-                 [--redownload]
-                 [--retry=NUMBER]
-                 [--shebang=SHEBANG]
-                 [--standalone[=GROUP[ GROUP...]]]
-                 [--system]
-                 [--trust-policy=TRUST-POLICY]
-                 [--target-rbconfig=TARGET-RBCONFIG]
-                 [--with=GROUP[ GROUP...]]
-                 [--without=GROUP[ GROUP...]]
+[--clean]
+[--deployment]
+[--frozen]
+[--full-index]
+[--gemfile=GEMFILE]
+[--jobs=NUMBER]
+[--local]
+[--no-cache]
+[--no-prune]
+[--path PATH]
+[--prefer-local]
+[--quiet]
+[--redownload]
+[--retry=NUMBER]
+[--shebang=SHEBANG]
+[--standalone[=GROUP[ GROUP...]]]
+[--system]
+[--trust-policy=TRUST-POLICY]
+[--target-rbconfig=TARGET-RBCONFIG]
+[--with=GROUP[ GROUP...]]
+[--without=GROUP[ GROUP...]]
 
 ## DESCRIPTION
 
@@ -52,7 +51,7 @@ automatically and that requires `bundler` to silently remember them. Since
 `bundler` will no longer remember CLI flags in future versions, `bundle config`
 (see bundle-config(1)) should be used to apply them permanently.
 
-* `--binstubs[=BINSTUBS]`:
+- `--binstubs[=BINSTUBS]`:
   Binstubs are scripts that wrap around executables. Bundler creates a small Ruby
   file (a binstub) that loads Bundler, runs the command, and puts it in `bin/`.
   This lets you link the binstub inside of an application to the exact gem
@@ -66,69 +65,69 @@ automatically and that requires `bundler` to silently remember them. Since
   create a `bin/rails` executable that ensures that all referred dependencies
   will be resolved using the bundled gems.
 
-* `--clean`:
+- `--clean`:
   On finishing the installation Bundler is going to remove any gems not present
   in the current Gemfile(5). Don't worry, gems currently in use will not be
   removed.
 
   This option is deprecated in favor of the `clean` setting.
 
-* `--deployment`:
+- `--deployment`:
   In [deployment mode][DEPLOYMENT MODE], Bundler will 'roll-out' the bundle for
   production or CI use. Please check carefully if you want to have this option
   enabled in your development environment.
 
   This option is deprecated in favor of the `deployment` setting.
 
-* `--redownload`, `--force`:
+- `--redownload`, `--force`:
   Force download every gem, even if the required versions are already available
   locally.
 
-* `--frozen`:
+- `--frozen`:
   Do not allow the Gemfile.lock to be updated after this install. Exits
   non-zero if there are going to be changes to the Gemfile.lock.
 
   This option is deprecated in favor of the `frozen` setting.
 
-* `--full-index`:
+- `--full-index`:
   Bundler will not call Rubygems' API endpoint (default) but download and cache
   a (currently big) index file of all gems. Performance can be improved for
   large bundles that seldom change by enabling this option.
 
-* `--gemfile=GEMFILE`:
+- `--gemfile=GEMFILE`:
   The location of the Gemfile(5) which Bundler should use. This defaults
   to a Gemfile(5) in the current working directory. In general, Bundler
   will assume that the location of the Gemfile(5) is also the project's
   root and will try to find `Gemfile.lock` and `vendor/cache` relative
   to this location.
 
-* `--jobs=<number>`, `-j=<number>`:
+- `--jobs=<number>`, `-j=<number>`:
   The maximum number of parallel download and install jobs. The default is the
   number of available processors.
 
-* `--local`:
+- `--local`:
   Do not attempt to connect to `rubygems.org`. Instead, Bundler will use the
   gems already present in Rubygems' cache or in `vendor/cache`. Note that if an
   appropriate platform-specific gem exists on `rubygems.org` it will not be
   found.
 
-* `--prefer-local`:
+- `--prefer-local`:
   Force using locally installed gems, or gems already present in Rubygems' cache
   or in `vendor/cache`, when resolving, even if newer versions are available
   remotely. Only attempt to connect to `rubygems.org` for gems that are not
   present locally.
 
-* `--no-cache`:
+- `--no-cache`:
   Do not update the cache in `vendor/cache` with the newly bundled gems. This
   does not remove any gems in the cache but keeps the newly bundled gems from
   being cached during the install.
 
-* `--no-prune`:
+- `--no-prune`:
   Don't remove stale gems from the cache when the installation finishes.
 
   This option is deprecated in favor of the `no_prune` setting.
 
-* `--path=PATH`:
+- `--path=PATH`:
   The location to install the specified gems to. This defaults to Rubygems'
   setting. Bundler shares this location with Rubygems, `gem install ...` will
   have gem installed there, too. Therefore, gems installed without a
@@ -137,13 +136,13 @@ automatically and that requires `bundler` to silently remember them. Since
 
   This option is deprecated in favor of the `path` setting.
 
-* `--quiet`:
+- `--quiet`:
   Do not print progress information to the standard output.
 
-* `--retry=[<number>]`:
+- `--retry=[<number>]`:
   Retry failed network or git requests for <number> times.
 
-* `--shebang=SHEBANG`:
+- `--shebang=SHEBANG`:
   Uses the specified ruby executable (usually `ruby`) to execute the scripts
   created with `--binstubs`. In addition, if you use `--binstubs` together with
   `--shebang jruby` these executables will be changed to execute `jruby`
@@ -151,7 +150,7 @@ automatically and that requires `bundler` to silently remember them. Since
 
   This option is deprecated in favor of the `shebang` setting.
 
-* `--standalone[=<list>]`:
+- `--standalone[=<list>]`:
   Makes a bundle that can work without depending on Rubygems or Bundler at
   runtime. A space separated list of groups to install can be specified.
   Bundler creates a directory named `bundle` and installs the bundle there. It
@@ -159,22 +158,22 @@ automatically and that requires `bundler` to silently remember them. Since
   in the manner required. Using this option implicitly sets `path`, which is a
   [remembered option][REMEMBERED OPTIONS].
 
-* `--system`:
+- `--system`:
   Installs the gems specified in the bundle to the system's Rubygems location.
   This overrides any previous configuration of `--path`.
 
   This option is deprecated in favor of the `system` setting.
 
-* `--trust-policy=TRUST-POLICY`:
+- `--trust-policy=TRUST-POLICY`:
   Apply the Rubygems security policy <policy>, where policy is one of
   `HighSecurity`, `MediumSecurity`, `LowSecurity`, `AlmostNoSecurity`, or
   `NoSecurity`. For more details, please see the Rubygems signing documentation
   linked below in [SEE ALSO][].
 
-* `--target-rbconfig=TARGET-RBCONFIG`:
+- `--target-rbconfig=TARGET-RBCONFIG`:
   Path to rbconfig.rb for the deployment target platform.
 
-* `--with=<list>`:
+- `--with=<list>`:
   A space-separated list of groups referencing gems to install. If an
   optional group is given it is installed. If a group is given that is
   in the remembered list of groups given to --without, it is removed
@@ -182,7 +181,7 @@ automatically and that requires `bundler` to silently remember them. Since
 
   This option is deprecated in favor of the `with` setting.
 
-* `--without=<list>`:
+- `--without=<list>`:
   A space-separated list of groups referencing gems to skip during installation.
   If a group is given that is in the remembered list of groups given
   to --with, it is removed from that list.
@@ -243,7 +242,7 @@ specified groups, it will still _download_ those gems and use them to
 resolve the dependencies of every gem in your Gemfile(5).
 
 This is so that installing a different set of groups on another
- machine (such as a production server) will not change the
+machine (such as a production server) will not change the
 gems and versions that you have already developed and tested against.
 
 `Bundler offers a rock-solid guarantee that the third-party
@@ -306,7 +305,7 @@ third-party code being used if `any` of the gems in the Gemfile(5)
 or any of their dependencies have been updated.
 
 When Bundler first shipped, the `Gemfile.lock` was included in the `.gitignore`
-file included with generated gems.  Over time, however, it became clear that
+file included with generated gems. Over time, however, it became clear that
 this practice forces the pain of broken dependencies onto new contributors,
 while leaving existing contributors potentially unaware of the problem. Since
 `bundle install` is usually the first step towards a contribution, the pain of
@@ -354,11 +353,11 @@ When you run `bundle install`, Bundler notices that you changed
 the `actionpack` gem, but not the `activemerchant` gem. It
 evaluates the gems currently being used to satisfy its requirements:
 
-  * `activesupport 2.3.8`:
-    also used to satisfy a dependency in `activemerchant`,
-    which is not being updated
-  * `rack ~> 1.1.0`:
-    not currently being used to satisfy another dependency
+- `activesupport 2.3.8`:
+  also used to satisfy a dependency in `activemerchant`,
+  which is not being updated
+- `rack ~> 1.1.0`:
+  not currently being used to satisfy another dependency
 
 Because you did not explicitly ask to update `activemerchant`,
 you would not expect it to suddenly stop working after updating
@@ -383,5 +382,5 @@ does not work, run [bundle update(1)](bundle-update.1.html).
 
 ## SEE ALSO
 
-* [Gem install docs](https://guides.rubygems.org/rubygems-basics/#installing-gems)
-* [Rubygems signing docs](https://guides.rubygems.org/security/)
+- [Gem install docs](https://guides.rubygems.org/rubygems-basics/#installing-gems)
+- [Rubygems signing docs](https://guides.rubygems.org/security/)

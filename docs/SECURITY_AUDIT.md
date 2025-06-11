@@ -1,15 +1,19 @@
 # Security Audit & Compliance Guide
+
 ## Town of Wiley Municipal Website
 
 ### 🔒 Security Overview
 
-This document outlines the security measures, compliance requirements, and audit procedures for the Town of Wiley municipal website to ensure the highest standards of data protection and user privacy.
+This document outlines the security measures, compliance requirements, and audit
+procedures for the Town of Wiley municipal website to ensure the highest
+standards of data protection and user privacy.
 
 ---
 
 ## 🛡️ Security Measures Implemented
 
 ### SSL/TLS Encryption
+
 - **TLS 1.3** minimum protocol version
 - **Perfect Forward Secrecy** enabled
 - **HSTS (HTTP Strict Transport Security)** enforced
@@ -17,6 +21,7 @@ This document outlines the security measures, compliance requirements, and audit
 - **Automated certificate renewal** via Let's Encrypt or commercial CA
 
 ### Security Headers
+
 ```apache
 # Comprehensive security headers
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -29,6 +34,7 @@ Feature-Policy: geolocation 'none'; microphone 'none'; camera 'none'
 ```
 
 ### Input Validation & Sanitization
+
 - **Client-side validation** for immediate feedback
 - **Server-side validation** for security (when applicable)
 - **XSS prevention** through proper encoding
@@ -36,6 +42,7 @@ Feature-Policy: geolocation 'none'; microphone 'none'; camera 'none'
 - **File upload restrictions** with type and size limits
 
 ### Privacy Protection
+
 - **No tracking cookies** without explicit consent
 - **Local data minimization** - only store necessary information
 - **Secure session management** with proper expiration
@@ -47,44 +54,55 @@ Feature-Policy: geolocation 'none'; microphone 'none'; camera 'none'
 ## 📋 Compliance Requirements
 
 ### GDPR (General Data Protection Regulation)
+
 ✅ **Article 5 - Principles of Processing**
+
 - Data processed lawfully, fairly, transparently
 - Purpose limitation and data minimization
 - Accuracy and storage limitation
 - Integrity and confidentiality
 
 ✅ **Article 7 - Consent**
+
 - Clear and granular consent mechanisms
 - Easy withdrawal of consent
 - Documentation of consent
 
 ✅ **Article 13 - Information to be Provided**
+
 - Privacy policy clearly accessible
 - Data controller contact information
 - Legal basis for processing
 
 ✅ **Article 17 - Right to Erasure**
+
 - Mechanisms for data deletion requests
 - Automated data retention policies
 
 ### CCPA (California Consumer Privacy Act)
+
 ✅ **Right to Know**
+
 - Clear disclosure of data collection practices
 - Categories of personal information collected
 - Sources of information and purposes
 
 ✅ **Right to Delete**
+
 - Processes for deletion requests
 - Verification procedures
 - Third-party notification requirements
 
 ✅ **Right to Opt-Out**
+
 - "Do Not Sell My Personal Information" links
 - Clear opt-out mechanisms
 - Respect for browser privacy signals
 
 ### Section 508 / ADA Compliance
+
 ✅ **WCAG 2.1 Level AA**
+
 - Keyboard navigation support
 - Screen reader compatibility
 - Color contrast requirements
@@ -97,6 +115,7 @@ Feature-Policy: geolocation 'none'; microphone 'none'; camera 'none'
 ### Automated Security Scanning
 
 #### 1. OWASP ZAP (Weekly)
+
 ```bash
 #!/bin/bash
 # weekly-security-scan.sh
@@ -131,6 +150,7 @@ docker stop zap && docker rm zap
 ```
 
 #### 2. SSL Labs Assessment (Monthly)
+
 ```bash
 #!/bin/bash
 # ssl-assessment.sh
@@ -153,6 +173,7 @@ fi
 ```
 
 #### 3. Content Security Policy Validation
+
 ```javascript
 // csp-validator.js
 const puppeteer = require('puppeteer');
@@ -160,22 +181,25 @@ const puppeteer = require('puppeteer');
 async function validateCSP() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  
+
   // Monitor CSP violations
   const violations = [];
   page.on('console', msg => {
-    if (msg.type() === 'error' && msg.text().includes('Content Security Policy')) {
+    if (
+      msg.type() === 'error' &&
+      msg.text().includes('Content Security Policy')
+    ) {
       violations.push(msg.text());
     }
   });
-  
+
   await page.goto('https://townofwiley.gov');
-  
+
   // Wait for page to fully load
   await page.waitForTimeout(5000);
-  
+
   await browser.close();
-  
+
   if (violations.length > 0) {
     console.error('CSP Violations Found:', violations);
     process.exit(1);
@@ -190,7 +214,9 @@ validateCSP();
 ### Manual Security Review
 
 #### Monthly Security Checklist
-- [ ] **Certificate Expiration** - Check SSL certificate validity (minimum 30 days remaining)
+
+- [ ] **Certificate Expiration** - Check SSL certificate validity (minimum 30
+      days remaining)
 - [ ] **Dependency Updates** - Review and update all third-party libraries
 - [ ] **Access Logs Review** - Analyze server logs for suspicious activity
 - [ ] **Backup Verification** - Test backup restoration procedures
@@ -200,6 +226,7 @@ validateCSP();
 - [ ] **Privacy Policy Review** - Ensure compliance with current regulations
 
 #### Quarterly Penetration Testing
+
 ```bash
 #!/bin/bash
 # penetration-test.sh
@@ -234,18 +261,21 @@ echo "Penetration testing complete. Review results for vulnerabilities."
 ### Security Incident Classification
 
 #### Level 1 - Critical
+
 - Data breach affecting personal information
 - Website defacement
 - Malware detection
 - Unauthorized access to admin systems
 
 #### Level 2 - High
+
 - DDoS attacks affecting availability
 - Suspicious login attempts
 - Phishing attempts targeting users
 - Security scanner alerts
 
 #### Level 3 - Medium
+
 - Failed security audits
 - Outdated security certificates
 - Minor security misconfigurations
@@ -254,24 +284,28 @@ echo "Penetration testing complete. Review results for vulnerabilities."
 ### Response Procedures
 
 #### Immediate Response (0-1 hour)
+
 1. **Isolate affected systems**
 2. **Document the incident** with timestamps
 3. **Notify the incident response team**
 4. **Preserve evidence** for forensic analysis
 
 #### Short-term Response (1-24 hours)
+
 1. **Assess the scope** of the incident
 2. **Implement containment** measures
 3. **Begin forensic analysis**
 4. **Communicate with stakeholders**
 
 #### Long-term Response (1-7 days)
+
 1. **Complete forensic investigation**
 2. **Implement fixes** and security improvements
 3. **Conduct post-incident review**
 4. **Update security procedures**
 
 ### Contact Information
+
 - **IT Security Team**: security@townofwiley.gov
 - **Emergency Contact**: +1 (555) 123-4567
 - **Law Enforcement**: Local Sheriff's Department
@@ -284,24 +318,28 @@ echo "Penetration testing complete. Review results for vulnerabilities."
 ### Data Classification
 
 #### Public Data
+
 - General town information
 - Public meeting schedules
 - News and announcements
 - Business directory listings
 
 #### Internal Data
+
 - Employee contact information
 - Internal procedures
 - Draft documents
 - Administrative communications
 
 #### Confidential Data
+
 - Citizen personal information
 - Financial records
 - Legal documents
 - Security configurations
 
 #### Restricted Data
+
 - Social Security Numbers
 - Financial account information
 - Medical information
@@ -310,18 +348,21 @@ echo "Penetration testing complete. Review results for vulnerabilities."
 ### Data Handling Procedures
 
 #### Collection
+
 - **Minimal collection** - Only collect necessary data
 - **Clear purpose** - Explicitly state why data is collected
 - **User consent** - Obtain appropriate consent before collection
 - **Secure transmission** - Use encrypted connections
 
 #### Storage
+
 - **Encryption at rest** - All sensitive data encrypted
 - **Access controls** - Role-based access to data
 - **Regular auditing** - Log and monitor data access
 - **Secure deletion** - Proper data destruction procedures
 
 #### Sharing
+
 - **Need-to-know basis** - Limit data sharing
 - **Data agreements** - Formal agreements with third parties
 - **Audit trails** - Log all data sharing activities
@@ -332,6 +373,7 @@ echo "Penetration testing complete. Review results for vulnerabilities."
 ## 📊 Monitoring & Alerts
 
 ### Real-time Monitoring
+
 - **Website uptime** monitoring with 99.9% SLA
 - **SSL certificate** expiration alerts
 - **Security header** compliance checks
@@ -339,30 +381,32 @@ echo "Penetration testing complete. Review results for vulnerabilities."
 - **Unusual traffic** pattern detection
 
 ### Alert Thresholds
+
 ```yaml
 alerts:
   uptime:
     threshold: 99.9%
     notification: immediate
-  
+
   ssl_expiry:
     threshold: 30 days
     notification: daily
-  
+
   failed_logins:
     threshold: 5 attempts/hour
     notification: immediate
-  
+
   traffic_spike:
     threshold: 300% normal
     notification: within 15 minutes
-  
+
   security_scan_fail:
     threshold: any failure
     notification: immediate
 ```
 
 ### Logging Standards
+
 ```apache
 # Apache access log format
 LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\" %D" combined_with_time
@@ -377,24 +421,28 @@ CustomLog logs/security_log security "expr=%{REQUEST_STATUS} >= 400"
 ## 🔄 Regular Maintenance
 
 ### Daily Tasks
+
 - Monitor security alerts
 - Check website availability
 - Review access logs
 - Verify backup completion
 
 ### Weekly Tasks
+
 - Run automated security scans
 - Update security patches
 - Review user access reports
 - Check certificate status
 
 ### Monthly Tasks
+
 - Comprehensive security audit
 - Penetration testing
 - Policy compliance review
 - Staff security training
 
 ### Quarterly Tasks
+
 - Full infrastructure security assessment
 - Disaster recovery testing
 - Security policy updates
@@ -405,7 +453,9 @@ CustomLog logs/security_log security "expr=%{REQUEST_STATUS} >= 400"
 ## 📅 Scheduled Security Audit Procedures
 
 ### Monthly Security Checks
+
 **First Monday of Each Month** - Automated Scans
+
 - [ ] SSL certificate status and expiration check
 - [ ] Security header verification
 - [ ] Vulnerability scan with OWASP ZAP
@@ -413,7 +463,9 @@ CustomLog logs/security_log security "expr=%{REQUEST_STATUS} >= 400"
 - [ ] Access log review for suspicious activity
 
 ### Quarterly Comprehensive Audits
+
 **First Week of Jan/Apr/Jul/Oct** - Manual Security Review
+
 - [ ] Complete WCAG 2.1 accessibility compliance test
 - [ ] Privacy policy review and updates
 - [ ] Third-party service security assessment
@@ -422,7 +474,9 @@ CustomLog logs/security_log security "expr=%{REQUEST_STATUS} >= 400"
 - [ ] Performance impact of security measures
 
 ### Annual Security Assessments
+
 **January** - Full Security Audit
+
 - [ ] Professional penetration testing (if budget allows)
 - [ ] Complete infrastructure security review
 - [ ] GDPR/CCPA compliance verification
@@ -431,7 +485,9 @@ CustomLog logs/security_log security "expr=%{REQUEST_STATUS} >= 400"
 - [ ] Backup and recovery testing
 
 ### Immediate Response Triggers
+
 **When These Events Occur** - Emergency Security Review
+
 - [ ] New vulnerability disclosed in dependencies
 - [ ] Security incident or breach attempt
 - [ ] Major browser security update
@@ -441,6 +497,7 @@ CustomLog logs/security_log security "expr=%{REQUEST_STATUS} >= 400"
 ### Security Audit Checklist Template
 
 #### SSL/TLS Security (Monthly)
+
 ```bash
 # SSL Labs test
 curl -s "https://api.ssllabs.com/api/v3/analyze?host=townofwiley.gov" | jq '.endpoints[0].grade'
@@ -453,6 +510,7 @@ curl -I https://townofwiley.gov | grep -E "(Strict-Transport|X-Frame|X-Content|X
 ```
 
 #### Dependency Security (Weekly)
+
 ```bash
 # Check for vulnerabilities
 npm audit --audit-level=moderate
@@ -465,6 +523,7 @@ npm outdated
 ```
 
 #### Performance Impact Assessment (Quarterly)
+
 ```bash
 # Lighthouse security audit
 npx lighthouse https://townofwiley.gov --only-categories=performance,best-practices --output=json
@@ -474,7 +533,9 @@ npx web-vitals-cli https://townofwiley.gov
 ```
 
 ### Documentation Requirements
+
 Each audit must include:
+
 1. **Date and auditor information**
 2. **Scope of audit performed**
 3. **Findings and risk assessment**
@@ -487,21 +548,25 @@ Each audit must include:
 ## 📚 Security Resources
 
 ### Training Materials
+
 - [OWASP Top 10 Web Application Security Risks](https://owasp.org/www-project-top-ten/)
 - [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
 - [Government Security Best Practices](https://www.cisa.gov/government)
 
 ### Tools & Services
+
 - **Vulnerability Scanning**: OWASP ZAP, Nessus, Qualys
 - **SSL Testing**: SSL Labs, testssl.sh
 - **Monitoring**: Pingdom, StatusCake, UptimeRobot
 - **Compliance**: TrustArc, OneTrust, Cookiebot
 
 ### Emergency Contacts
+
 - **CISA**: 1-888-282-0870
 - **FBI Cyber Division**: Contact local field office
 - **State Emergency Management**: [State-specific contact]
 
 ---
 
-*This security audit guide should be reviewed and updated quarterly to ensure compliance with evolving security standards and regulations.*
+_This security audit guide should be reviewed and updated quarterly to ensure
+compliance with evolving security standards and regulations._

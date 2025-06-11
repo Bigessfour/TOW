@@ -1,47 +1,68 @@
 <!-- Government Banner -->
 <div class="gov-banner bg-amber-900 text-amber-50">
-    <div class="container mx-auto">
-        <div class="gov-banner-content py-2 text-center">
-            <span class="gov-banner-text text-sm font-medium">
-                <strong>Official Website</strong> of the Town of Wiley Government
-            </span>
-        </div>
+  <div class="container mx-auto">
+    <div class="gov-banner-content py-2 text-center">
+      <span class="gov-banner-text text-sm font-medium">
+        <strong>Official Website</strong> of the Town of Wiley Government
+      </span>
     </div>
+  </div>
 </div>
 
 <!-- Header with Town Motto -->
+<!-- Skip to Content Accessibility Link -->
+<a
+  href="#main-content"
+  class="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-amber-700 focus:text-white focus:rounded focus:p-3 z-50"
+  tabindex="0"
+  >Skip to main content</a
+>
 <header class="bg-amber-800 text-white shadow-lg">
-    <div class="container mx-auto">
-        <!-- Main Header -->
-        <div class="flex justify-between items-center py-4">
-            <div class="flex items-center gap-4">
-                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Town of Wiley Logo" class="h-16 w-auto" width="64" height="64">
-                <div class="logo-text">
-                    <h1 class="text-2xl font-bold mb-1">
-                        <a href="{{ '/' | relative_url }}" class="text-white no-underline hover:text-amber-100 transition-colors">
-                            Town of Wiley
-                        </a>
-                    </h1>
-                    <p class="text-amber-100 text-sm font-medium mb-0">Down Wiley Way, It's Kids and Hay</p>
-                </div>
-            </div>
-            
-            <!-- Search Form -->
-            <div class="header-search hidden md:block">
-                <form class="search-form flex items-center" role="search" aria-label="Site search">
-                    <label for="site-search" class="sr-only">Search website</label>
-                    <input type="search" id="site-search" name="search" placeholder="Search services..." 
-                           class="px-3 py-2 rounded-l border-amber-700 text-gray-900 bg-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500" 
-                           aria-describedby="search-help">
-                    <button type="submit" aria-label="Submit search" 
-                            class="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-r transition-colors">
-                        <span aria-hidden="true">🔍</span>
-                    </button>
-                    <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
-                </form>
-            </div>
+  <div class="container mx-auto">
+    <!-- Main Header -->
+    <div class="flex justify-between items-center py-4">
+      <div class="flex items-center gap-4">
+        <img
+          src="{{ '/assets/images/logo.png' | relative_url }}"
+          alt="Town of Wiley Logo"
+          class="h-16 w-auto"
+          width="64"
+          height="64"
+        />
+        <div class="logo-text">
+          <h1 class="text-2xl font-bold mb-1">
+            <a href="{{ '/' | relative_url }}" class="text-white no-underline hover:text-amber-100 transition-colors">
+              Town of Wiley
+            </a>
+          </h1>
+          <p class="text-amber-100 text-sm font-medium mb-0">Down Wiley Way, It's Kids and Hay</p>
         </div>
+      </div>
+
+      <!-- Search Form -->
+      <div class="header-search hidden md:block">
+        <form class="search-form flex items-center" role="search" aria-label="Site search">
+          <label for="site-search" class="sr-only">Search website</label>
+          <input
+            type="search"
+            id="site-search"
+            name="search"
+            placeholder="Search services..."
+            class="px-3 py-2 rounded-l border-amber-700 text-gray-900 bg-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+            aria-describedby="search-help"
+          />
+          <button
+            type="submit"
+            aria-label="Submit search"
+            class="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-r transition-colors"
+          >
+            <span aria-hidden="true">🔍</span>
+          </button>
+          <div id="search-help" class="sr-only">Press Enter to search or use arrow keys to navigate suggestions</div>
+        </form>
+      </div>
     </div>
+  </div>
 </header>
 
 <script src="{{ '/assets/js/script.js' | relative_url }}" defer></script>

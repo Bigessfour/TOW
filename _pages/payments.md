@@ -2,12 +2,13 @@
 layout: page
 title: Online Payment Portal
 permalink: /payments/
-description: "Pay your Town of Wiley bills and fees online securely"
+description: 'Pay your Town of Wiley bills and fees online securely'
 ---
 
 # Online Payment Portal
 
-Pay your Town of Wiley bills and fees online 24/7 through our secure payment system.
+Pay your Town of Wiley bills and fees online 24/7 through our secure payment
+system.
 
 <div class="payment-options grid md:grid-cols-2 gap-6 my-8">
     <div class="payment-card bg-blue-50 p-6 rounded-lg border border-blue-200">
@@ -53,8 +54,10 @@ Pay your Town of Wiley bills and fees online 24/7 through our secure payment sys
 
 ## Getting Started
 
-1. **Create an Account**: Register with your account number and basic information
-2. **Add Payment Methods**: Securely save your credit card or bank account information
+1. **Create an Account**: Register with your account number and basic
+   information
+2. **Add Payment Methods**: Securely save your credit card or bank account
+   information
 3. **Make Payments**: Pay current bills or set up automatic payments
 4. **View History**: Access payment history and receipts online
 
@@ -62,7 +65,8 @@ Pay your Town of Wiley bills and fees online 24/7 through our secure payment sys
 
 - **Bank-Level Encryption**: All transactions use SSL encryption
 - **PCI Compliant**: Our payment processor meets all security standards
-- **No Stored Data**: Payment information is securely processed and not stored locally
+- **No Stored Data**: Payment information is securely processed and not stored
+  locally
 - **24/7 Monitoring**: Our systems are monitored for security threats
 
 ## Payment Methods Accepted
@@ -74,7 +78,9 @@ Pay your Town of Wiley bills and fees online 24/7 through our secure payment sys
 
 ## Fees
 
-Most online payments are processed without additional fees. Some payment methods may include a small convenience fee, which will be clearly displayed before you complete your transaction.
+Most online payments are processed without additional fees. Some payment methods
+may include a small convenience fee, which will be clearly displayed before you
+complete your transaction.
 
 ## Customer Support
 
@@ -87,6 +93,7 @@ For assistance with online payments:
 ## Alternative Payment Options
 
 If you prefer not to pay online, you can also:
+
 - Pay in person at Town Hall during business hours
 - Mail payments to our office
 - Use the drop box outside Town Hall (available 24/7)
@@ -94,4 +101,5 @@ If you prefer not to pay online, you can also:
 
 ---
 
-**Important Note:** This is a demonstration page. In a live implementation, this would connect to a secure payment processing system.
+**Important Note:** This is a demonstration page. In a live implementation, this
+would connect to a secure payment processing system.

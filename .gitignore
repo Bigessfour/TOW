@@ -56,3 +56,6 @@ tracking.js
 # Local Configuration
 config.local.js
 settings.local.json
+
+# Local Netlify folder
+.netlify

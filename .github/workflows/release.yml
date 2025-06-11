@@ -9,18 +9,18 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     name: Create GitHub Release
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Generate release notes
         id: release_notes
         run: |
           # Extract version from tag
           VERSION=${GITHUB_REF#refs/tags/}
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          
+
           # Generate release notes from CHANGELOG.md
           if [ -f CHANGELOG.md ]; then
             # Extract the section for this version from CHANGELOG.md
@@ -28,7 +28,7 @@ jobs:
           else
             echo "Release $VERSION" > release_notes.md
           fi
-          
+
       - name: Create deployment archive
         run: |
           # Create a clean deployment package
@@ -36,10 +36,10 @@ jobs:
           cp index.html styles.css script.js deployment/
           cp README.md CHANGELOG.md deployment/
           cp -r .github deployment/ 2>/dev/null || true
-          
+
           # Create archive
           tar -czf deployment-${{ steps.release_notes.outputs.version }}.tar.gz -C deployment .
-          
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:

@@ -1,9 +1,11 @@
 # http_parser.rb
 
-A simple callback-based HTTP request/response parser for writing http
-servers, clients and proxies.
+A simple callback-based HTTP request/response parser for writing http servers,
+clients and proxies.
 
-This gem is built on top of [joyent/http-parser](https://github.com/joyent/http-parser) and its java port [http-parser/http-parser.java](https://github.com/http-parser/http-parser.java).
+This gem is built on top of
+[joyent/http-parser](https://github.com/joyent/http-parser) and its java port
+[http-parser/http-parser.java](https://github.com/http-parser/http-parser.java).
 
 ## Supported Platforms
 
@@ -44,6 +46,7 @@ end
 ```
 
 # Feed raw data from the socket to the parser
+
 `parser << raw_data`
 
 ## Advanced Usage

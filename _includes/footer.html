@@ -1,51 +1,65 @@
 <!-- Footer -->
 <footer class="bg-amber-900 text-white py-8">
-    <div class="container mx-auto">
-        <div class="footer-content grid md:grid-cols-3 gap-8">
-            <div class="footer-section">
-                <h3 class="text-lg font-semibold mb-4 text-amber-200">Contact Information</h3>
-                <address class="not-italic">
-                    <strong>Town Hall</strong><br>
-                    123 Main Street<br>
-                    Wiley, State 12345<br>
-                    <a href="tel:+15551234567" class="text-amber-200 hover:text-amber-100">(555) 123-4567</a><br>
-                    <a href="mailto:info@townofwiley.gov" class="text-amber-200 hover:text-amber-100">info@townofwiley.gov</a>
-                </address>
-            </div>
-              <div class="footer-section">
-                <h3 class="text-lg font-semibold mb-4 text-amber-100">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ '/services/' | relative_url }}" class="text-amber-50 hover:text-white font-medium">Services</a></li>
-                    <li><a href="{{ '/government/' | relative_url }}" class="text-amber-50 hover:text-white font-medium">Government</a></li>
-                    <li><a href="{{ '/payments/' | relative_url }}" class="text-amber-50 hover:text-white font-medium">Online Payments</a></li>
-                    <li><a href="{{ '/news/' | relative_url }}" class="text-amber-50 hover:text-white font-medium">News & Updates</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3 class="text-lg font-semibold mb-4 text-amber-100">Office Hours</h3>
-                <div class="text-amber-50">
-                    <p class="font-medium"><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                    <p class="font-medium"><strong>Saturday:</strong> 9:00 AM - 12:00 PM</p>
-                    <p class="font-medium"><strong>Emergency:</strong> <a href="tel:911" class="text-red-200 hover:text-red-100 font-bold">911</a></p>
-                </div>
-            </div>
+  <div class="container mx-auto">
+    <div class="footer-content grid md:grid-cols-3 gap-8">
+      <div class="footer-section">
+        <h3 class="text-lg font-semibold mb-4 text-amber-200">Contact Information</h3>
+        <address class="not-italic">
+          <strong>Town Hall</strong><br />
+          123 Main Street<br />
+          Wiley, State 12345<br />
+          <a href="tel:+15551234567" class="text-amber-200 hover:text-amber-100">(555) 123-4567</a><br />
+          <a href="mailto:info@townofwiley.gov" class="text-amber-200 hover:text-amber-100">info@townofwiley.gov</a>
+        </address>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg font-semibold mb-4 text-amber-100">Quick Links</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="{{ '/services/' | relative_url }}" class="text-amber-50 hover:text-white font-medium">Services</a>
+          </li>
+          <li>
+            <a href="{{ '/government/' | relative_url }}" class="text-amber-50 hover:text-white font-medium"
+              >Government</a
+            >
+          </li>
+          <li>
+            <a href="{{ '/payments/' | relative_url }}" class="text-amber-50 hover:text-white font-medium"
+              >Online Payments</a
+            >
+          </li>
+          <li>
+            <a href="{{ '/news/' | relative_url }}" class="text-amber-50 hover:text-white font-medium"
+              >News & Updates</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="text-lg font-semibold mb-4 text-amber-100">Office Hours</h3>
+        <div class="text-amber-50">
+          <p class="font-medium"><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
+          <p class="font-medium"><strong>Saturday:</strong> 9:00 AM - 12:00 PM</p>
+          <p class="font-medium">
+            <strong>Emergency:</strong> <a href="tel:911" class="text-red-200 hover:text-red-100 font-bold">911</a>
+          </p>
         </div>
-        
-        <div class="footer-bottom border-t border-amber-800 mt-8 pt-8 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-amber-100 text-sm">
-                    © {{ 'now' | date: "%Y" }} Town of Wiley. All rights reserved.
-                </p>
-                <div class="mt-2 text-sm text-center text-amber-200">
-                    <em>"Down Wiley Way, It's Kids and Hay"</em>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="/accessibility/" class="text-amber-100 hover:text-white text-sm">Accessibility</a>
-                    <a href="/privacy/" class="text-amber-100 hover:text-white text-sm">Privacy Policy</a>
-                    <a href="/contact/" class="text-amber-100 hover:text-white text-sm">Contact</a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="footer-bottom border-t border-amber-800 mt-8 pt-8 text-center">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-amber-100 text-sm">© {{ 'now' | date: "%Y" }} Town of Wiley. All rights reserved.</p>
+        <div class="mt-2 text-sm text-center text-amber-200">
+          <em>"Down Wiley Way, It's Kids and Hay"</em>
+        </div>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="/accessibility/" class="text-amber-100 hover:text-white text-sm">Accessibility</a>
+          <a href="/privacy/" class="text-amber-100 hover:text-white text-sm">Privacy Policy</a>
+          <a href="/contact/" class="text-amber-100 hover:text-white text-sm">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>

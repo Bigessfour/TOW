@@ -2,7 +2,9 @@
 layout: page
 title: Contact Us
 permalink: /contact/
-description: "Contact information for the Town of Wiley including town hall, emergency services, and online contact form"
+description:
+  'Contact information for the Town of Wiley including town hall, emergency
+  services, and online contact form'
 ---
 
 # Contact Information
@@ -71,4 +73,5 @@ Saturday: 9:00 AM - 12:00 PM
 
 ---
 
-For immediate assistance during business hours, please call or visit town hall. For after-hours emergencies, dial 911.
+For immediate assistance during business hours, please call or visit town hall.
+For after-hours emergencies, dial 911.

@@ -1,3 +1,6 @@
-exports.handler = async (event) => {
-    return { statusCode: 200, body: JSON.stringify({ message: 'Payment setup required' }) };
+exports.handler = async event => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'Payment setup required' }),
+  };
 };

@@ -1,13 +1,16 @@
 ---
 layout: post
-title: "New Online Payment System Now Available"
+title: 'New Online Payment System Now Available'
 date: 2025-01-15 14:30:00 -0500
 categories: [news, services]
-author: "Town Administrator"
-description: "Residents can now pay utility bills, permits, and fees online 24/7 through our secure payment portal"
+author: 'Town Administrator'
+description:
+  'Residents can now pay utility bills, permits, and fees online 24/7 through
+  our secure payment portal'
 ---
 
-We're pleased to announce that the Town of Wiley now offers a convenient online payment system for residents and businesses.
+We're pleased to announce that the Town of Wiley now offers a convenient online
+payment system for residents and businesses.
 
 ## What You Can Pay Online
 
@@ -27,10 +30,14 @@ We're pleased to announce that the Town of Wiley now offers a convenient online 
 
 ## Security and Accessibility
 
-Our payment system uses bank-level encryption to protect your personal and financial information. The portal is fully accessible and works on all devices including smartphones, tablets, and computers.
+Our payment system uses bank-level encryption to protect your personal and
+financial information. The portal is fully accessible and works on all devices
+including smartphones, tablets, and computers.
 
-For assistance with online payments or to make payments over the phone, contact town hall at [(555) 123-4567](tel:+15551234567) during business hours.
+For assistance with online payments or to make payments over the phone, contact
+town hall at [(555) 123-4567](tel:+15551234567) during business hours.
 
 ## Traditional Payment Options Still Available
 
-We continue to accept payments in person, by mail, and over the phone for residents who prefer these methods.
+We continue to accept payments in person, by mail, and over the phone for
+residents who prefer these methods.

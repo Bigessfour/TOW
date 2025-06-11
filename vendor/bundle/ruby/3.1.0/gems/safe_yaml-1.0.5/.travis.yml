@@ -1,11 +1,8 @@
-language:
-  ruby
+language: ruby
 
-before_install:
-  gem install bundler
+before_install: gem install bundler
 
-script:
-  bundle exec rake spec
+script: bundle exec rake spec
 
 rvm:
   - ruby-head
@@ -45,4 +42,3 @@ matrix:
 branches:
   only:
     - master
-

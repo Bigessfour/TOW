@@ -17,32 +17,32 @@ jobs:
   copilot-agent:
     runs-on: ubuntu-latest
     if: contains(github.event.issue.assignees.*.login, 'github-copilot[bot]') || contains(github.event.comment.body, '@github-copilot')
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
         run: |
           if [ -f package.json ]; then
             npm install
           fi
-          
+
       - name: Validate HTML
         run: |
           echo "Validating HTML structure..."
           # Add HTML validation here if needed
-          
+
       - name: Run accessibility checks
         run: |
           echo "Running accessibility checks..."
           # Add accessibility testing here if needed
-          
+
       - name: Deploy to staging
         if: github.event_name == 'pull_request'
         run: |

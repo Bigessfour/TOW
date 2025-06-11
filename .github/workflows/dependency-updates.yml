@@ -10,45 +10,45 @@ jobs:
   update-dependencies:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-    
-    - name: Update npm dependencies
-      run: |
-        npm update
-        npm audit fix --audit-level=moderate
-    
-    - name: Update Ruby dependencies
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-        bundler-cache: true
-    
-    - name: Update Bundler dependencies
-      run: |
-        bundle update
-        bundle audit check --update
-    
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: 'chore: update dependencies'
-        title: 'Automated Dependency Updates'
-        body: |
-          This PR updates dependencies to their latest versions.
-          
-          Please review the changes and ensure all tests pass before merging.
-          
-          - Updated npm packages
-          - Updated Ruby gems
-          - Fixed security vulnerabilities
-        branch: dependency-updates
-        delete-branch: true
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Update npm dependencies
+        run: |
+          npm update
+          npm audit fix --audit-level=moderate
+
+      - name: Update Ruby dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Update Bundler dependencies
+        run: |
+          bundle update
+          bundle audit check --update
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dependencies'
+          title: 'Automated Dependency Updates'
+          body: |
+            This PR updates dependencies to their latest versions.
+
+            Please review the changes and ensure all tests pass before merging.
+
+            - Updated npm packages
+            - Updated Ruby gems
+            - Fixed security vulnerabilities
+          branch: dependency-updates
+          delete-branch: true

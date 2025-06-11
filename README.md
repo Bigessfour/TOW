@@ -1,14 +1,17 @@
 # Town of Wiley - Official Government Website
 
+[![CI/CD Pipeline for Town of Wiley Website](https://github.com/Bigessfour/TOW/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Bigessfour/TOW/actions/workflows/ci-cd.yml)
 [![Website Status](https://img.shields.io/website?url=https%3A//townofwiley.github.io)](https://townofwiley.github.io)
 [![Accessibility](https://img.shields.io/badge/Accessibility-WCAG%202.1%20AA-green)](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The official website for the Town of Wiley - a modern, accessible, and compliant municipal government website built with Jekyll and Tailwind CSS.
+The official website for the Town of Wiley - a modern, accessible, and compliant
+municipal government website built with Jekyll and Tailwind CSS.
 
 ## 🏛️ About
 
-This website provides essential services and information to Town of Wiley residents, including:
+This website provides essential services and information to Town of Wiley
+residents, including:
 
 - Government services and contact information
 - Meeting schedules and agendas
@@ -19,11 +22,13 @@ This website provides essential services and information to Town of Wiley reside
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 16+ and npm 8+
 - Ruby 3.2+ and Bundler
 - Git
 
 ### Local Development
+
 ```bash
 # Clone the repository
 git clone https://github.com/Bigessfour/TOW.git
@@ -42,13 +47,15 @@ npm run dev:jekyll
 
 ## Local Development Server (Best Practice)
 
-For security and compliance, this project uses [http-server](https://www.npmjs.com/package/http-server) for local development:
+For security and compliance, this project uses
+[http-server](https://www.npmjs.com/package/http-server) for local development:
 
 ```
 npm run dev
 ```
 
-This avoids vulnerabilities found in other dev servers and is recommended for all .gov and public sector sites.
+This avoids vulnerabilities found in other dev servers and is recommended for
+all .gov and public sector sites.
 
 ---
 
@@ -57,18 +64,21 @@ The site will be available at `http://localhost:4000`
 ## 🛠️ Development Workflow
 
 ### Code Quality & Formatting
+
 We use automated workflows to ensure code quality:
 
 #### Website Formatting & Function Workflow
+
 - **Automatic**: Runs on every push and pull request
 - **Manual**: Available in GitHub Actions tab
-- **Features**: 
+- **Features**:
   - Code formatting validation (HTML, CSS, JS, Markdown)
   - Functionality testing (forms, navigation, responsive design)
   - Government compliance checks (ADA, required pages)
   - Performance and SEO auditing
 
 #### Available Commands
+
 ```bash
 # Development
 npm run dev                 # Start development server
@@ -126,6 +136,7 @@ Town of Wiley/
 ## 🎨 Design System
 
 ### Technology Stack
+
 - **Static Site Generator**: Jekyll 4.3+
 - **CSS Framework**: Tailwind CSS 2.2+
 - **Build Tools**: npm, Webpack
@@ -133,6 +144,7 @@ Town of Wiley/
 - **CMS**: Netlify CMS for content management
 
 ### Design Principles
+
 - **Accessibility First**: WCAG 2.1 AA compliance
 - **Mobile Responsive**: Mobile-first design approach
 - **Government Standards**: Professional, official appearance
@@ -140,23 +152,26 @@ Town of Wiley/
 - **SEO Optimized**: Search engine friendly
 
 ### Color Palette
+
 ```css
 :root {
-  --town-blue: #1e40af;      /* Primary government blue */
-  --town-gray: #64748b;      /* Secondary gray */
-  --town-green: #059669;     /* Success/accent green */
+  --town-blue: #1e40af; /* Primary government blue */
+  --town-gray: #64748b; /* Secondary gray */
+  --town-green: #059669; /* Success/accent green */
 }
 ```
 
 ## 🔒 Security & Compliance
 
 ### Government Standards
+
 - **ADA Compliance**: WCAG 2.1 AA accessibility standards
 - **Privacy Policy**: Comprehensive privacy protection
 - **Security Headers**: Proper security configurations
 - **Data Protection**: GDPR/CCPA compliant practices
 
 ### Security Features
+
 - Content Security Policy (CSP)
 - HTTPS enforcement
 - Regular security audits
@@ -165,6 +180,7 @@ Town of Wiley/
 ## 🧪 Testing
 
 ### Automated Testing
+
 - **HTML Validation**: W3C compliance
 - **CSS Linting**: Stylelint with government standards
 - **JavaScript Testing**: ESLint + custom rules
@@ -173,6 +189,7 @@ Town of Wiley/
 - **Link Checking**: Broken link detection
 
 ### Manual Testing Checklist
+
 - [ ] All forms function correctly
 - [ ] Navigation works on mobile devices
 - [ ] Contact information is accurate
@@ -196,6 +213,7 @@ Town of Wiley/
 5. **Create** a Pull Request
 
 ### Code Standards
+
 - Follow existing code style
 - Ensure accessibility compliance
 - Add tests for new features
@@ -204,18 +222,21 @@ Town of Wiley/
 ## 📞 Support
 
 ### For Residents
+
 - **Website Issues**: Submit GitHub issue
 - **General Inquiries**: Contact Town Hall
 - **Technical Support**: IT Department
 
 ### For Developers
+
 - **Documentation**: See `/docs` folder
 - **Issues**: GitHub Issues tab
 - **Discussions**: GitHub Discussions
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 🏆 Recognition
 

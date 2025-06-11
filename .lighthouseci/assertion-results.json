@@ -3,11 +3,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "content-width",
@@ -20,11 +16,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "csp-xss",
@@ -37,11 +29,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "errors-in-console",
@@ -54,11 +42,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0.7,
-    "values": [
-      0.69,
-      0.7,
-      0.69
-    ],
+    "values": [0.69, 0.7, 0.69],
     "operator": ">=",
     "passed": false,
     "auditId": "first-meaningful-paint",
@@ -71,11 +55,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "heading-order",
@@ -88,11 +68,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "html-lang-valid",
@@ -105,11 +81,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "image-size-responsive",
@@ -122,11 +94,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "installable-manifest",
@@ -139,11 +107,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "link-text",
@@ -156,11 +120,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "maskable-icon",
@@ -173,11 +133,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "meta-description",
@@ -190,11 +146,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 3,
-    "values": [
-      3,
-      3,
-      3
-    ],
+    "values": [3, 3, 3],
     "operator": "<=",
     "passed": false,
     "auditId": "render-blocking-resources",
@@ -207,11 +159,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "service-worker",
@@ -224,11 +172,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "splash-screen",
@@ -241,11 +185,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "themed-omnibox",
@@ -258,11 +198,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 1,
-    "values": [
-      1,
-      1,
-      1
-    ],
+    "values": [1, 1, 1],
     "operator": "<=",
     "passed": false,
     "auditId": "unminified-css",
@@ -275,11 +211,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 1,
-    "values": [
-      1,
-      1,
-      1
-    ],
+    "values": [1, 1, 1],
     "operator": "<=",
     "passed": false,
     "auditId": "unminified-javascript",
@@ -292,11 +224,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "unsized-images",
@@ -309,11 +237,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 1,
-    "values": [
-      1,
-      1,
-      1
-    ],
+    "values": [1, 1, 1],
     "operator": "<=",
     "passed": false,
     "auditId": "unused-css-rules",
@@ -326,11 +250,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 2,
-    "values": [
-      2,
-      2,
-      2
-    ],
+    "values": [2, 2, 2],
     "operator": "<=",
     "passed": false,
     "auditId": "unused-javascript",
@@ -343,11 +263,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 4,
-    "values": [
-      4,
-      4,
-      4
-    ],
+    "values": [4, 4, 4],
     "operator": "<=",
     "passed": false,
     "auditId": "uses-long-cache-ttl",
@@ -360,11 +276,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 4,
-    "values": [
-      4,
-      4,
-      4
-    ],
+    "values": [4, 4, 4],
     "operator": "<=",
     "passed": false,
     "auditId": "uses-text-compression",

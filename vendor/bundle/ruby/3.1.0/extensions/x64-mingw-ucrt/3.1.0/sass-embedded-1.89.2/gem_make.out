@@ -1,0 +1,6 @@
+current directory: C:/Users/biges/Desktop/Town of Wiley/vendor/bundle/ruby/3.1.0/gems/sass-embedded-1.89.2/ext/sass
+C:/Ruby31-x64/bin/ruby.exe -rrubygems C:/Users/biges/Desktop/Town\ of\ Wiley/vendor/bundle/ruby/3.1.0/gems/rake-13.3.0/exe/rake RUBYARCHDIR\=C:/Users/biges/Desktop/Town\ of\ Wiley/vendor/bundle/ruby/3.1.0/extensions/x64-mingw-ucrt/3.1.0/sass-embedded-1.89.2 RUBYLIBDIR\=C:/Users/biges/Desktop/Town\ of\ Wiley/vendor/bundle/ruby/3.1.0/extensions/x64-mingw-ucrt/3.1.0/sass-embedded-1.89.2
+gem install --force --install-dir C:/Users/biges/Desktop/Town of Wiley/vendor/bundle/ruby/3.1.0/gems/sass-embedded-1.89.2/ext/sass/ruby --no-document --ignore-dependencies --platform x64-mingw-ucrt --version 1.89.2 sass-embedded
+WARNING:  Unable to use symlinks, installing wrapper
+mv C:/Users/biges/Desktop/Town of Wiley/vendor/bundle/ruby/3.1.0/gems/sass-embedded-1.89.2/ext/sass/ruby/gems/sass-embedded-1.89.2-x64-mingw-ucrt/ext/sass/dart-sass dart-sass
+rm -rf C:/Users/biges/Desktop/Town of Wiley/vendor/bundle/ruby/3.1.0/gems/sass-embedded-1.89.2/ext/sass/ruby
