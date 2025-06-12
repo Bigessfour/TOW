@@ -1,5 +1,7 @@
----
----
+
+
+@use "sass:color";
+// @use "minima"; // Removed to avoid SCSS @use ordering issues and because minima styles are not needed directly here
 
 // Town Government Website - Custom Styles
 // Complements Tailwind CSS with custom components and government-specific styling
@@ -23,9 +25,6 @@ $brand-color: #2563eb !default; // Updated to government blue
 $grey-color: #6b7280 !default; // gray-500  
 $text-color: #374151 !default; // gray-700
 $background-color: #ffffff !default;
-
-// Import Minima base styles
-@import "minima";
 
 // Government Website Custom Styles
 // Typography

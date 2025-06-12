@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Contacts | Town of Wiley</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6 text-amber-900">Contact Submissions</h1>
+    <div id="contacts-list" class="space-y-4"></div>
+    <a href="/admin/" class="text-amber-700 underline mt-8 inline-block">&larr; Back to Admin Home</a>
+  </div>
+  <script>
+    fetch('/.netlify/functions/get_contacts')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('contacts-list');
+        el.innerHTML = data.length ? data.map(c => `
+          <div class="p-4 bg-white rounded shadow">
+            <div class="font-bold text-lg text-gray-800 mb-1">${c.name || ''}</div>
+            <div class="text-gray-600 mb-1">${c.email || ''}</div>
+            <div class="text-xs text-gray-400">${c.date ? new Date(c.date).toLocaleString() : ''} ${c.status ? ' | ' + c.status : ''}</div>
+            <div class="text-gray-600 mt-2">${c.message ? c.message.substring(0, 100) + (c.message.length > 100 ? '...' : '') : ''}</div>
+          </div>
+        `).join('') : '<div class="text-gray-500">No contacts found.</div>';
+      });
+  </script>
+</body>
+</html>

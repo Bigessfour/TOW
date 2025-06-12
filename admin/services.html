@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Services | Town of Wiley</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6 text-amber-900">Town Services</h1>
+    <div id="services-list" class="space-y-4"></div>
+    <a href="/admin/" class="text-amber-700 underline mt-8 inline-block">&larr; Back to Admin Home</a>
+  </div>
+  <script>
+    fetch('/.netlify/functions/get_services')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('services-list');
+        el.innerHTML = data.length ? data.map(s => `
+          <div class="p-4 bg-white rounded shadow">
+            <div class="font-bold text-lg text-gray-800 mb-1">${s.name || ''}</div>
+            <div class="text-gray-600 mb-1">${s.description || ''}</div>
+            <div class="text-xs text-gray-400">${s.contact_info || ''} ${s.hours ? ' | ' + s.hours : ''}</div>
+            ${s.form_link ? `<a href="${s.form_link}" class="text-amber-700 underline text-xs">Online Form</a>` : ''}
+          </div>
+        `).join('') : '<div class="text-gray-500">No services found.</div>';
+      });
+  </script>
+</body>
+</html>

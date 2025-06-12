@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - News | Town of Wiley</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6 text-amber-900">Latest News</h1>
+    <div id="news-list" class="space-y-4"></div>
+    <a href="/admin/" class="text-amber-700 underline mt-8 inline-block">&larr; Back to Admin Home</a>
+  </div>
+  <script>
+    fetch('/.netlify/functions/get_news')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('news-list');
+        el.innerHTML = data.length ? data.map(n => `
+          <div class="p-4 bg-white rounded shadow">
+            <div class="text-sm text-amber-700 font-medium mb-1">${n.date ? new Date(n.date).toLocaleDateString() : ''}</div>
+            <div class="font-bold text-lg text-gray-800 mb-1">${n.title || ''}</div>
+            <div class="text-gray-600 mb-1">${n.body ? n.body.substring(0, 120) + (n.body.length > 120 ? '...' : '') : ''}</div>
+            <div class="text-xs text-gray-400">${n.author || ''}</div>
+          </div>
+        `).join('') : '<div class="text-gray-500">No news found.</div>';
+      });
+  </script>
+</body>
+</html>

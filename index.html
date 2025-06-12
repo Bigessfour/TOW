@@ -24,7 +24,7 @@ permalink: /
 <section class="hero bg-gradient-to-br from-amber-700 to-amber-900 text-white py-20" id="hero">
     <div class="container mx-auto text-center px-4">
       <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-        Welcome to the<br />
+        Welcome to the<br>
         <span class="text-amber-200">Town of Wiley</span>
       </h1>
       <p class="text-xl md:text-2xl mb-8 text-amber-100 max-w-3xl mx-auto">
@@ -68,7 +68,7 @@ permalink: /
         </a>
       </div>
 
-      <!-- Permits & Licenses -->
+      <!-- Permits &amp; Licenses -->
       <div
         class="quick-link-card bg-amber-50 border border-amber-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow"
       >
@@ -94,7 +94,7 @@ permalink: /
           href="tel:911"
           class="btn bg-red-600 text-white hover:bg-red-700 px-6 py-2 rounded font-medium transition-colors"
         >
-          Call 911
+          Call&nbsp;911
         </a>
       </div>
 
@@ -146,6 +146,38 @@ permalink: /
   </div>
 </section>
 
+<!-- Dynamic Data Sections -->
+<section class="dynamic-data py-16 bg-gray-50" id="dynamic-data">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Latest News</h2>
+        <div id="news-list" class="space-y-4"></div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Upcoming Meetings</h2>
+        <div id="meetings-list" class="space-y-4"></div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Town Officials</h2>
+        <div id="officials-list" class="space-y-4"></div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Town Services</h2>
+        <div id="services-list" class="space-y-4"></div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Recent Payments</h2>
+        <div id="payments-list" class="space-y-4"></div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Contact Submissions</h2>
+        <div id="contacts-list" class="space-y-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Town Information -->
 <section class="town-info py-16 bg-amber-50" id="about">
   <div class="container mx-auto px-4">
@@ -182,7 +214,7 @@ permalink: /
           src="{{ '/assets/images/town-hall.jpg' | relative_url }}"
           alt="Town of Wiley Town Hall"
           class="rounded-lg shadow-lg mx-auto town-hall-img"
-        />
+        >
         <p class="text-gray-500 mt-2">Town of Wiley Town Hall</p>
       </div>
     </div>
@@ -209,7 +241,7 @@ permalink: /
               required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
               autocomplete="name"
-            />
+            >
           </div>
           <div>
             <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
@@ -220,7 +252,7 @@ permalink: /
               required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
               autocomplete="email"
-            />
+            >
           </div>
         </div>
         <div class="mb-6">
@@ -231,7 +263,7 @@ permalink: /
             name="subject"
             required
             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-          />
+          >
         </div>
         <div class="mb-6">
           <label for="message" class="block text-gray-700 font-medium mb-2">Message *</label>
@@ -287,7 +319,6 @@ permalink: /
         Stay informed about important town updates, events, and announcements.
       </p>
     </div>
-    
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
       {% assign recent_posts = site.posts | limit: 3 %}
       {% for post in recent_posts %}
@@ -314,13 +345,12 @@ permalink: /
       </article>
       {% endfor %}
     </div>
-    
     <div class="text-center">
       <a
         href="{{ '/news/' | relative_url }}"
         class="btn bg-amber-700 text-white hover:bg-amber-800 px-8 py-3 rounded-lg font-bold transition-colors inline-block"
       >
-        View All News & Announcements
+        View All News &amp; Announcements
       </a>
     </div>
   </div>

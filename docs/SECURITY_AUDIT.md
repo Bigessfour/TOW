@@ -1,4 +1,25 @@
 # Security Audit & Compliance Guide
+## 🛡️ Penetration Testing Schedule
+
+- [ ] Penetration testing is scheduled at least annually (or after major changes).
+- [ ] Third-party security firm or qualified internal team conducts the test.
+- [ ] Results are documented and remediation steps tracked.
+- [ ] Last test date: __________________
+
+## 🚨 Incident Response Plan
+
+1. **Detection**: Monitor for security incidents via automated alerts and manual review.
+2. **Assessment**: Triage and assess severity.
+3. **Containment**: Limit scope and impact.
+4. **Eradication**: Remove threat and affected components.
+5. **Recovery**: Restore from backups, verify integrity.
+6. **Notification**: Inform stakeholders and, if required, authorities and users.
+7. **Post-Incident Review**: Document incident, response, and lessons learned.
+
+**Contacts:**
+- CISA: 1-888-282-0870
+- FBI Cyber Division: Local field office
+- State Emergency Management: [State contact]
 
 ## Town of Wiley Municipal Website
 

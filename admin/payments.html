@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Payments | Town of Wiley</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6 text-amber-900">Recent Payments</h1>
+    <div id="payments-list" class="space-y-4"></div>
+    <a href="/admin/" class="text-amber-700 underline mt-8 inline-block">&larr; Back to Admin Home</a>
+  </div>
+  <script>
+    fetch('/.netlify/functions/get_payments')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('payments-list');
+        el.innerHTML = data.length ? data.map(p => `
+          <div class="p-4 bg-white rounded shadow">
+            <div class="font-bold text-lg text-gray-800 mb-1">${p.payment_type || ''}</div>
+            <div class="text-gray-600 mb-1">Amount: $${p.amount || ''}</div>
+            <div class="text-xs text-gray-400">${p.payer_name || ''} ${p.payer_email ? ' | ' + p.payer_email : ''}</div>
+            <div class="text-xs text-gray-400">${p.date ? new Date(p.date).toLocaleString() : ''} ${p.status ? ' | ' + p.status : ''}</div>
+          </div>
+        `).join('') : '<div class="text-gray-500">No payments found.</div>';
+      });
+  </script>
+</body>
+</html>

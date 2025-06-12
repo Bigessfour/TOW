@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Meetings | Town of Wiley</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6 text-amber-900">Upcoming Meetings</h1>
+    <div id="meetings-list" class="space-y-4"></div>
+    <a href="/admin/" class="text-amber-700 underline mt-8 inline-block">&larr; Back to Admin Home</a>
+  </div>
+  <script>
+    fetch('/.netlify/functions/get_meetings')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('meetings-list');
+        el.innerHTML = data.length ? data.map(m => `
+          <div class="p-4 bg-white rounded shadow">
+            <div class="font-bold text-lg text-gray-800 mb-1">${m.meeting_date ? new Date(m.meeting_date).toLocaleString() : ''}</div>
+            <div class="text-gray-600 mb-1">${m.location || ''}</div>
+            <div class="text-xs text-gray-400">Agenda: ${m.agenda ? m.agenda.substring(0, 60) + (m.agenda.length > 60 ? '...' : '') : ''}</div>
+            <div class="text-xs text-gray-400">Minutes: ${m.minutes ? m.minutes.substring(0, 60) + (m.minutes.length > 60 ? '...' : '') : ''}</div>
+            <div class="text-xs text-gray-400">Documents: ${m.documents || ''}</div>
+          </div>
+        `).join('') : '<div class="text-gray-500">No meetings found.</div>';
+      });
+  </script>
+</body>
+</html>

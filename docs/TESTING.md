@@ -2,6 +2,7 @@
 
 ## Accessibility Testing (WCAG 2.1 Compliance)
 
+
 ### Pa11y Configuration
 
 ```json
@@ -24,6 +25,16 @@
   ]
 }
 ```
+
+### Manual Screen Reader & ARIA Landmark Validation
+
+- In addition to automated tests, every release must include manual screen reader testing (NVDA, VoiceOver, or JAWS) for:
+  - Navigation
+  - Forms (including error/validation states)
+  - Notifications and dynamic content
+- Confirm all ARIA landmark roles (banner, navigation, main, contentinfo, region) are present and correct.
+
+Document results in the accessibility checklist.
 
 ### Axe-Core Configuration
 
@@ -195,6 +206,16 @@ curl -I https://townofwiley.gov | grep -E "(Strict-Transport-Security|X-Frame-Op
 ```
 
 ## Content Validation
+
+## Payment Form Edge-Case Testing & Coverage
+
+- Add automated tests for payment forms covering:
+  - Invalid/expired card numbers
+  - Accessibility (labels, error announcements)
+  - Rapid repeated submissions
+  - Edge-case input (empty, special characters, max length)
+- Use Jest or similar for test coverage reporting.
+- See `/tests/payment-form.test.js` for test structure.
 
 ### HTML Validation
 

@@ -38,6 +38,91 @@ if (!dependencies.modernizr) {
 
 // 2. MODERNIZR FEATURE DETECTION
 // ================================================================
+
+// --- Dynamic Data Fetchers for Neon/Netlify Functions ---
+document.addEventListener('DOMContentLoaded', function () {
+  // Helper to render lists
+  function renderList(containerId, items, renderFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = items.length
+      ? items.map(renderFn).join('')
+      : '<div class="text-gray-500">No data available.</div>';
+  }
+
+  // News
+  fetch('/.netlify/functions/get_news')
+    .then(r => r.json())
+    .then(data => renderList('news-list', data, n => `
+      <div class="p-4 bg-white rounded shadow">
+        <div class="text-sm text-amber-700 font-medium mb-1">${n.date ? new Date(n.date).toLocaleDateString() : ''}</div>
+        <div class="font-bold text-lg text-gray-800 mb-1">${n.title || ''}</div>
+        <div class="text-gray-600 mb-1">${n.body ? n.body.substring(0, 120) + (n.body.length > 120 ? '...' : '') : ''}</div>
+        <div class="text-xs text-gray-400">${n.author || ''}</div>
+      </div>
+    `));
+
+  // Meetings
+  fetch('/.netlify/functions/get_meetings')
+    .then(r => r.json())
+    .then(data => renderList('meetings-list', data, m => `
+      <div class="p-4 bg-white rounded shadow">
+        <div class="font-bold text-lg text-gray-800 mb-1">${m.meeting_date ? new Date(m.meeting_date).toLocaleString() : ''}</div>
+        <div class="text-gray-600 mb-1">${m.location || ''}</div>
+        <div class="text-xs text-gray-400">Agenda: ${m.agenda ? m.agenda.substring(0, 60) + (m.agenda.length > 60 ? '...' : '') : ''}</div>
+      </div>
+    `));
+
+  // Officials
+  fetch('/.netlify/functions/get_officials')
+    .then(r => r.json())
+    .then(data => renderList('officials-list', data, o => `
+      <div class="p-4 bg-white rounded shadow flex items-center gap-3">
+        <div><img src="${o.photo_url || 'https://placehold.co/60x60'}" alt="${o.name}" class="w-12 h-12 rounded-full object-cover"></div>
+        <div>
+          <div class="font-bold text-lg text-gray-800">${o.name || ''}</div>
+          <div class="text-gray-600">${o.title || ''}</div>
+          <div class="text-xs text-gray-400">${o.email || ''} ${o.phone ? ' | ' + o.phone : ''}</div>
+        </div>
+      </div>
+    `));
+
+  // Services
+  fetch('/.netlify/functions/get_services')
+    .then(r => r.json())
+    .then(data => renderList('services-list', data, s => `
+      <div class="p-4 bg-white rounded shadow">
+        <div class="font-bold text-lg text-gray-800 mb-1">${s.name || ''}</div>
+        <div class="text-gray-600 mb-1">${s.description || ''}</div>
+        <div class="text-xs text-gray-400">${s.contact_info || ''} ${s.hours ? ' | ' + s.hours : ''}</div>
+        ${s.form_link ? `<a href="${s.form_link}" class="text-amber-700 underline text-xs">Online Form</a>` : ''}
+      </div>
+    `));
+
+  // Payments
+  fetch('/.netlify/functions/get_payments')
+    .then(r => r.json())
+    .then(data => renderList('payments-list', data, p => `
+      <div class="p-4 bg-white rounded shadow">
+        <div class="font-bold text-lg text-gray-800 mb-1">${p.payment_type || ''}</div>
+        <div class="text-gray-600 mb-1">Amount: $${p.amount || ''}</div>
+        <div class="text-xs text-gray-400">${p.payer_name || ''} ${p.payer_email ? ' | ' + p.payer_email : ''}</div>
+        <div class="text-xs text-gray-400">${p.date ? new Date(p.date).toLocaleString() : ''} ${p.status ? ' | ' + p.status : ''}</div>
+      </div>
+    `));
+
+  // Contacts
+  fetch('/.netlify/functions/get_contacts')
+    .then(r => r.json())
+    .then(data => renderList('contacts-list', data, c => `
+      <div class="p-4 bg-white rounded shadow">
+        <div class="font-bold text-lg text-gray-800 mb-1">${c.name || ''}</div>
+        <div class="text-gray-600 mb-1">${c.email || ''}</div>
+        <div class="text-xs text-gray-400">${c.date ? new Date(c.date).toLocaleString() : ''} ${c.status ? ' | ' + c.status : ''}</div>
+        <div class="text-gray-600 mt-2">${c.message ? c.message.substring(0, 100) + (c.message.length > 100 ? '...' : '') : ''}</div>
+      </div>
+    `));
+});
 // Delayed check for Modernizr (it might load after this script initially runs)
 setTimeout(function () {
   if (typeof Modernizr !== 'undefined') {

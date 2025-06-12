@@ -14,8 +14,10 @@ ensure full accessibility compliance (WCAG 2.1 AA, Section 508).
 
 - [ ] All content is announced in a logical order
 - [ ] All images have meaningful alt text
-- [ ] ARIA labels and roles are used appropriately
+- [ ] ARIA labels and roles (e.g., banner, navigation, main, contentinfo, region) are used appropriately
 - [ ] Headings are used for structure (not just style)
+- [ ] All ARIA landmarks are present and correctly implemented
+- [ ] Manual screen reader testing (NVDA, VoiceOver, or JAWS) is performed for all major user flows (navigation, forms, notifications)
 
 ## 3. Color & Contrast
 
