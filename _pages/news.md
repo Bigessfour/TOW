@@ -6,46 +6,24 @@ description:
   'Latest news, announcements, and updates from the Town of Wiley government'
 ---
 
-# News & Updates
 
-Stay informed with the latest news and announcements from the Town of Wiley.
-
-<div class="news-grid">
-{% for post in site.posts %}
-  <article class="news-card">
-    <header>
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <time datetime="{{ post.date | date_to_xmlschema }}" class="text-sm text-gray-600">
-        {{ post.date | date: "%B %d, %Y" }}
-      </time>
-      {% if post.author %}
-        <p class="text-sm text-gray-600">By {{ post.author }}</p>
-      {% endif %}
-    </header>
-    
-    <div class="excerpt">
-      {{ post.excerpt | strip_html | truncate: 200 }}
-    </div>
-    
-    {% if post.categories %}
-      <div class="categories">
-        {% for category in post.categories %}
-          <span class="category-tag">{{ category }}</span>
-        {% endfor %}
-      </div>
-    {% endif %}
-    
-    <a href="{{ post.url | relative_url }}" class="btn btn-outline">Read More</a>
-  </article>
-{% endfor %}
-</div>
-
-{% if site.posts.size == 0 %}
-
-<div class="text-center py-8">
-  <p>No news articles available at this time. Please check back later for updates.</p>
-</div>
-{% endif %}
+<section aria-labelledby="news-heading">
+  <h1 id="news-heading">News</h1>
+  <ul id="news-list" aria-live="polite"></ul>
+</section>
+<script>
+  fetch('/.netlify/functions/get_news')
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('news-list');
+      data.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${item.title}</strong>: ${item.content} <em>(${new Date(item.published_at).toLocaleDateString()})</em>`;
+        list.appendChild(li);
+      });
+    })
+    .catch(err => console.error('Error fetching news:', err));
+</script>
 
 ---
 

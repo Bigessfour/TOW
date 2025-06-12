@@ -1,7 +1,6 @@
-
-
-@use "sass:color";
-// @use "minima"; // Removed to avoid SCSS @use ordering issues and because minima styles are not needed directly here
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 // Town Government Website - Custom Styles
 // Complements Tailwind CSS with custom components and government-specific styling
